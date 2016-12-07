@@ -17,8 +17,12 @@
   *
   */
 
+/** Moment global object initialization.
+  */
 var Moment = window['Moment'] = window['Moment'] || {};
 
+/** A map of event ID's to arrays of event handlers.
+  */
 Moment._eventHandlers = {};
 
 /** Attach an event handler to a specific event ID to execute when the event
