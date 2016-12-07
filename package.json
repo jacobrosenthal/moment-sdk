@@ -4,6 +4,7 @@
   "description": "The SDK for Moment",
   "main": "gulpfile.js",
   "dependencies": {
+    "google-closure-compiler": "^20161201.0.0",
     "gulp": "^3.9.1"
   },
   "devDependencies": {},
