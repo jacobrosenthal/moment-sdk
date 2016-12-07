@@ -21,6 +21,9 @@ var Moment = window['Moment'] = window['Moment'] || {};
 
 Moment._eventHandlers = {};
 
+/** Attach an event handler to a specific event ID to execute when the event
+  * is triggered.
+  */
 Moment['on'] = function (event, fn) {
 	var handlers = Moment._eventHandlers;
 
@@ -32,6 +35,9 @@ Moment['on'] = function (event, fn) {
 	}
 }
 
+/** Remove an event handler from a specific event ID to avoid execution when
+  * the event is triggered.
+  */
 Moment['off'] = function (event, fn) {
 	var handlers = Moment._eventHandlers,
 		e,
@@ -46,6 +52,10 @@ Moment['off'] = function (event, fn) {
 	}
 }
 
+/** Attach an event handler to a specific event ID to only be executed once -
+  * the next trigger of the event - and subsequently removed before it can
+  * be executed again.
+  */
 Moment['once'] = function (event, fn) {
 	function newFunc() {
 		fn();
@@ -55,6 +65,9 @@ Moment['once'] = function (event, fn) {
 	Moment['on'](event, newFunc);
 }
 
+/** Trigger the event with a particular ID - begin execution of all attached
+  * handlers for the event.
+  */
 Moment['trigger'] = function (event) {
 	var handlers = Moment._eventHandlers,
 		e,
