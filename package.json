@@ -1,0 +1,23 @@
+{
+  "name": "moment-sdk",
+  "version": "0.0.1",
+  "description": "The SDK for Moment",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SomaticLabs/moment-sdk.git"
+  },
+  "author": "Somatic Labs",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/SomaticLabs/moment-sdk/issues"
+  },
+  "homepage": "https://github.com/SomaticLabs/moment-sdk#readme"
+}
