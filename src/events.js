@@ -17,12 +17,6 @@
   *
   */
 
-/** Ensure Moment object exists
-  */
-if (typeof Moment === 'undefined' ) {
-    var Moment = {};
-}
-
 (function () {
 
 /** A map of event ID's to arrays of event handlers.
