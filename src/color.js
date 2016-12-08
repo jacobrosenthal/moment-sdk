@@ -49,4 +49,13 @@ Color['prototype']['blend'] = function (color, multiplier) {
     this.blue = minMax(multiplier * color.blue + invMult * this.blue);
 }
 
+Color.ORANGE = new Color(0xfd, 0xaa, 0x00);
+Color.RED = new Color(0xe6, 0x30, 0x14);
+Color.PINK = new Color(0xb8, 0x00, 0x8f);
+Color.GREEN = new Color(0xb9, 0xf1, 0x00);
+Color.BLUE = new Color(0x00, 0x7e, 0xed);
+Color.BLACK = new Color(0, 0, 0);
+Color.GRAY = new Color(100, 100, 100);
+Color.WHITE = new Color(255, 255, 255);
+
 Moment['Color'] = Color;
