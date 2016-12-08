@@ -19,6 +19,10 @@
 
 (function () {
 
+var global = Function('return this')();
+global.Moment = global.Moment || {};
+var Moment = global.Moment;
+
 /** A map of event ID's to arrays of event handlers.
   */
 var handlers = {};

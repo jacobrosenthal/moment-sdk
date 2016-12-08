@@ -18,7 +18,7 @@
   */
 
 var assert = require('assert'),
-    events = require('../dist/environment');
+    events = require('../src/events');
 
 
 describe('Moment events', function () {

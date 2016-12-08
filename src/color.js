@@ -19,6 +19,10 @@
 
 (function () {
 
+var global = Function('return this')();
+global.Moment = global.Moment || {};
+var Moment = global.Moment;
+
 /**
  * @constructor
  */
@@ -61,6 +65,6 @@ Color.BLACK = new Color(0, 0, 0);
 Color.GRAY = new Color(100, 100, 100);
 Color.WHITE = new Color(255, 255, 255);
 
-Moment['Color'] = Color;
+global.Moment['Color'] = Color;
 
 })();
