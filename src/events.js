@@ -17,15 +17,7 @@
   *
   */
 
-/** Moment global object initialization.
-  */
-if (global) {
-	global.window = global;
-}
-
 (function () {
-
-var Moment = window['Moment'] = window['Moment'] || {};
 
 /** A map of event ID's to arrays of event handlers.
   */

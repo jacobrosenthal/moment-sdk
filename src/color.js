@@ -17,17 +17,12 @@
   *
   */
 
-/** Moment global object initialization.
-  */
-if (global) {
-  global.window = global;
-}
-
 (function () {
 
-var Moment = window['Moment'] = window['Moment'] || {};
-
-var Color = function (red, green, blue) {
+/**
+ * @constructor
+ */
+function Color(red, green, blue) {
     this.red = red;
     this.green = green;
     this.blue = blue;
