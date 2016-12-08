@@ -33,11 +33,11 @@ var handlers = {};
   * is triggered.
   */
 Moment['on'] = function (event, fn) {
-	if (handlers.hasOwnProperty(event)) {
-		handlers[event].push(fn);
+	if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
+		handlers[event].push(fn); // append to array of event handlers
 	}
 	else {
-		handlers[event] = [fn];
+		handlers[event] = [fn]; // initialize an array to store event handlers
 	}
 }
 
