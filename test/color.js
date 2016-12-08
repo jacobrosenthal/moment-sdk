@@ -18,7 +18,7 @@
   */
 
 var assert = require('assert'),
-    events = require('../src/color');
+    events = require('../dist/environment');
 
 
 describe('Moment colors', function () {
