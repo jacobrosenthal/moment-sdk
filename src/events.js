@@ -19,18 +19,20 @@
 
 /** Moment global object initialization.
   */
+if (global) {
+	global.window = global;
+}
+
 var Moment = window['Moment'] = window['Moment'] || {};
 
 /** A map of event ID's to arrays of event handlers.
   */
-Moment._eventHandlers = {};
+var handlers = {};
 
 /** Attach an event handler to a specific event ID to execute when the event
   * is triggered.
   */
 Moment['on'] = function (event, fn) {
-	var handlers = Moment._eventHandlers;
-
 	if (handlers.hasOwnProperty(event)) {
 		handlers[event].push(fn);
 	}
@@ -43,8 +45,7 @@ Moment['on'] = function (event, fn) {
   * the event is triggered.
   */
 Moment['off'] = function (event, fn) {
-	var handlers = Moment._eventHandlers,
-		e,
+	var e,
 		i;
 
 	if (handlers.hasOwnProperty(event)) {
@@ -73,8 +74,7 @@ Moment['once'] = function (event, fn) {
   * handlers for the event.
   */
 Moment['trigger'] = function (event) {
-	var handlers = Moment._eventHandlers,
-		e,
+	var e,
 		i,
 		len;
 
