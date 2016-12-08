@@ -37,7 +37,7 @@ Moment['on'] = function (event, fn) {
 	else {
 		handlers[event] = [fn]; // initialize an array to store event handlers
 	}
-}
+};
 
 /** Remove an event handler from a specific event ID to avoid execution when
   * the event is triggered.
@@ -54,7 +54,7 @@ Moment['off'] = function (event, fn) {
 			funcs.splice(index, 1); // remove the event handler
 		}
 	}
-}
+};
 
 /** Attach an event handler to a specific event ID to only be executed once -
   * the next trigger of the event - and subsequently removed before it can
@@ -68,7 +68,7 @@ Moment['once'] = function (event, fn) {
 	}
 
 	Moment['on'](event, newFunc);
-}
+};
 
 /** Trigger the event with a particular ID - begin execution of all attached
   * handlers for the event.
@@ -86,6 +86,6 @@ Moment['trigger'] = function (event) {
 			funcs[index]();
 		}
 	}
-}
+};
 
 })();

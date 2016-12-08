@@ -46,7 +46,7 @@ Color['prototype']['intensify'] = function (multiplier) {
     this.red = minMax(multiplier * this.red);
     this.green = minMax(multiplier * this.green);
     this.blue = minMax(multiplier * this.blue);
-}
+};
 
 Color['prototype']['blend'] = function (color, multiplier) {
     var invMult = 1.0 - multiplier;
@@ -54,7 +54,7 @@ Color['prototype']['blend'] = function (color, multiplier) {
     this.red = minMax(multiplier * color.red + invMult * this.red);
     this.green = minMax(multiplier * color.green + invMult * this.green);
     this.blue = minMax(multiplier * color.blue + invMult * this.blue);
-}
+};
 
 Color.ORANGE = new Color(0xfd, 0xaa, 0x00);
 Color.RED = new Color(0xe6, 0x30, 0x14);
