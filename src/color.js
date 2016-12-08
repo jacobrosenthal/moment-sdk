@@ -23,6 +23,8 @@ if (global) {
   global.window = global;
 }
 
+(function () {
+
 var Moment = window['Moment'] = window['Moment'] || {};
 
 var Color = function (red, green, blue) {
@@ -65,3 +67,5 @@ Color.GRAY = new Color(100, 100, 100);
 Color.WHITE = new Color(255, 255, 255);
 
 Moment['Color'] = Color;
+
+})();
