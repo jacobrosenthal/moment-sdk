@@ -17,7 +17,11 @@
   *
   */
 
-Moment = Moment || {};
+/** Ensure Moment object exists
+  */
+if (typeof Moment === 'undefined' ) {
+    var Moment = {};
+}
 
 (function () {
 
