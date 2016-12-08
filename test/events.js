@@ -33,6 +33,22 @@ describe('Moment events', function () {
 
             assert.equal(triggered, true);
         });
+
+        it('attaches more than one handler to a single event', function () {
+            var count = 0;
+
+            Moment.on('testct', function () {
+                count++;
+            });
+
+            Moment.on('testct', function () {
+                count += 3;
+            });
+
+            Moment.trigger('testct');
+
+            assert.equal(count, 4);
+        })
     });
 
     describe('#off()', function () {
@@ -69,7 +85,7 @@ describe('Moment events', function () {
         });
     });
 
-    describe('#once', function () {
+    describe('#once()', function () {
         it('should attach event handler that only executes once', function () {
             var count = 0;
 

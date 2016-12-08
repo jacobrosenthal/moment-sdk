@@ -45,14 +45,15 @@ Moment['on'] = function (event, fn) {
   * the event is triggered.
   */
 Moment['off'] = function (event, fn) {
-	var e,
-		i;
+	var funcs, // stores the array of attached event handlers
+		index; // stores the index of the function to remove
 
-	if (handlers.hasOwnProperty(event)) {
-		e = handlers[event];
-		i = e.indexOf(fn);
-		if (i >= 0) {
-			e.splice(i, 1);
+	if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
+		funcs = handlers[event];
+		index = funcs.indexOf(fn);
+
+		if (index >= 0) {
+			funcs.splice(index, 1); // remove the event handler
 		}
 	}
 }
@@ -62,6 +63,7 @@ Moment['off'] = function (event, fn) {
   * be executed again.
   */
 Moment['once'] = function (event, fn) {
+	// create a function that removes the attached event after trigger
 	function newFunc() {
 		fn();
 		Moment['off'](event, newFunc);
@@ -74,16 +76,16 @@ Moment['once'] = function (event, fn) {
   * handlers for the event.
   */
 Moment['trigger'] = function (event) {
-	var e,
-		i,
+	var funcs,
+		index,
 		len;
 
 	if (handlers.hasOwnProperty(event)) {
-		e = handlers[event];
-		len = e.length;
+		funcs = handlers[event];
+		len = funcs.length;
 
-		for (i = 0; i < len; i += 1) {
-			e[i]();
+		for (index = 0; index < len; index += 1) {
+			funcs[index]();
 		}
 	}
 }
