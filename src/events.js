@@ -17,6 +17,8 @@
   *
   */
 
+Moment = Moment || {};
+
 (function () {
 
 /** A map of event ID's to arrays of event handlers.

@@ -17,6 +17,8 @@
   *
   */
 
+Moment = Moment || {};
+
 (function () {
 
 /**
