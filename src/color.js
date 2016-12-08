@@ -17,6 +17,12 @@
   *
   */
 
+/** Moment global object initialization.
+  */
+if (global) {
+  global.window = global;
+}
+
 var Moment = window['Moment'] = window['Moment'] || {};
 
 var Color = function (red, green, blue) {
