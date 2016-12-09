@@ -276,7 +276,7 @@ footer {
 }
 
 .name, .signature {
-  font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono', monospace
+  font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono', monospace;
 }
 
 .signature {
