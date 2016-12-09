@@ -75,7 +75,7 @@ function Vibration(pin, effect, delay) {
   */
 Vibration['prototype']['start'] = function () {
     var e = this.effect;
-    Moment._add_transition(
+    Moment['_add_transition'](
         this.pin,
         e.start,
         e.end,
