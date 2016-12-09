@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>events.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Moment.Color.html">Color</a><ul class='methods'><li data-type='method'><a href="Moment.Color.html#blend">blend</a></li><li data-type='method'><a href="Moment.Color.html#intensify">intensify</a></li></ul></li><li><a href="Moment.Effect.html">Effect</a><ul class='methods'><li data-type='method'><a href="Moment.Effect.html#scale">scale</a></li></ul></li><li><a href="Moment.LED.Transition.html">Transition</a></li><li><a href="Moment.Vibration.html">Vibration</a><ul class='methods'><li data-type='method'><a href="Moment.Vibration.html#start">start</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="Moment.html">Moment</a><ul class='methods'><li data-type='method'><a href="Moment.html#.off">off</a></li><li data-type='method'><a href="Moment.html#.on">on</a></li><li data-type='method'><a href="Moment.html#.once">once</a></li><li data-type='method'><a href="Moment.html#.trigger">trigger</a></li></ul></li><li><a href="Moment.LED.html">LED</a><ul class='methods'><li data-type='method'><a href="Moment.LED.html#.loopColor">loopColor</a></li><li data-type='method'><a href="Moment.LED.html#.setColor">setColor</a></li><li data-type='method'><a href="Moment.LED.html#.tweenColor">tweenColor</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">events.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Copyright (c) 2016 Somatic Labs. All Rights Reserved.
+  *
+  * This program is free software: you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+  * the Free Software Foundation, either version 3 of the License, or
+  * (at your option) any later version.
+  *
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with this program.  If not, see &lt;http://www.gnu.org/licenses/>.
+  *
+  * The information contained herein is property of Somatic Technologies, Inc.
+  *
+  */
+
+(function () {
+
+var Moment = Function('return this')()['Moment'];
+
+/** A map of event ID's to arrays of event handlers.
+  */
+var handlers = {};
+
+/** Attach an event handler to a specific event ID to execute when the event
+  * is triggered.
+  *
+  * @memberof Moment
+  * @name Moment.on
+  * @method
+  * @static
+  *
+  * @param {string} event - The event identifier string
+  * @param {Function} fn - The callback function to execute
+  */
+Moment['on'] = function (event, fn) {
+    if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
+        handlers[event].push(fn); // append to array of event handlers
+    }
+    else {
+        handlers[event] = [fn]; // initialize an array to store event handlers
+    }
+};
+
+/** Remove an event handler from a specific event ID to avoid execution when
+  * the event is triggered.
+  *
+  * @memberof Moment
+  * @name Moment.off
+  * @method
+  * @static
+  *
+  * @param {string} event - The event identifier string
+  * @param {Function} fn - The callback function to remove
+  */
+Moment['off'] = function (event, fn) {
+    var funcs, // stores the array of attached event handlers
+        index; // stores the index of the function to remove
+
+    if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
+        funcs = handlers[event];
+        index = funcs.indexOf(fn);
+
+        if (index >= 0) {
+            funcs.splice(index, 1); // remove the event handler
+        }
+    }
+};
+
+/** Attach an event handler to a specific event ID to only be executed once -
+  * the next trigger of the event - and subsequently removed before it can
+  * be executed again.
+  *
+  * @memberof Moment
+  * @name Moment.once
+  * @method
+  * @static
+  *
+  * @param {string} event - The event identifier string
+  * @param {Function} fn - The callback function to execute
+  */
+Moment['once'] = function (event, fn) {
+    // create a function that removes the attached event after trigger
+    function newFunc() {
+        fn();
+        Moment['off'](event, newFunc);
+    }
+
+    Moment['on'](event, newFunc);
+};
+
+/** Trigger the event with a particular ID - begin execution of all attached
+  * handlers for the event.
+  *
+  * @memberof Moment
+  * @name Moment.trigger
+  * @method
+  * @static
+  *
+  * @param {string} event - The event identifier string
+  */
+Moment['trigger'] = function (event) {
+    var funcs,
+        index,
+        len;
+
+    if (handlers.hasOwnProperty(event)) {
+        funcs = handlers[event];
+        len = funcs.length;
+
+        for (index = 0; index &lt; len; index += 1) {
+            funcs[index]();
+        }
+    }
+};
+
+})();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Dec 09 2016 12:51:49 GMT-0700 (MST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

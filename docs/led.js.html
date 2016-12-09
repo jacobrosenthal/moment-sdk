@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>led.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Moment.Color.html">Color</a><ul class='methods'><li data-type='method'><a href="Moment.Color.html#blend">blend</a></li><li data-type='method'><a href="Moment.Color.html#intensify">intensify</a></li></ul></li><li><a href="Moment.Effect.html">Effect</a><ul class='methods'><li data-type='method'><a href="Moment.Effect.html#scale">scale</a></li></ul></li><li><a href="Moment.LED.Transition.html">Transition</a></li><li><a href="Moment.Vibration.html">Vibration</a><ul class='methods'><li data-type='method'><a href="Moment.Vibration.html#start">start</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="Moment.html">Moment</a><ul class='methods'><li data-type='method'><a href="Moment.html#.off">off</a></li><li data-type='method'><a href="Moment.html#.on">on</a></li><li data-type='method'><a href="Moment.html#.once">once</a></li><li data-type='method'><a href="Moment.html#.trigger">trigger</a></li></ul></li><li><a href="Moment.LED.html">LED</a><ul class='methods'><li data-type='method'><a href="Moment.LED.html#.loopColor">loopColor</a></li><li data-type='method'><a href="Moment.LED.html#.setColor">setColor</a></li><li data-type='method'><a href="Moment.LED.html#.tweenColor">tweenColor</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">led.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Copyright (c) 2016 Somatic Labs. All Rights Reserved.
+  *
+  * This program is free software: you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+  * the Free Software Foundation, either version 3 of the License, or
+  * (at your option) any later version.
+  *
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with this program.  If not, see &lt;http://www.gnu.org/licenses/>.
+  *
+  * The information contained herein is property of Somatic Technologies, Inc.
+  *
+  */
+
+(function () {
+
+var Moment = Function('return this')()['Moment'];
+
+/** Namespace for functions enabling LED control.
+  * @namespace
+  * @name Moment.LED
+  */
+var LED = Moment['LED'] = {};
+
+/** Holds the parameters required for an LED color transition using an easing
+  * equation and custom duration.
+  *
+  * @constructor
+  * @memberof Moment.LED
+  * @name Moment.LED.Transition
+  * @param {Object} color - The Color instance to transition to.
+  * @param {number} func - The integer ID of the easing equation to use.
+  * @param {number} duration - The duration of the transition in milliseconds.
+  */
+function Transition (color, func, duration) {
+    this.color = color;
+    this.func = func;
+    this.duration = duration;
+}
+
+LED['Transition'] = Transition;
+
+/** Sets the current color of the LED to a specific value.
+  *
+  * @memberof Moment.LED
+  * @param {Object} color - The Color value to set
+  * @name Moment.LED.setColor
+  * @method
+  */
+LED['setColor'] = function (color) {
+    Moment['_set_led_color'](color.red, color.green, color.blue);
+};
+
+/** Tweens the current color of the LED using a transition object
+  *
+  * @memberof Moment.LED
+  * @param {Transition} transition - The Transition value to set
+  * @name Moment.LED.tweenColor
+  * @method
+  */
+LED['tweenColor'] = function (transition) {
+    var color = transition.color;
+    Moment['_tween_led_color'](
+        color.red,
+        color.green,
+        color.blue,
+        transition.func,
+        transition.duration
+    );
+};
+
+/** Loops between two LED transitions.
+  *
+  * @memberof Moment.LED
+  * @param {Transition} transitionIn - The first Transition value to set
+  * @param {Transition} transitionOut - The second Transition value to set
+  * @name Moment.LED.loopColor
+  * @method
+  */
+LED['loopColor'] = function (transitionIn, transitionOut) {
+    var color = transitionIn.color;
+    Moment['_tween_led_color'](
+        color.red,
+        color.green,
+        color.blue,
+        transitionIn.func,
+        transitionIn.duration
+    );
+
+    color = transitionOut.color;
+    Moment['_loop_led_color'](
+        color.red,
+        color.green,
+        color.blue,
+        transitionOut.func,
+        transitionOut.duration
+    );
+}
+
+})();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Dec 09 2016 12:51:49 GMT-0700 (MST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
