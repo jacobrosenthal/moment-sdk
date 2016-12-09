@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Vibration - Documentation</title>
+    <title>Battery - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Vibration</h1>
+    <h1 class="page-title">Battery</h1>
     
 
     
@@ -42,7 +42,7 @@
         <h2>
             <span class="ancestors"><a href="Moment.html">Moment</a>.</span>
         
-        Vibration
+        Battery
         </h2>
         
     
@@ -53,21 +53,12 @@
     
         
 
-    
-
-    <h4 class="name" id="Vibration"><span class="type-signature"></span>new Vibration<span class="signature">(pin, effect, delay)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
 <dl class="details">
 
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="haptics.js.html">haptics.js</a>, <a href="haptics.js.html#line66">line 66</a>
+        <a href="battery.js.html">battery.js</a>, <a href="battery.js.html#line24">line 24</a>
     </li></ul></dd>
     
 
@@ -105,131 +96,11 @@
 
 
 
-
-<div class="description">
-    <p>Represents a vibration on a specific motor for future execution on a
-timeline of effects.</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
         
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
+            <div class="description"><p>Namespace for functions enabling Battery control.</p></div>
         
 
         
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>pin</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The pin ID of the motor to vibrate</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>effect</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Effect</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>The effect to apply to the motor</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>delay</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Milliseconds before starting the vibration</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
     </div>
 
@@ -253,7 +124,7 @@ timeline of effects.</p>
 
     
 
-    <h4 class="name" id="start"><span class="type-signature"></span>start<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".getCharge"><span class="type-signature">(static) </span>getCharge<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
@@ -265,7 +136,7 @@ timeline of effects.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="haptics.js.html">haptics.js</a>, <a href="haptics.js.html#line72">line 72</a>
+        <a href="battery.js.html">battery.js</a>, <a href="battery.js.html#line50">line 50</a>
     </li></ul></dd>
     
 
@@ -305,7 +176,175 @@ timeline of effects.</p>
 
 
 <div class="description">
-    <p>Starts execution of a vibration command.</p>
+    <p>Get the current charge level of the battery.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isCharging"><span class="type-signature">(static) </span>isCharging<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="battery.js.html">battery.js</a>, <a href="battery.js.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Check if the battery is currently charging</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".isConnected"><span class="type-signature">(static) </span>isConnected<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="battery.js.html">battery.js</a>, <a href="battery.js.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Check if the battery charger is connected.</p>
 </div>
 
 

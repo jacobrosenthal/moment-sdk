@@ -23,7 +23,7 @@ var Moment = Function('return this')()['Moment'];
 
 /** Namespace for functions enabling Battery control.
   * @namespace
-  * @name Moment.LED
+  * @name Moment.Battery
   */
 var Battery = {};
 
