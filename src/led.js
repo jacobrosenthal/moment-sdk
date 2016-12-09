@@ -19,21 +19,20 @@
 
 (function () {
 
-var global = Function('return this')();
-global.Moment = global.Moment || {};
+var Moment = Function('return this')()['Moment'];
 
-/**
-  * Moment namespace for SDK functions.
-  * @public
+/** Namespace for functions enabling LED control.
   * @namespace
+  * @name Moment.LED
   */
-var Moment = global.Moment;
+var LED = Moment['LED'] = {};
 
 /** Holds the parameters required for an LED color transition using an easing
   * equation and custom duration.
   *
   * @constructor
-  * @memberof Moment
+  * @memberof Moment.LED
+  * @name Moment.LED.Transition
   * @param {Object} color - The Color instance to transition to.
   * @param {number} func - The integer ID of the easing equation to use.
   * @param {number} duration - The duration of the transition in milliseconds.
@@ -44,23 +43,27 @@ function Transition (color, func, duration) {
     this.duration = duration;
 }
 
-Moment['Color']['Transition'] = Transition;
+LED['Transition'] = Transition;
 
 /** Sets the current color of the LED to a specific value.
   *
-  * @memberof Moment
+  * @memberof Moment.LED
   * @param {Object} color - The Color value to set
+  * @name Moment.LED.setColor
+  * @method
   */
-Moment['setColor'] = function (color) {
+LED['setColor'] = function (color) {
     Moment._set_led_color(color.red, color.green, color.blue);
 };
 
 /** Tweens the current color of the LED using a transition object
   *
-  * @memberof Moment
+  * @memberof Moment.LED
   * @param {Transition} transition - The Transition value to set
+  * @name Moment.LED.tweenColor
+  * @method
   */
-Moment['tweenColor'] = function (transition) {
+LED['tweenColor'] = function (transition) {
     var color = transition.color;
     Moment._tween_led_color(
         color.red,
@@ -73,11 +76,13 @@ Moment['tweenColor'] = function (transition) {
 
 /** Loops between two LED transitions.
   *
-  * @memberof Moment
+  * @memberof Moment.LED
   * @param {Transition} transitionIn - The first Transition value to set
   * @param {Transition} transitionOut - The second Transition value to set
+  * @name Moment.LED.loopColor
+  * @method
   */
-Moment['loopColor'] = function (transitionIn, transitionOut) {
+LED['loopColor'] = function (transitionIn, transitionOut) {
     var color = transitionIn.color;
     Moment._tween_led_color(
         color.red,

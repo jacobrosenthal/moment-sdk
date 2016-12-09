@@ -19,15 +19,7 @@
 
 (function () {
 
-var global = Function('return this')();
-global.Moment = global.Moment || {};
-
-/**
-  * Moment namespace for SDK functions.
-  * @public
-  * @namespace
-  */
-var Moment = global.Moment;
+var Moment = Function('return this')()['Moment'];
 
 /** Represents an effect that can be applied on an individual motor.
   *
@@ -51,6 +43,8 @@ function Effect(start, end, func, duration, position) {
   * millisecond.
   *
   * @memberof Moment.Effect
+  * @name Moment.Effect#scale
+  * @method
   * @param {number} multiplier - The multiplier for the duration of effect
   */
 Effect['prototype']['scale'] = function (multiplier) {
@@ -76,6 +70,8 @@ function Vibration(pin, effect, delay) {
 /** Starts execution of a vibration command.
   *
   * @memberof Moment.Vibration
+  * @name Moment.Vibration#start
+  * @method
   */
 Vibration['prototype']['start'] = function () {
     var e = this.effect;

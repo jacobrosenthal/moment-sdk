@@ -19,15 +19,7 @@
 
 (function () {
 
-var global = Function('return this')();
-global.Moment = global.Moment || {};
-
-/**
-  * Moment namespace for SDK functions.
-  * @public
-  * @namespace
-  */
-var Moment = global.Moment;
+var Moment = Function('return this')()['Moment'];
 
 /** Represents a color using a combination of red, green, and blue values.
   *
@@ -63,6 +55,8 @@ function minMax(number) {
   *
   * @public
   * @memberof Moment.Color
+  * @method
+  * @name Moment.Color#intensify
   *
   * @param {number} multiplier - The multiplier for all of the color components.
   */
@@ -81,6 +75,8 @@ Color['prototype']['intensify'] = function (multiplier) {
   *
   * @public
   * @memberof Moment.Color
+  * @method
+  * @name Moment.Color#blend
   *
   * @param {Color} color - The new color to blend in.
   * @param {number} multiplier - The ratio of new color to use relative to the base color.
@@ -165,6 +161,6 @@ Color.GRAY = new Color(100, 100, 100);
   */
 Color.WHITE = new Color(255, 255, 255);
 
-global.Moment['Color'] = Color;
+Moment['Color'] = Color;
 
 })();

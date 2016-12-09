@@ -19,15 +19,7 @@
 
 (function () {
 
-var global = Function('return this')();
-global.Moment = global.Moment || {};
-
-/**
-  * Moment namespace for SDK functions.
-  * @public
-  * @namespace
-  */
-var Moment = global.Moment;
+var Moment = Function('return this')()['Moment'];
 
 /** A map of event ID's to arrays of event handlers.
   */
@@ -37,8 +29,12 @@ var handlers = {};
   * is triggered.
   *
   * @memberof Moment
+  * @name Moment.on
+  * @method
   * @static
-  * @public
+  *
+  * @param {string} event - The event identifier string
+  * @param {Function} fn - The callback function to execute
   */
 Moment['on'] = function (event, fn) {
     if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
@@ -53,8 +49,12 @@ Moment['on'] = function (event, fn) {
   * the event is triggered.
   *
   * @memberof Moment
+  * @name Moment.off
+  * @method
   * @static
-  * @public
+  *
+  * @param {string} event - The event identifier string
+  * @param {Function} fn - The callback function to remove
   */
 Moment['off'] = function (event, fn) {
     var funcs, // stores the array of attached event handlers
@@ -75,8 +75,12 @@ Moment['off'] = function (event, fn) {
   * be executed again.
   *
   * @memberof Moment
+  * @name Moment.once
+  * @method
   * @static
-  * @public
+  *
+  * @param {string} event - The event identifier string
+  * @param {Function} fn - The callback function to execute
   */
 Moment['once'] = function (event, fn) {
     // create a function that removes the attached event after trigger
@@ -92,8 +96,11 @@ Moment['once'] = function (event, fn) {
   * handlers for the event.
   *
   * @memberof Moment
+  * @name Moment.trigger
+  * @method
   * @static
-  * @public
+  *
+  * @param {string} event - The event identifier string
   */
 Moment['trigger'] = function (event) {
     var funcs,
