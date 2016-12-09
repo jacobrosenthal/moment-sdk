@@ -56,8 +56,8 @@ describe('Moment haptics', function () {
         });
     });
 
-    describe('#scale()', function () {
-        it('scales the duration of an effect', function () {
+    describe('#start()', function () {
+        it('starts a vibration on a motor', function () {
             var newEffect = new Moment.Effect(25, 75, 8, 400, 200);
             var newVibration = new Moment.Vibration(2, newEffect, 100);
             Moment._add_transition = function (

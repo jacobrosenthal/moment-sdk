@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>led.js - Documentation</title>
+    <title>battery.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">led.js</h1>
+    <h1 class="page-title">battery.js</h1>
     
 
     
@@ -60,86 +60,43 @@
 
 var Moment = Function('return this')()['Moment'];
 
-/** Namespace for functions enabling LED control.
+/** Namespace for functions enabling Battery control.
   * @namespace
   * @name Moment.LED
   */
-var LED = Moment['LED'] = {};
+var Battery = {};
 
-/** Holds the parameters required for an LED color transition using an easing
-  * equation and custom duration.
+/** Check if the battery is currently charging
   *
-  * @constructor
-  * @memberof Moment.LED
-  * @name Moment.LED.Transition
-  * @param {Object} color - The Color instance to transition to.
-  * @param {number} func - The integer ID of the easing equation to use.
-  * @param {number} duration - The duration of the transition in milliseconds.
-  */
-function Transition (color, func, duration) {
-    this.color = color;
-    this.func = func;
-    this.duration = duration;
-}
-
-LED['Transition'] = Transition;
-
-/** Sets the current color of the LED to a specific value.
-  *
-  * @memberof Moment.LED
-  * @param {Object} color - The Color value to set
-  * @name Moment.LED.setColor
+  * @memberof Moment.Battery
+  * @name Moment.Battery.isCharging
   * @method
   */
-LED['setColor'] = function (color) {
-    Moment['_set_led_color'](color.red, color.green, color.blue);
+Battery['isCharging'] = function () {
+    return Moment['_is_battery_charging']();
 };
 
-/** Tweens the current color of the LED using a transition object
+/** Check if the battery charger is connected.
   *
-  * @memberof Moment.LED
-  * @param {Transition} transition - The Transition value to set
-  * @name Moment.LED.tweenColor
+  * @memberof Moment.Battery
+  * @name Moment.Battery.isConnected
   * @method
   */
-LED['tweenColor'] = function (transition) {
-    var color = transition.color;
-    Moment['_tween_led_color'](
-        color.red,
-        color.green,
-        color.blue,
-        transition.func,
-        transition.duration
-    );
+Battery['isConnected'] = function () {
+    return Moment['_is_charger_connected']();
 };
 
-/** Loops between two LED transitions.
+/** Get the current charge level of the battery.
   *
-  * @memberof Moment.LED
-  * @param {Transition} transitionIn - The first Transition value to set
-  * @param {Transition} transitionOut - The second Transition value to set
-  * @name Moment.LED.loopColor
+  * @memberof Moment.Battery
+  * @name Moment.Battery.getCharge
   * @method
   */
-LED['loopColor'] = function (transitionIn, transitionOut) {
-    var color = transitionIn.color;
-    Moment['_tween_led_color'](
-        color.red,
-        color.green,
-        color.blue,
-        transitionIn.func,
-        transitionIn.duration
-    );
+Battery['getCharge'] = function () {
+    return Moment['_get_battery_charge']();
+};
 
-    color = transitionOut.color;
-    Moment['_loop_led_color'](
-        color.red,
-        color.green,
-        color.blue,
-        transitionOut.func,
-        transitionOut.duration
-    );
-}
+Moment['Battery'] = Battery;
 
 })();
 </code></pre>
