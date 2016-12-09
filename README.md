@@ -8,7 +8,7 @@
 This repository contains the Software Development Kit (SDK) for Moment, the
 wearable device that communicates entirely through your sense of touch.
 
-For more information about Moment, visit https://wearmoment.com/
+For more information about Moment, visit [https://wearmoment.com/](https://wearmoment.com/)
 
 This SDK contains the code that is executed on the Moment devices inside of
 a custom JavaScript runtime environment. To simplify the process of creating
@@ -41,7 +41,7 @@ Change the working directory:
 
 ### Step 1: Install NPM
 
-Follow the instructions on https://www.npmjs.com/ to install NPM for your
+Follow the instructions on [https://www.npmjs.com/](https://www.npmjs.com/) to install NPM for your
 operating system.
 
 ### Step 2: Install Gulp
