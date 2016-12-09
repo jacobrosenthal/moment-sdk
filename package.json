@@ -8,7 +8,7 @@
     "generate-docs": "./node_modules/.bin/jsdoc -c jsdoc.json -R README.md"
   },
   "dependencies": {
-    "docdash": "^0.4.0",
+    "docdash": "github:somaticlabs/docdash",
     "google-closure-compiler": "^20161201.0.0",
     "gulp": "^3.9.1",
     "jsdoc": "^3.4.3",
