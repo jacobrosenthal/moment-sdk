@@ -16,6 +16,14 @@ custom embedded software for Moment, we provide several ready-to-use functions
 for creating event callbacks, transitioning the LED color, and creating rich
 haptic effects.
 
+### Repository
+
+The repository for the SDK can be found at [https://github.com/SomaticLabs/moment-sdk](https://github.com/SomaticLabs/moment-sdk)
+
+### Documentation
+
+You can browse the documentation at [https://somaticlabs.github.io/moment-sdk/](https://somaticlabs.github.io/moment-sdk/)
+
 ## Installing Dependencies
 
 To develop on the Moment SDK, you will need to install some dependencies first.
