@@ -4,9 +4,11 @@
   "description": "The SDK for Moment",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha",
+    "generate-docs": "./node_modules/.bin/jsdoc -c jsdoc.json"
   },
   "dependencies": {
+    "docdash": "^0.4.0",
     "google-closure-compiler": "^20161201.0.0",
     "gulp": "^3.9.1",
     "jsdoc": "^3.4.3",

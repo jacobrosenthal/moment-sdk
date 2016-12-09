@@ -21,20 +21,45 @@
 
 var global = Function('return this')();
 global.Moment = global.Moment || {};
+
+/**
+  * Moment namespace for SDK functions.
+  * @public
+  * @namespace
+  */
 var Moment = global.Moment;
 
-function ColorTransition (color, func, duration) {
+/** Holds the parameters required for an LED color transition using an easing
+  * equation and custom duration.
+  *
+  * @constructor
+  * @memberOf Moment
+  * @param {Object} color - The Color instance to transition to.
+  * @param {number} func - The integer ID of the easing equation to use.
+  * @param {number} duration - The duration of the transition in milliseconds.
+  */
+function Transition (color, func, duration) {
     this.color = color;
     this.func = func;
     this.duration = duration;
 }
 
-Moment['Color']['Transition'] = ColorTransition;
+Moment['Color']['Transition'] = Transition;
 
+/** Sets the current color of the LED to a specific value.
+  *
+  * @memberOf Moment
+  * @param {Object} color - The Color value to set
+  */
 Moment['setColor'] = function (color) {
     Moment._set_led_color(color.red, color.green, color.blue);
 };
 
+/** Tweens the current color of the LED using a transition object
+  *
+  * @memberOf Moment
+  * @param {Transition} transition - The Transition value to set
+  */
 Moment['tweenColor'] = function (transition) {
     var color = transition.color;
     Moment._tween_led_color(
@@ -46,6 +71,12 @@ Moment['tweenColor'] = function (transition) {
     );
 };
 
+/** Loops between two LED transitions.
+  *
+  * @memberOf Moment
+  * @param {Transition} transitionIn - The first Transition value to set
+  * @param {Transition} transitionOut - The second Transition value to set
+  */
 Moment['loopColor'] = function (transitionIn, transitionOut) {
     var color = transitionIn.color;
     Moment._tween_led_color(

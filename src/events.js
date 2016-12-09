@@ -21,6 +21,12 @@
 
 var global = Function('return this')();
 global.Moment = global.Moment || {};
+
+/**
+  * Moment namespace for SDK functions.
+  * @public
+  * @namespace
+  */
 var Moment = global.Moment;
 
 /** A map of event ID's to arrays of event handlers.
@@ -29,63 +35,79 @@ var handlers = {};
 
 /** Attach an event handler to a specific event ID to execute when the event
   * is triggered.
+  *
+  * @memberOf Moment
+  * @static
+  * @public
   */
 Moment['on'] = function (event, fn) {
-	if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
-		handlers[event].push(fn); // append to array of event handlers
-	}
-	else {
-		handlers[event] = [fn]; // initialize an array to store event handlers
-	}
+    if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
+        handlers[event].push(fn); // append to array of event handlers
+    }
+    else {
+        handlers[event] = [fn]; // initialize an array to store event handlers
+    }
 };
 
 /** Remove an event handler from a specific event ID to avoid execution when
   * the event is triggered.
+  *
+  * @memberOf Moment
+  * @static
+  * @public
   */
 Moment['off'] = function (event, fn) {
-	var funcs, // stores the array of attached event handlers
-		index; // stores the index of the function to remove
+    var funcs, // stores the array of attached event handlers
+        index; // stores the index of the function to remove
 
-	if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
-		funcs = handlers[event];
-		index = funcs.indexOf(fn);
+    if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
+        funcs = handlers[event];
+        index = funcs.indexOf(fn);
 
-		if (index >= 0) {
-			funcs.splice(index, 1); // remove the event handler
-		}
-	}
+        if (index >= 0) {
+            funcs.splice(index, 1); // remove the event handler
+        }
+    }
 };
 
 /** Attach an event handler to a specific event ID to only be executed once -
   * the next trigger of the event - and subsequently removed before it can
   * be executed again.
+  *
+  * @memberOf Moment
+  * @static
+  * @public
   */
 Moment['once'] = function (event, fn) {
-	// create a function that removes the attached event after trigger
-	function newFunc() {
-		fn();
-		Moment['off'](event, newFunc);
-	}
+    // create a function that removes the attached event after trigger
+    function newFunc() {
+        fn();
+        Moment['off'](event, newFunc);
+    }
 
-	Moment['on'](event, newFunc);
+    Moment['on'](event, newFunc);
 };
 
 /** Trigger the event with a particular ID - begin execution of all attached
   * handlers for the event.
+  *
+  * @memberOf Moment
+  * @static
+  * @public
   */
 Moment['trigger'] = function (event) {
-	var funcs,
-		index,
-		len;
+    var funcs,
+        index,
+        len;
 
-	if (handlers.hasOwnProperty(event)) {
-		funcs = handlers[event];
-		len = funcs.length;
+    if (handlers.hasOwnProperty(event)) {
+        funcs = handlers[event];
+        len = funcs.length;
 
-		for (index = 0; index < len; index += 1) {
-			funcs[index]();
-		}
-	}
+        for (index = 0; index < len; index += 1) {
+            funcs[index]();
+        }
+    }
 };
 
 })();
