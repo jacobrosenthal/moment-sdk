@@ -35,7 +35,7 @@ var Moment = global.Moment;
   * @param {number} red - The red component of the color.
   * @param {number} green - The green component of the color.
   * @param {number} blue - The blue component of the color.
-  * @memberOf Moment
+  * @memberof Moment
   */
 function Color(red, green, blue) {
     this.red = red;
@@ -62,7 +62,7 @@ function minMax(number) {
   * 0, they will be set to 0.
   *
   * @public
-  * @memberOf Moment.Color
+  * @memberof Moment.Color
   *
   * @param {number} multiplier - The multiplier for all of the color components.
   */
@@ -80,7 +80,7 @@ Color['prototype']['intensify'] = function (multiplier) {
   * any of the values are less than 0, they will be set to 0.
   *
   * @public
-  * @memberOf Moment.Color
+  * @memberof Moment.Color
   *
   * @param {Color} color - The new color to blend in.
   * @param {number} multiplier - The ratio of new color to use relative to the base color.
@@ -95,7 +95,7 @@ Color['prototype']['blend'] = function (color, multiplier) {
 
 /** The default orange color in the LED color palette: #fdaa00
   *
-  * @memberOf Moment.Color
+  * @memberof Moment.Color
   * @public
   * @constant
   * @type {Color}
@@ -104,7 +104,7 @@ Color.ORANGE = new Color(0xfd, 0xaa, 0x00);
 
 /** The default red color in the LED color palette: #e63014
   *
-  * @memberOf Moment.Color
+  * @memberof Moment.Color
   * @public
   * @constant
   * @type {Color}
@@ -113,7 +113,7 @@ Color.RED = new Color(0xe6, 0x30, 0x14);
 
 /** The default pink color in the LED color palette: #b8008f
   *
-  * @memberOf Moment.Color
+  * @memberof Moment.Color
   * @public
   * @constant
   * @type {Color}
@@ -122,7 +122,7 @@ Color.PINK = new Color(0xb8, 0x00, 0x8f);
 
 /** The default green color in the LED color palette: #b9f100
   *
-  * @memberOf Moment.Color
+  * @memberof Moment.Color
   * @public
   * @constant
   * @type {Color}
@@ -131,7 +131,7 @@ Color.GREEN = new Color(0xb9, 0xf1, 0x00);
 
 /** The default blue color in the LED color palette: #007eed
   *
-  * @memberOf Moment.Color
+  * @memberof Moment.Color
   * @public
   * @constant
   * @type {Color}
@@ -140,7 +140,7 @@ Color.BLUE = new Color(0x00, 0x7e, 0xed);
 
 /** The default black color in the LED color palette: #000000
   *
-  * @memberOf Moment.Color
+  * @memberof Moment.Color
   * @public
   * @constant
   * @type {Color}
@@ -149,7 +149,7 @@ Color.BLACK = new Color(0, 0, 0);
 
 /** The default gray color in the LED color palette: #646464
   *
-  * @memberOf Moment.Color
+  * @memberof Moment.Color
   * @public
   * @constant
   * @type {Color}
@@ -158,7 +158,7 @@ Color.GRAY = new Color(100, 100, 100);
 
 /** The default white color in the LED color palette: #ffffff
   *
-  * @memberOf Moment.Color
+  * @memberof Moment.Color
   * @public
   * @constant
   * @type {Color}

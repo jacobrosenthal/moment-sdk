@@ -33,7 +33,7 @@ var Moment = global.Moment;
   * equation and custom duration.
   *
   * @constructor
-  * @memberOf Moment
+  * @memberof Moment
   * @param {Object} color - The Color instance to transition to.
   * @param {number} func - The integer ID of the easing equation to use.
   * @param {number} duration - The duration of the transition in milliseconds.
@@ -48,7 +48,7 @@ Moment['Color']['Transition'] = Transition;
 
 /** Sets the current color of the LED to a specific value.
   *
-  * @memberOf Moment
+  * @memberof Moment
   * @param {Object} color - The Color value to set
   */
 Moment['setColor'] = function (color) {
@@ -57,7 +57,7 @@ Moment['setColor'] = function (color) {
 
 /** Tweens the current color of the LED using a transition object
   *
-  * @memberOf Moment
+  * @memberof Moment
   * @param {Transition} transition - The Transition value to set
   */
 Moment['tweenColor'] = function (transition) {
@@ -73,7 +73,7 @@ Moment['tweenColor'] = function (transition) {
 
 /** Loops between two LED transitions.
   *
-  * @memberOf Moment
+  * @memberof Moment
   * @param {Transition} transitionIn - The first Transition value to set
   * @param {Transition} transitionOut - The second Transition value to set
   */

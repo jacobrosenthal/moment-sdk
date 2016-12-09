@@ -36,7 +36,7 @@ var handlers = {};
 /** Attach an event handler to a specific event ID to execute when the event
   * is triggered.
   *
-  * @memberOf Moment
+  * @memberof Moment
   * @static
   * @public
   */
@@ -52,7 +52,7 @@ Moment['on'] = function (event, fn) {
 /** Remove an event handler from a specific event ID to avoid execution when
   * the event is triggered.
   *
-  * @memberOf Moment
+  * @memberof Moment
   * @static
   * @public
   */
@@ -74,7 +74,7 @@ Moment['off'] = function (event, fn) {
   * the next trigger of the event - and subsequently removed before it can
   * be executed again.
   *
-  * @memberOf Moment
+  * @memberof Moment
   * @static
   * @public
   */
@@ -91,7 +91,7 @@ Moment['once'] = function (event, fn) {
 /** Trigger the event with a particular ID - begin execution of all attached
   * handlers for the event.
   *
-  * @memberOf Moment
+  * @memberof Moment
   * @static
   * @public
   */
