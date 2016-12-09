@@ -18,6 +18,7 @@
   */
 
 var assert = require('assert'),
+    init = require('../src/init'),
     color = require('../src/color'),
     led = require('../src/led');
 
@@ -27,7 +28,7 @@ describe('Moment LED', function () {
     describe('#Color.Transition()', function () {
         it('encapsulates a transition to a new LED color', function () {
             var newColor = new Moment.Color(12, 34, 56);
-            var t = new Moment.Color.Transition(newColor, 9, 500);
+            var t = new Moment.LED.Transition(newColor, 9, 500);
             assert.equal(t.color, newColor);
             assert.equal(t.func, 9);
             assert.equal(t.duration, 500);
@@ -44,7 +45,7 @@ describe('Moment LED', function () {
 
             var newColor = new Moment.Color(12, 34, 56);
 
-            Moment.setColor(newColor);
+            Moment.LED.setColor(newColor);
         });
     });
 
@@ -59,9 +60,9 @@ describe('Moment LED', function () {
             };
 
             var newColor = new Moment.Color(12, 34, 56);
-            var t = new Moment.Color.Transition(newColor, 9, 500);
+            var t = new Moment.LED.Transition(newColor, 9, 500);
 
-            Moment.tweenColor(t);
+            Moment.LED.tweenColor(t);
         });
     });
 
@@ -84,12 +85,12 @@ describe('Moment LED', function () {
             };
 
             var newColor1 = new Moment.Color(12, 34, 56);
-            var t1 = new Moment.Color.Transition(newColor1, 9, 500);
+            var t1 = new Moment.LED.Transition(newColor1, 9, 500);
 
             var newColor2 = new Moment.Color(112, 134, 156);
-            var t2 = new Moment.Color.Transition(newColor2, 19, 1500);
+            var t2 = new Moment.LED.Transition(newColor2, 19, 1500);
 
-            Moment.tweenColor(t1, t2);
+            Moment.LED.tweenColor(t1, t2);
         });
     });
 });

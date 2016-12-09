@@ -52,6 +52,8 @@ Effect['prototype']['scale'] = function (multiplier) {
     this.position = Math.round(multiplier * this.position);
 }
 
+Moment['Effect'] = Effect;
+
 /** Represents a vibration on a specific motor for future execution on a
   * timeline of effects.
   *
@@ -86,5 +88,6 @@ Vibration['prototype']['start'] = function () {
     );
 };
 
+Moment['Vibration'] = Vibration;
 
 })();
