@@ -32,6 +32,7 @@ var Battery = {};
   * @memberof Moment.Battery
   * @name Moment.Battery.isCharging
   * @method
+  * @returns {Boolean} Whether or not the battery is charging
   */
 Battery['isCharging'] = function () {
     return Moment['_is_battery_charging']();
@@ -42,6 +43,7 @@ Battery['isCharging'] = function () {
   * @memberof Moment.Battery
   * @name Moment.Battery.isConnected
   * @method
+  * @returns {Boolean} Whether or not the charger is connected
   */
 Battery['isConnected'] = function () {
     return Moment['_is_charger_connected']();
@@ -52,6 +54,7 @@ Battery['isConnected'] = function () {
   * @memberof Moment.Battery
   * @name Moment.Battery.getCharge
   * @method
+  * @returns {Number} The remaining battery charge in percent (0-100)
   */
 Battery['getCharge'] = function () {
     return Moment['_get_battery_charge']();
