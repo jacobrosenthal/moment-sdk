@@ -1,5 +1,6 @@
 # Moment Software Development Kit
 
+[![AUR](https://img.shields.io/aur/license/yaourt.svg)](https://github.com/SomaticLabs/moment-sdk/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/SomaticLabs/moment-sdk.svg?branch=master)](https://travis-ci.org/SomaticLabs/moment-sdk)
 
 ## Introduction
