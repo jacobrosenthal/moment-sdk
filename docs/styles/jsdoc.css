@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url('https://fonts.googleapis.com/css?family=Exo+2:400,400i,700,700i|PT+Mono|PT+Sans:400,400i,700,700i');
 
 * {
   box-sizing: border-box
@@ -14,14 +14,18 @@ body {
   background-color: white;
   margin: 0 auto;
   padding: 0 20px;
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
-  font-size: 16px;
+  font-family: 'PT Sans', 'Helvetica Neue', Helvetica, sans-serif;
+  font-size: 18px;
   line-height: 160%;
+}
+
+img {
+  max-width: 100%;
 }
 
 a,
 a:active {
-  color: #606;
+  color: #007eed;
   text-decoration: none;
 }
 
@@ -42,17 +46,17 @@ p, ul, ol, blockquote {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Exo 2', 'Montserrat', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: #000;
-  font-weight: 400;
+  font-weight: 700;
   margin: 0;
 }
 
 h1 {
-  font-weight: 300;
+  font-weight: 700;
   font-size: 48px;
   margin: 1em 0 .5em;
 }
@@ -80,7 +84,7 @@ h4 {
 
 h4.name {
   color: #fff;
-  background: #6d426d;
+  background: #007eed;
   box-shadow: 0 .25em .5em #d3d3d3;
   border-top: 1px solid #d3d3d3;
   border-bottom: 1px solid #d3d3d3;
@@ -89,11 +93,11 @@ h4.name {
 }
 
 h4.name a {
-  color: #fc83ff;
+  color: #007eed;
 }
 
 h4.name a:hover {
-  border-bottom-color: #fc83ff;
+  border-bottom-color: #007eed;
 }
 
 h5, .container-overview .subsection-title {
@@ -110,8 +114,8 @@ h6 {
 }
 
 tt, code, kbd, samp {
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  background: #f4f4f4;
+  font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono', monospace;
+  background: #D1EAFF;
   padding: 1px 5px;
 }
 
@@ -150,7 +154,7 @@ section {
   font-size: 60%;
   color: #eee;
   font-style: italic;
-  font-weight: lighter;
+  font-weight: 400;
 }
 
 nav {
@@ -165,11 +169,9 @@ nav {
 
 nav h3 {
   margin-top: 12px;
-  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
-  line-height: 24px;
   margin: 15px 0 10px;
   padding: 0;
   color: #000;
@@ -178,7 +180,6 @@ nav h3 {
 nav ul {
   font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
   font-size: 100%;
-  line-height: 17px;
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -186,16 +187,16 @@ nav ul {
 
 nav ul a,
 nav ul a:active {
-  font-family: 'Montserrat', sans-serif;
-  line-height: 18px;
+  /* font-family: 'Exo 2', 'Montserrat', sans-serif;
+  line-height: 18px; */
   padding: 0;
   display: block;
-  font-size: 12px;
+  font-size: 18px;
 }
 
 nav a:hover,
 nav a:active {
-  color: #606;
+  color: #007eed;
 }
 
 nav > ul {
@@ -203,7 +204,7 @@ nav > ul {
 }
 
 nav > ul > li > a {
-  color: #606;
+  color: #007eed;
 }
 
 nav ul ul {
@@ -225,7 +226,7 @@ nav ul ul a:active {
 }
 
 nav h2 {
-   font-size: 12px;
+   font-size: 18px;
    margin: 0;
    padding: 0;
 }
@@ -233,7 +234,7 @@ nav h2 {
 nav > h2 > a {
    display: block;
    margin: 10px 0 -10px;
-   color: #606 !important;
+   color: #007eed !important;
 }
 
 footer {
@@ -258,7 +259,7 @@ footer {
 }
 
 .important {
-  font-weight: bold;
+  font-weight: 700;
   color: #950B02;
 }
 
@@ -267,7 +268,7 @@ footer {
 }
 
 .type-signature {
-  color: #CA79CA
+  font-style: italic;
 }
 
 .type-signature:last-child {
@@ -275,18 +276,18 @@ footer {
 }
 
 .name, .signature {
-  font-family: Consolas, Monaco, 'Andale Mono', monospace
+  font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono', monospace
 }
 
 .signature {
-    color: #fc83ff;
+    color: #007eed;
 }
 
 .details {
   margin-top: 6px;
   border-left: 2px solid #DDD;
   line-height: 20px;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .details dt {
@@ -329,7 +330,7 @@ footer {
 }
 
 .prettyprint {
-  font-size: 14px;
+  font-size: 18px;
   overflow: auto;
 }
 
@@ -337,15 +338,17 @@ footer {
   width: inherit;
   line-height: 18px;
   display: block;
-  background-color: #0d152a;
-  color: #aeaeae;
+  background: #ECECEC;
+  /*background-color: #0d152a;
+  color: #aeaeae;*/
 }
 
 .prettyprint code {
   line-height: 18px;
   display: block;
-  background-color: #0d152a;
-  color: #4D4E53;
+  background: #ECECEC;
+  /*background-color: #0d152a;
+  color: #4D4E53;*/
 }
 
 .prettyprint > code {
@@ -398,7 +401,7 @@ footer {
   border-radius: 3px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   width: 100%;
-  font-size: 14px;
+  font-size: 18px;
   margin: 1em 0;
 }
 
@@ -412,7 +415,7 @@ footer {
 
 .params td, .params .name, .props .name, .name code {
    color: #4D4E53;
-   font-family: Consolas, Monaco, 'Andale Mono', monospace;
+   font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono', monospace;
    font-size: 100%;
 }
 
@@ -449,8 +452,8 @@ footer {
 }
 
 span.param-type, .params td .param-type, .param-type dd {
-   color: #606;
-  font-family: Consolas, Monaco, 'Andale Mono', monospace
+   color: #FDAA00;
+  font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono', monospace
 }
 
 .param-type dt, .param-type dd {
