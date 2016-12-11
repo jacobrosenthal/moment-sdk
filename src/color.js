@@ -21,7 +21,11 @@
 
 var Moment = Function('return this')()['Moment'];
 
-/** Represents a color using a combination of red, green, and blue values.
+/** Represents a color using a combination of red, green, and blue values. This
+  * class also provides helper methods for blending colors. Primarily, this
+  * will be used to change the LED color in response to device events in a
+  * streamlined way, but can be used in many circumstances where color
+  * blending may be required.
   *
   * @constructor
   * @param {number} red - The red component of the color.
