@@ -35,6 +35,12 @@ var handlers = {};
   *
   * @param {string} event - The event identifier string
   * @param {Function} fn - The callback function to execute
+  *
+  * @example
+  * Moment.on("ble.connected", function () {
+  *     // set LED color to blue when Bluetooth is connected
+  *     Moment.LED.setColor(Moment.Color.BLUE);
+  * });
   */
 Moment['on'] = function (event, fn) {
     if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
@@ -55,6 +61,15 @@ Moment['on'] = function (event, fn) {
   *
   * @param {string} event - The event identifier string
   * @param {Function} fn - The callback function to remove
+  *
+  * @example
+  * function onConnect() {
+  *     // set LED color to blue when Bluetooth is connected
+  *     Moment.LED.setColor(Moment.Color.BLUE);
+  * }
+  *
+  * Moment.on("ble.connected", onConnect); // attach event handler
+  * Moment.off("ble.connected", onConnect); // remove event handler
   */
 Moment['off'] = function (event, fn) {
     var funcs, // stores the array of attached event handlers
@@ -81,6 +96,12 @@ Moment['off'] = function (event, fn) {
   *
   * @param {string} event - The event identifier string
   * @param {Function} fn - The callback function to execute
+  *
+  * @example
+  * Moment.once("init", function () {
+  *     // set LED color to orange when Moment turns on
+  *     Moment.LED.setColor(Moment.Color.ORANGE);
+  * });
   */
 Moment['once'] = function (event, fn) {
     // create a function that removes the attached event after trigger
@@ -101,6 +122,13 @@ Moment['once'] = function (event, fn) {
   * @static
   *
   * @param {string} event - The event identifier string
+  *
+  * Moment.on("myEvent", function () {
+  *     // do something here
+  * });
+  *
+  * // trigger myEvent
+  * Moment.trigger("myEvent");
   */
 Moment['trigger'] = function (event) {
     var funcs,
