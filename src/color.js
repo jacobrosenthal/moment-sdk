@@ -193,7 +193,7 @@ Color.BLUE = new Color(0x00, 0x7e, 0xed);
   * @type {Color}
   *
   * @example
-  * // set the LED color to black
+  * // set the LED color to black (turns off LED)
   * Moment.LED.setColor(Moment.Color.BLACK);
   */
 Color.BLACK = new Color(0, 0, 0);
