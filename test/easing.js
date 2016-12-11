@@ -19,16 +19,34 @@
 
 var assert = require('assert'),
     init = require('../src/init'),
-    actuators = require('../src/actuators');
+    easing = require('../src/easing');
 
-describe('Moment actuators', function () {
+describe('Moment easing equations', function () {
 
-    describe('#Actuators', function () {
-        it('four actuators present', function () {
-            assert.ok(Moment.Actuators.hasOwnProperty("topLeft"));
-            assert.ok(Moment.Actuators.hasOwnProperty("topRight"));
-            assert.ok(Moment.Actuators.hasOwnProperty("bottomLeft"));
-            assert.ok(Moment.Actuators.hasOwnProperty("bottomRight"));
+    function testEqn(name) {
+        assert.ok(Moment.Easing.hasOwnProperty(name));
+
+        var eqn = Moment.Easing[name];
+        assert.ok(eqn);
+        assert.ok(eqn.hasOwnProperty("in"));
+        assert.ok(eqn.hasOwnProperty("out"));
+        assert.ok(eqn.hasOwnProperty("combined"));
+    }
+
+    describe('#Easing', function () {
+        it('all easing equations present', function () {
+            testEqn("Step");
+            testEqn("Linear");
+            testEqn("Quadratic");
+            testEqn("Cubic");
+            testEqn("Quartic");
+            testEqn("Quintic");
+            testEqn("Sine");
+            testEqn("Circle");
+            testEqn("Exponential");
+            testEqn("Elastic");
+            testEqn("Back");
+            testEqn("Bounce");
         });
     });
 

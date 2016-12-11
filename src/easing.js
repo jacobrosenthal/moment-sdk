@@ -21,25 +21,25 @@
 
 var Moment = Function('return this')()['Moment'];
 
-function EquationId(in, out, combined) {
-    this['in'] = in;
+function EquationId(ineq, out, combined) {
+    this['in'] = ineq;
     this['out'] = out;
     this['combined'] = combined;
 }
 
 Moment['Easing'] = {
-    'Step':        EquationId(1, 0, 0),
-    'Linear':      EquationId(2, 2, 2),
-    'Quadratic':   EquationId(3, 4, 5),
-    'Cubic':       EquationId(6, 7, 8),
-    'Quartic':     EquationId(9, 10, 11),
-    'Quintic':     EquationId(12, 13, 14),
-    'Sine':        EquationId(15, 16, 17),
-    'Circle':      EquationId(18, 19, 20),
-    'Exponential': EquationId(21, 22, 23),
-    'Elastic':     EquationId(24, 25, 26),
-    'Back':        EquationId(27, 28, 29),
-    'Bounce':      EquationId(30, 31, 32)
+    'Step':        new EquationId(1, 0, 0),
+    'Linear':      new EquationId(2, 2, 2),
+    'Quadratic':   new EquationId(3, 4, 5),
+    'Cubic':       new EquationId(6, 7, 8),
+    'Quartic':     new EquationId(9, 10, 11),
+    'Quintic':     new EquationId(12, 13, 14),
+    'Sine':        new EquationId(15, 16, 17),
+    'Circle':      new EquationId(18, 19, 20),
+    'Exponential': new EquationId(21, 22, 23),
+    'Elastic':     new EquationId(24, 25, 26),
+    'Back':        new EquationId(27, 28, 29),
+    'Bounce':      new EquationId(30, 31, 32)
 };
 
 })();
