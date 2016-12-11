@@ -33,6 +33,17 @@ var Battery = {};
   * @name Moment.Battery.isCharging
   * @method
   * @returns {Boolean} Whether or not the battery is charging
+  *
+  * @example
+  * var charging = Moment.Battery.isCharging();
+  * if (charging) {
+  *     // red LED color if battery is charging
+  *     Moment.LED.setColor(Moment.Color.RED);
+  * }
+  * else {
+  *     // otherwise green LED color
+  *     Moment.LED.setColor(Moment.Color.GREEN);
+  * }
   */
 Battery['isCharging'] = function () {
     return Moment['_is_battery_charging']();
@@ -44,6 +55,17 @@ Battery['isCharging'] = function () {
   * @name Moment.Battery.isConnected
   * @method
   * @returns {Boolean} Whether or not the charger is connected
+  *
+  * @example
+  * var connected = Moment.Battery.isConnected();
+  * if (connected) {
+  *     // orange LED color if charger is connected
+  *     Moment.LED.setColor(Moment.Color.ORANGE);
+  * }
+  * else {
+  *     // otherwise blue LED color
+  *     Moment.LED.setColor(Moment.Color.BLUE);
+  * }
   */
 Battery['isConnected'] = function () {
     return Moment['_is_charger_connected']();
@@ -55,6 +77,13 @@ Battery['isConnected'] = function () {
   * @name Moment.Battery.getCharge
   * @method
   * @returns {Number} The remaining battery charge in percent (0-100)
+  *
+  * @example
+  * var charge = Moment.Battery.getCharge();
+  * if (charge < 25) {
+  *     // set red LED color when battery charge drops below 25%
+  *     Moment.LED.setColor(Moment.Color.RED);
+  * }
   */
 Battery['getCharge'] = function () {
     return Moment['_get_battery_charge']();
