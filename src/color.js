@@ -28,6 +28,12 @@ var Moment = Function('return this')()['Moment'];
   * @param {number} green - The green component of the color.
   * @param {number} blue - The blue component of the color.
   * @memberof Moment
+  * @example
+  * // represents the color #ff9933
+  * var orange = new Color(0xff, 0x99, 0x33);
+  * @example
+  * // represents the color #ffffff
+  * var white = new Color(255, 255, 255);
   */
 function Color(red, green, blue) {
     this.red = red;
@@ -58,6 +64,18 @@ function minMax(number) {
   * @method
   * @name Moment.Color#intensify
   *
+  * @example
+  * // represents the color #224466
+  * var color = new Color(0x22, 0x44, 0x66);
+  * // changes to #112233
+  * color.intensify(0.5);
+  *
+  * @example
+  * //represents the color #ff9933
+  * var orange = new Color(0xff, 0x88, 0x22);
+  * // changes to #ffdd33
+  * orange.intensify(1.5);
+  *
   * @param {number} multiplier - The multiplier for all of the color components.
   */
 Color['prototype']['intensify'] = function (multiplier) {
@@ -78,6 +96,15 @@ Color['prototype']['intensify'] = function (multiplier) {
   * @method
   * @name Moment.Color#blend
   *
+  * @example
+  * // represents the color #ffffff
+  * var white = new Color(0xff, 0xff, 0xff);
+  * // represents the color #000000
+  * var black = new Color(0, 0, 0);
+  * // changes black to the color #888888
+  * black.blend(white, 0.5);
+  *
+  *
   * @param {Color} color - The new color to blend in.
   * @param {number} multiplier - The ratio of new color to use relative to the base color.
   */
@@ -95,6 +122,10 @@ Color['prototype']['blend'] = function (color, multiplier) {
   * @public
   * @constant
   * @type {Color}
+  *
+  * @example
+  * // set the LED color to orange
+  * Moment.LED.setColor(Moment.Color.ORANGE);
   */
 Color.ORANGE = new Color(0xfd, 0xaa, 0x00);
 
@@ -104,6 +135,10 @@ Color.ORANGE = new Color(0xfd, 0xaa, 0x00);
   * @public
   * @constant
   * @type {Color}
+  *
+  * @example
+  * // set the LED color to red
+  * Moment.LED.setColor(Moment.Color.RED);
   */
 Color.RED = new Color(0xe6, 0x30, 0x14);
 
@@ -113,6 +148,10 @@ Color.RED = new Color(0xe6, 0x30, 0x14);
   * @public
   * @constant
   * @type {Color}
+  *
+  * @example
+  * // set the LED color to pink
+  * Moment.LED.setColor(Moment.Color.PINK);
   */
 Color.PINK = new Color(0xb8, 0x00, 0x8f);
 
@@ -122,6 +161,10 @@ Color.PINK = new Color(0xb8, 0x00, 0x8f);
   * @public
   * @constant
   * @type {Color}
+  *
+  * @example
+  * // set the LED color to green
+  * Moment.LED.setColor(Moment.Color.GREEN);
   */
 Color.GREEN = new Color(0xb9, 0xf1, 0x00);
 
@@ -131,6 +174,10 @@ Color.GREEN = new Color(0xb9, 0xf1, 0x00);
   * @public
   * @constant
   * @type {Color}
+  *
+  * @example
+  * // set the LED color to blue
+  * Moment.LED.setColor(Moment.Color.BLUE);
   */
 Color.BLUE = new Color(0x00, 0x7e, 0xed);
 
@@ -140,6 +187,10 @@ Color.BLUE = new Color(0x00, 0x7e, 0xed);
   * @public
   * @constant
   * @type {Color}
+  *
+  * @example
+  * // set the LED color to black
+  * Moment.LED.setColor(Moment.Color.BLACK);
   */
 Color.BLACK = new Color(0, 0, 0);
 
@@ -149,6 +200,10 @@ Color.BLACK = new Color(0, 0, 0);
   * @public
   * @constant
   * @type {Color}
+  *
+  * @example
+  * // set the LED color to gray
+  * Moment.LED.setColor(Moment.Color.GRAY);
   */
 Color.GRAY = new Color(100, 100, 100);
 
@@ -158,6 +213,10 @@ Color.GRAY = new Color(100, 100, 100);
   * @public
   * @constant
   * @type {Color}
+  *
+  * @example
+  * // set the LED color to white
+  * Moment.LED.setColor(Moment.Color.WHITE);
   */
 Color.WHITE = new Color(255, 255, 255);
 
