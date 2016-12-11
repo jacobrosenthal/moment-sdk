@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Battery - Documentation</title>
+    <title>Actuators - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Battery</h1>
+    <h1 class="page-title">Actuators</h1>
     
 
     
@@ -42,7 +42,7 @@
         <h2>
             <span class="ancestors"><a href="Moment.html">Moment</a>.</span>
         
-        Battery
+        Actuators
         </h2>
         
     
@@ -58,7 +58,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="battery.js.html">battery.js</a>, <a href="battery.js.html#line24">line 24</a>
+        <a href="actuators.js.html">actuators.js</a>, <a href="actuators.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -97,7 +97,8 @@
 
 
         
-            <div class="description"><p>Namespace for functions enabling Battery control.</p></div>
+            <div class="description"><p>Namespace for constants and functions related to direct control of the
+actuators on Moment.</p></div>
         
 
         
@@ -115,18 +116,12 @@
     
 
     
-
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Members</h3>
 
         
             
+<h4 class="name" id=".bottomLeft"><span class="type-signature">(static, constant) </span>bottomLeft<span class="type-signature"> :Actuator</span></h4>
 
-    
-
-    <h4 class="name" id=".getCharge"><span class="type-signature">(static) </span>getCharge<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
-
-    
 
 
 
@@ -136,7 +131,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="battery.js.html">battery.js</a>, <a href="battery.js.html#line74">line 74</a>
+        <a href="actuators.js.html">actuators.js</a>, <a href="actuators.js.html#line137">line 137</a>
     </li></ul></dd>
     
 
@@ -176,12 +171,21 @@
 
 
 <div class="description">
-    <p>Get the current charge level of the battery.</p>
+    <p>The bottom-left actuator on Moment (automatically changes based on
+whether the user wears Moment on their left or right hand).</p>
 </div>
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Actuator</span>
 
+
+        </li>
+    </ul>
 
 
 
@@ -189,55 +193,14 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var charge = Moment.Battery.getCharge();if (charge &lt; 25) {    // set red LED color when battery charge drops below 25%    Moment.LED.setColor(Moment.Color.RED);}</code></pre>
+    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(    75, // start at 75% intensity    25, // end at 25% intensity    Moment.Easing.Linear.out, // ease out with linear curve    750 // linear transition lasts 750ms);var blFade = new Vibration(    Moment.Actuators.topLeft, // select bottom left actuator    fadeOut, // use the 750ms exponential fade out effect    100 // begin effect after 100ms);blFade.start();</code></pre>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>The remaining battery charge in percent (0-100)</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Number</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
         
             
+<h4 class="name" id=".bottomRight"><span class="type-signature">(static, constant) </span>bottomRight<span class="type-signature"> :Actuator</span></h4>
 
-    
-
-    <h4 class="name" id=".isCharging"><span class="type-signature">(static) </span>isCharging<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-
-    
 
 
 
@@ -247,7 +210,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="battery.js.html">battery.js</a>, <a href="battery.js.html#line30">line 30</a>
+        <a href="actuators.js.html">actuators.js</a>, <a href="actuators.js.html#line111">line 111</a>
     </li></ul></dd>
     
 
@@ -287,12 +250,21 @@
 
 
 <div class="description">
-    <p>Check if the battery is currently charging</p>
+    <p>The bottom-right actuator on Moment (automatically changes based on
+whether the user wears Moment on their left or right hand).</p>
 </div>
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Actuator</span>
 
+
+        </li>
+    </ul>
 
 
 
@@ -300,55 +272,14 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var charging = Moment.Battery.isCharging();if (charging) {    // red LED color if battery is charging    Moment.LED.setColor(Moment.Color.RED);}else {    // otherwise green LED color    Moment.LED.setColor(Moment.Color.GREEN);}</code></pre>
+    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(    75, // start at 75% intensity    25, // end at 25% intensity    Moment.Easing.Linear.out, // ease out with linear curve    750 // linear transition lasts 750ms);var brFade = new Vibration(    Moment.Actuators.bottomRight, // select bottom right actuator    fadeOut, // use the 750ms exponential fade out effect    100 // begin effect after 100ms);brFade.start();</code></pre>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>Whether or not the battery is charging</p>
-</div>
-
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
-
-    
 
 
         
             
+<h4 class="name" id=".topLeft"><span class="type-signature">(static, constant) </span>topLeft<span class="type-signature"> :Actuator</span></h4>
 
-    
-
-    <h4 class="name" id=".isConnected"><span class="type-signature">(static) </span>isConnected<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
-
-    
 
 
 
@@ -358,7 +289,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="battery.js.html">battery.js</a>, <a href="battery.js.html#line52">line 52</a>
+        <a href="actuators.js.html">actuators.js</a>, <a href="actuators.js.html#line59">line 59</a>
     </li></ul></dd>
     
 
@@ -398,12 +329,21 @@
 
 
 <div class="description">
-    <p>Check if the battery charger is connected.</p>
+    <p>The top-left actuator on Moment (automatically changes based on
+whether the user wears Moment on their left or right hand).</p>
 </div>
 
 
 
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Actuator</span>
 
+
+        </li>
+    </ul>
 
 
 
@@ -411,48 +351,92 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var connected = Moment.Battery.isConnected();if (connected) {    // orange LED color if charger is connected    Moment.LED.setColor(Moment.Color.ORANGE);}else {    // otherwise blue LED color    Moment.LED.setColor(Moment.Color.BLUE);}</code></pre>
+    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(    75, // start at 75% intensity    25, // end at 25% intensity    Moment.Easing.Linear.out, // ease out with linear curve    750 // linear transition lasts 750ms);var tlFade = new Vibration(    Moment.Actuators.topLeft, // select top left actuator    fadeOut, // use the 750ms exponential fade out effect    100 // begin effect after 100ms);tlFade.start();</code></pre>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
 
         
-<div class="param-desc">
-    <p>Whether or not the charger is connected</p>
+            
+<h4 class="name" id=".topRight"><span class="type-signature">(static, constant) </span>topRight<span class="type-signature"> :Actuator</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="actuators.js.html">actuators.js</a>, <a href="actuators.js.html#line85">line 85</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>The top-right actuator on Moment (automatically changes based on
+whether the user wears Moment on their left or right hand).</p>
 </div>
 
 
 
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Actuator</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(    75, // start at 75% intensity    25, // end at 25% intensity    Moment.Easing.Linear.out, // ease out with linear curve    750 // linear transition lasts 750ms);var trFade = new Vibration(    Moment.Actuators.topLeft, // select top right actuator    fadeOut, // use the 750ms exponential fade out effect    100 // begin effect after 100ms);trFade.start();</code></pre>
+
+
+
         
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
-
     
 
-
-        
     
 
     

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>events.js - Documentation</title>
+    <title>actuators.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">events.js</h1>
+    <h1 class="page-title">actuators.js</h1>
     
 
     
@@ -60,129 +60,123 @@
 
 var Moment = Function('return this')()['Moment'];
 
-/** A map of event ID's to arrays of event handlers.
-  */
-var handlers = {};
+function Actuator(pin) {
+    this.pin = pin;
+}
 
-/** Attach an event handler to a specific event ID to execute when the event
-  * is triggered.
+/** Namespace for constants and functions related to direct control of the
+  * actuators on Moment.
   *
-  * @memberof Moment
-  * @name Moment.on
-  * @method
-  * @static
-  *
-  * @param {string} event - The event identifier string
-  * @param {Function} fn - The callback function to execute
-  *
-  * @example
-  * Moment.on("ble.connected", function () {
-  *     // set LED color to blue when Bluetooth is connected
-  *     Moment.LED.setColor(Moment.Color.BLUE);
-  * });
+  * @namespace
+  * @name Moment.Actuators
   */
-Moment['on'] = function (event, fn) {
-    if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
-        handlers[event].push(fn); // append to array of event handlers
-    }
-    else {
-        handlers[event] = [fn]; // initialize an array to store event handlers
-    }
+var Actuators = {
+    /** The top-left actuator on Moment (automatically changes based on
+      * whether the user wears Moment on their left or right hand).
+      *
+      * @memberof Moment.Actuators
+      * @public
+      * @constant
+      * @type {Actuator}
+      *
+      * @example
+      * var fadeOut = new Moment.Effect(
+      *     75, // start at 75% intensity
+      *     25, // end at 25% intensity
+      *     Moment.Easing.Linear.out, // ease out with linear curve
+      *     750 // linear transition lasts 750ms
+      * );
+      *
+      * var tlFade = new Vibration(
+      *     Moment.Actuators.topLeft, // select top left actuator
+      *     fadeOut, // use the 750ms exponential fade out effect
+      *     100 // begin effect after 100ms
+      * );
+      *
+      * tlFade.start();
+      */
+    'topLeft': new Actuator(21),
+
+    /** The top-right actuator on Moment (automatically changes based on
+      * whether the user wears Moment on their left or right hand).
+      *
+      * @memberof Moment.Actuators
+      * @public
+      * @constant
+      * @type {Actuator}
+      *
+      * @example
+      * var fadeOut = new Moment.Effect(
+      *     75, // start at 75% intensity
+      *     25, // end at 25% intensity
+      *     Moment.Easing.Linear.out, // ease out with linear curve
+      *     750 // linear transition lasts 750ms
+      * );
+      *
+      * var trFade = new Vibration(
+      *     Moment.Actuators.topLeft, // select top right actuator
+      *     fadeOut, // use the 750ms exponential fade out effect
+      *     100 // begin effect after 100ms
+      * );
+      *
+      * trFade.start();
+      */
+    'topRight': new Actuator(22),
+
+    /** The bottom-right actuator on Moment (automatically changes based on
+      * whether the user wears Moment on their left or right hand).
+      *
+      * @memberof Moment.Actuators
+      * @public
+      * @constant
+      * @type {Actuator}
+      *
+      * @example
+      * var fadeOut = new Moment.Effect(
+      *     75, // start at 75% intensity
+      *     25, // end at 25% intensity
+      *     Moment.Easing.Linear.out, // ease out with linear curve
+      *     750 // linear transition lasts 750ms
+      * );
+      *
+      * var brFade = new Vibration(
+      *     Moment.Actuators.bottomRight, // select bottom right actuator
+      *     fadeOut, // use the 750ms exponential fade out effect
+      *     100 // begin effect after 100ms
+      * );
+      *
+      * brFade.start();
+      */
+    'bottomRight': new Actuator(23),
+
+    /** The bottom-left actuator on Moment (automatically changes based on
+      * whether the user wears Moment on their left or right hand).
+      *
+      * @memberof Moment.Actuators
+      * @public
+      * @constant
+      * @type {Actuator}
+      *
+      * @example
+      * var fadeOut = new Moment.Effect(
+      *     75, // start at 75% intensity
+      *     25, // end at 25% intensity
+      *     Moment.Easing.Linear.out, // ease out with linear curve
+      *     750 // linear transition lasts 750ms
+      * );
+      *
+      * var blFade = new Vibration(
+      *     Moment.Actuators.topLeft, // select bottom left actuator
+      *     fadeOut, // use the 750ms exponential fade out effect
+      *     100 // begin effect after 100ms
+      * );
+      *
+      * blFade.start();
+      */
+    'bottomLeft': new Actuator(24)
 };
 
-/** Remove an event handler from a specific event ID to avoid execution when
-  * the event is triggered.
-  *
-  * @memberof Moment
-  * @name Moment.off
-  * @method
-  * @static
-  *
-  * @param {string} event - The event identifier string
-  * @param {Function} fn - The callback function to remove
-  *
-  * @example
-  * function onConnect() {
-  *     // set LED color to blue when Bluetooth is connected
-  *     Moment.LED.setColor(Moment.Color.BLUE);
-  * }
-  *
-  * Moment.on("ble.connected", onConnect); // attach event handler
-  * Moment.off("ble.connected", onConnect); // remove event handler
-  */
-Moment['off'] = function (event, fn) {
-    var funcs, // stores the array of attached event handlers
-        index; // stores the index of the function to remove
-
-    if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
-        funcs = handlers[event];
-        index = funcs.indexOf(fn);
-
-        if (index >= 0) {
-            funcs.splice(index, 1); // remove the event handler
-        }
-    }
-};
-
-/** Attach an event handler to a specific event ID to only be executed once -
-  * the next trigger of the event - and subsequently removed before it can
-  * be executed again.
-  *
-  * @memberof Moment
-  * @name Moment.once
-  * @method
-  * @static
-  *
-  * @param {string} event - The event identifier string
-  * @param {Function} fn - The callback function to execute
-  *
-  * @example
-  * Moment.once("init", function () {
-  *     // set LED color to orange when Moment turns on
-  *     Moment.LED.setColor(Moment.Color.ORANGE);
-  * });
-  */
-Moment['once'] = function (event, fn) {
-    // create a function that removes the attached event after trigger
-    function newFunc() {
-        fn();
-        Moment['off'](event, newFunc);
-    }
-
-    Moment['on'](event, newFunc);
-};
-
-/** Trigger the event with a particular ID - begin execution of all attached
-  * handlers for the event.
-  *
-  * @memberof Moment
-  * @name Moment.trigger
-  * @method
-  * @static
-  *
-  * @param {string} event - The event identifier string
-  *
-  * Moment.on("myEvent", function () {
-  *     // do something here
-  * });
-  *
-  * // trigger myEvent
-  * Moment.trigger("myEvent");
-  */
-Moment['trigger'] = function (event) {
-    var funcs,
-        index,
-        len;
-
-    if (handlers.hasOwnProperty(event)) {
-        funcs = handlers[event];
-        len = funcs.length;
-
-        for (index = 0; index &lt; len; index += 1) {
-            funcs[index]();
-        }
-    }
-};
+Moment['Actuators'] = Actuators;
 
 })();
 </code></pre>

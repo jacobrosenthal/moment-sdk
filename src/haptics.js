@@ -141,6 +141,9 @@ Moment['Effect'] = Effect;
   * );
   */
 function Vibration(pin, effect, delay) {
+    if (pin.hasOwnProperty('pin')) {
+        pin = pin.pin;
+    }
     this.pin = pin;
     this.effect = effect;
     this.delay = delay || 0;
