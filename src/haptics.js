@@ -28,8 +28,33 @@ var Moment = Function('return this')()['Moment'];
   * @param {number} end - The ending intensity of the motor (0-100)
   * @param {number} func - The ID of the easing equation to use for the effect
   * @param {number} duration - The duration of effect in milliseconds
-  * @param {number} position - The timeline starting point in milliseconds
+  * @param {number} position - Starting position in milliseconds (optional)
   * @memberof Moment
+  *
+  * @example
+  * var quickPulse = new Moment.Effect(
+  *     0, // start at zero intensity (actuator off)
+  *     75, // end at 75% intensity
+  *     Moment.Easing.Exponential.in, // ease in with exponential curve
+  *     500 // exponential transition lasts 500ms
+  * );
+  *
+  * @example
+  * var fadeOut = new Moment.Effect(
+  *     75, // start at 75% intensity
+  *     25, // end at 25% intensity
+  *     Moment.Easing.Linear.out, // ease out with linear curve
+  *     750 // linear transition lasts 750ms
+  * );
+  *
+  * @example
+  * var quickIn = new Moment.Effect(
+  *     25, // start at 25% intensity
+  *     75, // end at 75% intensity
+  *     Moment.Easing.Quadratic.in, // ease in with quadratic curve
+  *     400, // quadratic transition lasts 400ms
+  *     100 // begin 100ms into the quadratic transition (only 300ms of easing)
+  * );
   */
 function Effect(start, end, func, duration, position) {
     this.start = start;
@@ -46,6 +71,15 @@ function Effect(start, end, func, duration, position) {
   * @name Moment.Effect#scale
   * @method
   * @param {number} multiplier - The multiplier for the duration of effect
+  *
+  * @example
+  * var quickPulse = new Moment.Effect(
+  *     0, // start at zero intensity (actuator off)
+  *     75, // end at 75% intensity
+  *     Moment.Easing.Exponential.in, // ease in with exponential curve
+  *     500 // exponential transition lasts 500ms
+  * );
+  * quickPulse.scale(1.2); // duration is now 600ms
   */
 Effect['prototype']['scale'] = function (multiplier) {
     this.duration = Math.round(multiplier * this.duration);
@@ -62,6 +96,49 @@ Moment['Effect'] = Effect;
   * @param {Effect} effect - The effect to apply to the motor
   * @param {number} delay - Milliseconds before starting the vibration
   * @memberof Moment
+  *
+  * @example
+  * var quickPulse = new Moment.Effect(
+  *     0, // start at zero intensity (actuator off)
+  *     75, // end at 75% intensity
+  *     Moment.Easing.Exponential.in, // ease in with exponential curve
+  *     500 // exponential transition lasts 500ms
+  * );
+  *
+  * var tlPulse = new Vibration(
+  *     Moment.Actuators.topLeft, // select top left actuator
+  *     quickPulse, // use the 500ms exponential ease in effect
+  *     0 // begin immediately after tlPulse.start() is called
+  * );
+  *
+  * @example
+  * var quickIn = new Moment.Effect(
+  *     25, // start at 25% intensity
+  *     75, // end at 75% intensity
+  *     Moment.Easing.Quadratic.in, // ease in with quadratic curve
+  *     400, // quadratic transition lasts 400ms
+  *     100 // begin 100ms into the quadratic transition (only 300ms of easing)
+  * );
+  *
+  * var blIn = new Vibration(
+  *     Moment.Actuators.bottomLeft, // select bottom left actuator
+  *     quickIn, // use the 400ms quadratic ease in effect
+  *     200 // begin effect 200ms after blIn.start() is called
+  * );
+  *
+  * @example
+  * var fadeOut = new Moment.Effect(
+  *     75, // start at 75% intensity
+  *     25, // end at 25% intensity
+  *     Moment.Easing.Linear.out, // ease out with linear curve
+  *     750 // linear transition lasts 750ms
+  * );
+  *
+  * var trFade = new Vibration(
+  *     Moment.Actuators.topRight, // select top right actuator
+  *     fadeOut, // use the 750ms exponential fade out effect
+  *     100 // begin effect after 100ms
+  * );
   */
 function Vibration(pin, effect, delay) {
     this.pin = pin;
@@ -74,6 +151,22 @@ function Vibration(pin, effect, delay) {
   * @memberof Moment.Vibration
   * @name Moment.Vibration#start
   * @method
+  *
+  * @example
+  * var fadeOut = new Moment.Effect(
+  *     75, // start at 75% intensity
+  *     25, // end at 25% intensity
+  *     Moment.Easing.Linear.out, // ease out with linear curve
+  *     750 // linear transition lasts 750ms
+  * );
+  *
+  * var trFade = new Vibration(
+  *     Moment.Actuators.topRight, // select top right actuator
+  *     fadeOut, // use the 750ms exponential fade out effect
+  *     100 // begin effect after 100ms
+  * );
+  *
+  * trFade.start();
   */
 Vibration['prototype']['start'] = function () {
     var e = this.effect;
