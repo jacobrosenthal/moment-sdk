@@ -36,6 +36,28 @@ var LED = Moment['LED'] = {};
   * @param {Object} color - The Color instance to transition to.
   * @param {number} func - The integer ID of the easing equation to use.
   * @param {number} duration - The duration of the transition in milliseconds.
+  *
+  * @example
+  * // a 500ms quadratic transition to an orange color
+  * var orangeTransition = new Moment.Transition(
+  *     new Moment.Color(0xff, 0x99, 0x33),
+  *     Moment.Easing.Quadratic.in,
+  *     500
+  * );
+  * @example
+  * // a 100ms inverse exponential transition to a green color
+  * var greenTransition = new Moment.Transition(
+  *     new Moment.Color(0x00, 0x88, 0x11),
+  *     Moment.Easing.Exponential.out,
+  *     100
+  * );
+  * @example
+  * // a 200ms combined sinosudial transition to a white color
+  * var whiteTransition = new Moment.Transition(
+  *     new Moment.Color(0xff, 0xff, 0xff),
+  *     Moment.Easing.Sine.combined,
+  *     200
+  * );
   */
 function Transition (color, func, duration) {
     this.color = color;
@@ -51,6 +73,18 @@ LED['Transition'] = Transition;
   * @param {Object} color - The Color value to set
   * @name Moment.LED.setColor
   * @method
+  *
+  * @example
+  * // set the current LED color to orange
+  * Moment.LED.setColor(Moment.Color.ORANGE);
+  *
+  * @example
+  * // set the current LED color to red
+  * Moment.LED.setColor(Moment.Color.RED);
+  *
+  * @example
+  * // set the current LED color to #007eeb
+  * Moment.LED.setColor(new Moment.Color(0x00, 0x7e, 0xeb));
   */
 LED['setColor'] = function (color) {
     Moment['_set_led_color'](color.red, color.green, color.blue);
@@ -62,6 +96,33 @@ LED['setColor'] = function (color) {
   * @param {Transition} transition - The Transition value to set
   * @name Moment.LED.tweenColor
   * @method
+  *
+  * @example
+  * // a 500ms quadratic transition to an orange color
+  * var orangeTransition = new Moment.Transition(
+  *     new Moment.Color(0xff, 0x99, 0x33),
+  *     Moment.Easing.Quadratic.in,
+  *     500
+  * );
+  * Moment.LED.tweenColor(orangeTransition);
+  *
+  * @example
+  * // a 100ms inverse exponential transition to a green color
+  * var greenTransition = new Moment.Transition(
+  *     new Moment.Color(0x00, 0x88, 0x11),
+  *     Moment.Easing.Exponential.out,
+  *     100
+  * );
+  * Moment.LED.tweenColor(greenTransition);
+  *
+  * @example
+  * // a 200ms combined sinosudial transition to a white color
+  * var whiteTransition = new Moment.Transition(
+  *     new Moment.Color(0xff, 0xff, 0xff),
+  *     Moment.Easing.Sine.combined,
+  *     200
+  * );
+  * Moment.LED.tweenColor(whiteTransition);
   */
 LED['tweenColor'] = function (transition) {
     var color = transition.color;
@@ -74,13 +135,31 @@ LED['tweenColor'] = function (transition) {
     );
 };
 
-/** Loops between two LED transitions.
+/** Loops between two LED transitions, executing one after the other until
+  * a new color transition is set.
   *
   * @memberof Moment.LED
   * @param {Transition} transitionIn - The first Transition value to set
   * @param {Transition} transitionOut - The second Transition value to set
   * @name Moment.LED.loopColor
   * @method
+  *
+  * @example
+  * // loop between a 500ms quadratic transition to an orange color
+  * // and a 100ms inverse exponential transition to a green color
+  * var orangeTransition = new Moment.Transition(
+  *     new Moment.Color(0xff, 0x99, 0x33),
+  *     Moment.Easing.Quadratic.in,
+  *     500
+  * );
+  *
+  * var greenTransition = new Moment.Transition(
+  *     new Moment.Color(0x00, 0x88, 0x11),
+  *     Moment.Easing.Exponential.out,
+  *     100
+  * );
+  *
+  * Moment.LED.loopColor(orangeTransition, greenTransition);
   */
 LED['loopColor'] = function (transitionIn, transitionOut) {
     var color = transitionIn.color;

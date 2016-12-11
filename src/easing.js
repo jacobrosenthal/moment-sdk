@@ -21,80 +21,25 @@
 
 var Moment = Function('return this')()['Moment'];
 
-var Easing = {};
-
-Easing['Step'] = {
-    'in': 1,
-    'out': 0,
-    'combined': 0
+function EquationId(in, out, combined) {
+    this['in'] = in;
+    this['out'] = out;
+    this['combined'] = combined;
 }
 
-Easing['Linear'] = {
-    'in': 2,
-    'out': 2,
-    'combined': 2
+Moment['Easing'] = {
+    'Step':        EquationId(1, 0, 0),
+    'Linear':      EquationId(2, 2, 2),
+    'Quadratic':   EquationId(3, 4, 5),
+    'Cubic':       EquationId(6, 7, 8),
+    'Quartic':     EquationId(9, 10, 11),
+    'Quintic':     EquationId(12, 13, 14),
+    'Sine':        EquationId(15, 16, 17),
+    'Circle':      EquationId(18, 19, 20),
+    'Exponential': EquationId(21, 22, 23),
+    'Elastic':     EquationId(24, 25, 26),
+    'Back':        EquationId(27, 28, 29),
+    'Bounce':      EquationId(30, 31, 32)
 };
-
-Easing['Quadratic'] = {
-    'in': 3,
-    'out': 4,
-    'combined': 5
-};
-
-Easing['Cubic'] = {
-    'in': 6,
-    'out': 7,
-    'combined': 8
-};
-
-Easing['Quartic'] = {
-    'in': 9,
-    'out': 10,
-    'combined': 11
-};
-
-Easing['Quintic'] = {
-    'in': 12,
-    'out': 13,
-    'combined': 14
-};
-
-Easing['Sine'] = {
-    'in': 15,
-    'out': 16,
-    'combined': 17
-};
-
-Easing['Circle'] = {
-    'in': 18,
-    'out': 19,
-    'combined': 20
-};
-
-Easing['Exponential'] = {
-    'in': 21,
-    'out': 22,
-    'combined': 23
-};
-
-Easing['Elastic'] = {
-    'in': 24,
-    'out': 25,
-    'combined': 26
-};
-
-Easing['Back'] = {
-    'in': 27,
-    'out': 28,
-    'combined': 29
-};
-
-Easing['Bounce'] = {
-    'in': 30,
-    'out': 31,
-    'combined': 32
-};
-
-Moment['Easing'] = Easing;
 
 })();
