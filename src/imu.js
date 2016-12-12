@@ -36,7 +36,7 @@ ThreeAxis['prototype']['z'] = 0;
   *
   * @memberof Moment
   * @public
-  * @constant
+  * @namespace
   * @name Moment.Accelerometer
   */
 Moment['Accelerometer'] = new ThreeAxis("accelerometer");
@@ -78,7 +78,7 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
   *
   * @memberof Moment
   * @public
-  * @constant
+  * @namespace
   * @name Moment.Gyroscope
   */
 Moment['Gyroscope'] = new ThreeAxis("gyroscope");
@@ -111,7 +111,7 @@ Moment['Gyroscope'] = new ThreeAxis("gyroscope");
   *
   * @memberof Moment
   * @public
-  * @constant
+  * @namespace
   * @name Moment.Magnetometer
   */
 Moment['Magnetometer'] = new ThreeAxis("magnetometer");
@@ -144,7 +144,7 @@ Moment['Magnetometer'] = new ThreeAxis("magnetometer");
   *
   * @memberof Moment
   * @public
-  * @constant
+  * @namespace
   * @name Moment.AHRS
   */
 Moment['AHRS'] = new ThreeAxis("ahrs");
