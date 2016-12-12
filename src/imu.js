@@ -30,9 +30,135 @@ ThreeAxis['prototype']['x'] = 0;
 ThreeAxis['prototype']['y'] = 0;
 ThreeAxis['prototype']['z'] = 0;
 
+// ACCELEROMETER
+
+/** Interface for accessing accelerometer data.
+  *
+  * @memberof Moment
+  * @public
+  * @constant
+  * @name Moment.Accelerometer
+  */
 Moment['Accelerometer'] = new ThreeAxis("accelerometer");
+
+/** Obtain the latest reading from the accelerometer for the x, y, and z axes.
+  *
+  * @function
+  * @name Moment.Accelerometer.update
+  * @returns {Object} An object containing the x, y, and z acceleration values
+  */
+
+/** The x-axis measurement from the accelerometer.
+  *
+  * @property
+  * @name Moment.Accelerometer.x
+  * @type {Number}
+  */
+
+/** The y-axis measurement from the accelerometer.
+  *
+  * @property
+  * @name Moment.Accelerometer.y
+  * @type {Number}
+  */
+
+/** The z-axis measurement from the accelerometer.
+  *
+  * @property
+  * @name Moment.Accelerometer.z
+  * @type {Number}
+  */
+
+// GYROSCOPE
+
+/** Interface for accessing gyroscope data.
+  *
+  * @memberof Moment
+  * @public
+  * @constant
+  * @name Moment.Gyroscope
+  */
 Moment['Gyroscope'] = new ThreeAxis("gyroscope");
+
+/** The x-axis measurement from the gyroscope.
+  *
+  * @property
+  * @name Moment.Accelerometer.x
+  * @type {Number}
+  */
+
+/** The y-axis measurement from the gyroscope.
+  *
+  * @property
+  * @name Moment.Accelerometer.y
+  * @type {Number}
+  */
+
+/** The z-axis measurement from the gyroscope.
+  *
+  * @property
+  * @name Moment.Accelerometer.z
+  * @type {Number}
+  */
+
+/** Interface for accessing magnetometer data.
+  *
+  * @memberof Moment
+  * @public
+  * @constant
+  * @name Moment.Magnetometer
+  */
 Moment['Magnetometer'] = new ThreeAxis("magnetometer");
+
+/** The x-axis measurement from the magnetometer.
+  *
+  * @property
+  * @name Moment.Accelerometer.x
+  * @type {Number}
+  */
+
+/** The y-axis measurement from the magnetometer.
+  *
+  * @property
+  * @name Moment.Accelerometer.y
+  * @type {Number}
+  */
+
+/** The z-axis measurement from the magnetometer.
+  *
+  * @property
+  * @name Moment.Accelerometer.z
+  * @type {Number}
+  */
+
+/** Interface for accessing processed AHRS position data.
+  *
+  * @memberof Moment
+  * @public
+  * @constant
+  * @name Moment.AHRS
+  */
 Moment['AHRS'] = new ThreeAxis("ahrs");
+
+/** The x-axis measurement obtained from processed IMU data.
+  *
+  * @property
+  * @name Moment.Accelerometer.x
+  * @type {Number}
+  */
+
+/** The y-axis measurement obtained from processed IMU data.
+  *
+  * @property
+  * @name Moment.Accelerometer.y
+  * @type {Number}
+  */
+
+/** The z-axis measurement obtained from processed IMU data.
+  *
+  * @property
+  * @name Moment.Accelerometer.z
+  * @type {Number}
+  */
 
 })();
