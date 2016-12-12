@@ -5,7 +5,8 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
-    "generate-docs": "./node_modules/.bin/jsdoc -c jsdoc.json -R README.md"
+    "generate-docs": "./node_modules/.bin/jsdoc -c jsdoc.json -R README.md",
+    "compile": "gulp compile"
   },
   "dependencies": {
     "docdash": "git://github.com/SomaticLabs/docdash",
