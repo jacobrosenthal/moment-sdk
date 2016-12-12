@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>actuators.js - Documentation</title>
+    <title>imu.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">actuators.js</h1>
+    <h1 class="page-title">imu.js</h1>
     
 
     
@@ -60,128 +60,145 @@
 
 var Moment = Function('return this')()['Moment'];
 
-function Actuator(pin) {
-    this.pin = pin;
+function ThreeAxis(type) {
+    this.type = type;
+    this.update = Moment["_update_" + type];
 }
 
-/** Namespace for constants and functions related to direct control of the
-  * actuators on Moment.
+ThreeAxis['prototype']['x'] = 0;
+ThreeAxis['prototype']['y'] = 0;
+ThreeAxis['prototype']['z'] = 0;
+
+// ACCELEROMETER
+
+/** Interface for accessing accelerometer data.
   *
-  * @namespace
-  * @name Moment.Actuators
   * @memberof Moment
+  * @public
+  * @constant
+  * @name Moment.Accelerometer
   */
-var Actuators = {
-    /** The top-left actuator on Moment (automatically changes based on
-      * whether the user wears Moment on their left or right hand).
-      *
-      * @memberof Moment.Actuators
-      * @name Moment.Actuators.topLeft
-      * @public
-      * @constant
-      * @type {Actuator}
-      *
-      * @example
-      * var fadeOut = new Moment.Effect(
-      *     75, // start at 75% intensity
-      *     25, // end at 25% intensity
-      *     Moment.Easing.Linear.out, // ease out with linear curve
-      *     750 // linear transition lasts 750ms
-      * );
-      *
-      * var tlFade = new Vibration(
-      *     Moment.Actuators.topLeft, // select top left actuator
-      *     fadeOut, // use the 750ms exponential fade out effect
-      *     100 // begin effect after 100ms
-      * );
-      *
-      * tlFade.start();
-      */
-    'topLeft': new Actuator(21),
+Moment['Accelerometer'] = new ThreeAxis("accelerometer");
 
-    /** The top-right actuator on Moment (automatically changes based on
-      * whether the user wears Moment on their left or right hand).
-      *
-      * @memberof Moment.Actuators
-      * @name Moment.Actuators.topRight
-      * @public
-      * @constant
-      * @type {Actuator}
-      *
-      * @example
-      * var fadeOut = new Moment.Effect(
-      *     75, // start at 75% intensity
-      *     25, // end at 25% intensity
-      *     Moment.Easing.Linear.out, // ease out with linear curve
-      *     750 // linear transition lasts 750ms
-      * );
-      *
-      * var trFade = new Vibration(
-      *     Moment.Actuators.topRight, // select top right actuator
-      *     fadeOut, // use the 750ms exponential fade out effect
-      *     100 // begin effect after 100ms
-      * );
-      *
-      * trFade.start();
-      */
-    'topRight': new Actuator(22),
+/** Obtain the latest reading from the accelerometer for the x, y, and z axes.
+  *
+  * @function
+  * @name Moment.Accelerometer.update
+  * @returns {Object} An object containing the x, y, and z acceleration values
+  */
 
-    /** The bottom-right actuator on Moment (automatically changes based on
-      * whether the user wears Moment on their left or right hand).
-      *
-      * @memberof Moment.Actuators
-      * @name Moment.Actuators.bottomRight
-      * @public
-      * @constant
-      * @type {Actuator}
-      *
-      * @example
-      * var fadeOut = new Moment.Effect(
-      *     75, // start at 75% intensity
-      *     25, // end at 25% intensity
-      *     Moment.Easing.Linear.out, // ease out with linear curve
-      *     750 // linear transition lasts 750ms
-      * );
-      *
-      * var brFade = new Vibration(
-      *     Moment.Actuators.bottomRight, // select bottom right actuator
-      *     fadeOut, // use the 750ms exponential fade out effect
-      *     100 // begin effect after 100ms
-      * );
-      *
-      * brFade.start();
-      */
-    'bottomRight': new Actuator(23),
+/** The x-axis measurement from the accelerometer.
+  *
+  * @property
+  * @name Moment.Accelerometer.x
+  * @type {Number}
+  */
 
-    /** The bottom-left actuator on Moment (automatically changes based on
-      * whether the user wears Moment on their left or right hand).
-      *
-      * @memberof Moment.Actuators
-      * @name Moment.Actuators.bottomLeft
-      * @public
-      * @constant
-      * @type {Actuator}
-      *
-      * @example
-      * var fadeOut = new Moment.Effect(
-      *     75, // start at 75% intensity
-      *     25, // end at 25% intensity
-      *     Moment.Easing.Linear.out, // ease out with linear curve
-      *     750 // linear transition lasts 750ms
-      * );
-      *
-      * var blFade = new Vibration(
-      *     Moment.Actuators.topLeft, // select bottom left actuator
-      *     fadeOut, // use the 750ms exponential fade out effect
-      *     100 // begin effect after 100ms
-      * );
-      *
-      * blFade.start();
-      */
-    'bottomLeft': new Actuator(24)
-};
+/** The y-axis measurement from the accelerometer.
+  *
+  * @property
+  * @name Moment.Accelerometer.y
+  * @type {Number}
+  */
 
-Moment['Actuators'] = Actuators;
+/** The z-axis measurement from the accelerometer.
+  *
+  * @property
+  * @name Moment.Accelerometer.z
+  * @type {Number}
+  */
+
+// GYROSCOPE
+
+/** Interface for accessing gyroscope data.
+  *
+  * @memberof Moment
+  * @public
+  * @constant
+  * @name Moment.Gyroscope
+  */
+Moment['Gyroscope'] = new ThreeAxis("gyroscope");
+
+/** The x-axis measurement from the gyroscope.
+  *
+  * @property
+  * @name Moment.Accelerometer.x
+  * @type {Number}
+  */
+
+/** The y-axis measurement from the gyroscope.
+  *
+  * @property
+  * @name Moment.Accelerometer.y
+  * @type {Number}
+  */
+
+/** The z-axis measurement from the gyroscope.
+  *
+  * @property
+  * @name Moment.Accelerometer.z
+  * @type {Number}
+  */
+
+/** Interface for accessing magnetometer data.
+  *
+  * @memberof Moment
+  * @public
+  * @constant
+  * @name Moment.Magnetometer
+  */
+Moment['Magnetometer'] = new ThreeAxis("magnetometer");
+
+/** The x-axis measurement from the magnetometer.
+  *
+  * @property
+  * @name Moment.Accelerometer.x
+  * @type {Number}
+  */
+
+/** The y-axis measurement from the magnetometer.
+  *
+  * @property
+  * @name Moment.Accelerometer.y
+  * @type {Number}
+  */
+
+/** The z-axis measurement from the magnetometer.
+  *
+  * @property
+  * @name Moment.Accelerometer.z
+  * @type {Number}
+  */
+
+/** Interface for accessing processed AHRS position data.
+  *
+  * @memberof Moment
+  * @public
+  * @constant
+  * @name Moment.AHRS
+  */
+Moment['AHRS'] = new ThreeAxis("ahrs");
+
+/** The x-axis measurement obtained from processed IMU data.
+  *
+  * @property
+  * @name Moment.Accelerometer.x
+  * @type {Number}
+  */
+
+/** The y-axis measurement obtained from processed IMU data.
+  *
+  * @property
+  * @name Moment.Accelerometer.y
+  * @type {Number}
+  */
+
+/** The z-axis measurement obtained from processed IMU data.
+  *
+  * @property
+  * @name Moment.Accelerometer.z
+  * @type {Number}
+  */
 
 })();
 </code></pre>
