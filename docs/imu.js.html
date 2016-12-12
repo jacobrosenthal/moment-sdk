@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Moment.Color.html">Color</a><ul class='methods'><li data-type='method'><a href="Moment.Color.html#blend">blend</a></li><li data-type='method'><a href="Moment.Color.html#intensify">intensify</a></li></ul></li><li><a href="Moment.Effect.html">Effect</a><ul class='methods'><li data-type='method'><a href="Moment.Effect.html#scale">scale</a></li></ul></li><li><a href="Moment.LED.Transition.html">Transition</a></li><li><a href="Moment.Vibration.html">Vibration</a><ul class='methods'><li data-type='method'><a href="Moment.Vibration.html#start">start</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="Moment.html">Moment</a><ul class='methods'><li data-type='method'><a href="Moment.html#.off">off</a></li><li data-type='method'><a href="Moment.html#.on">on</a></li><li data-type='method'><a href="Moment.html#.once">once</a></li><li data-type='method'><a href="Moment.html#.trigger">trigger</a></li></ul></li><li><a href="Moment.Accelerometer.html">Accelerometer</a><ul class='methods'><li data-type='method'><a href="Moment.Accelerometer.html#.update">update</a></li></ul></li><li><a href="Moment.Actuators.html">Actuators</a></li><li><a href="Moment.AHRS.html">AHRS</a><ul class='methods'><li data-type='method'><a href="Moment.AHRS.html#.update">update</a></li></ul></li><li><a href="Moment.Battery.html">Battery</a><ul class='methods'><li data-type='method'><a href="Moment.Battery.html#.getCharge">getCharge</a></li><li data-type='method'><a href="Moment.Battery.html#.isCharging">isCharging</a></li><li data-type='method'><a href="Moment.Battery.html#.isConnected">isConnected</a></li></ul></li><li><a href="Moment.Easing.html">Easing</a></li><li><a href="Moment.Gyroscope.html">Gyroscope</a><ul class='methods'><li data-type='method'><a href="Moment.Gyroscope.html#.update">update</a></li></ul></li><li><a href="Moment.LED.html">LED</a><ul class='methods'><li data-type='method'><a href="Moment.LED.html#.loopColor">loopColor</a></li><li data-type='method'><a href="Moment.LED.html#.setColor">setColor</a></li><li data-type='method'><a href="Moment.LED.html#.tweenColor">tweenColor</a></li></ul></li><li><a href="Moment.Magnetometer.html">Magnetometer</a><ul class='methods'><li data-type='method'><a href="Moment.Magnetometer.html#.update">update</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Moment.Color.html">Color</a><ul class='methods'><li data-type='method'><a href="Moment.Color.html#blend">blend</a></li><li data-type='method'><a href="Moment.Color.html#intensify">intensify</a></li></ul></li><li><a href="Moment.Effect.html">Effect</a><ul class='methods'><li data-type='method'><a href="Moment.Effect.html#scale">scale</a></li></ul></li><li><a href="Moment.LED.Transition.html">Transition</a></li><li><a href="Moment.Vibration.html">Vibration</a><ul class='methods'><li data-type='method'><a href="Moment.Vibration.html#start">start</a></li></ul></li></ul><h3>Events</h3><ul><li><a href="Moment.Accelerometer.html#.event:accelerometer">accelerometer</a></li><li><a href="Moment.AHRS.html#.event:ahrs">ahrs</a></li><li><a href="Moment.Gyroscope.html#.event:gyroscope">gyroscope</a></li><li><a href="Moment.Magnetometer.html#.event:magnetometer">magnetometer</a></li></ul><h3>Namespaces</h3><ul><li><a href="Moment.html">Moment</a><ul class='methods'><li data-type='method'><a href="Moment.html#.off">off</a></li><li data-type='method'><a href="Moment.html#.on">on</a></li><li data-type='method'><a href="Moment.html#.once">once</a></li><li data-type='method'><a href="Moment.html#.trigger">trigger</a></li></ul></li><li><a href="Moment.Accelerometer.html">Accelerometer</a></li><li><a href="Moment.Actuators.html">Actuators</a></li><li><a href="Moment.AHRS.html">AHRS</a></li><li><a href="Moment.Battery.html">Battery</a><ul class='methods'><li data-type='method'><a href="Moment.Battery.html#.getCharge">getCharge</a></li><li data-type='method'><a href="Moment.Battery.html#.isCharging">isCharging</a></li><li data-type='method'><a href="Moment.Battery.html#.isConnected">isConnected</a></li></ul></li><li><a href="Moment.Easing.html">Easing</a></li><li><a href="Moment.Gyroscope.html">Gyroscope</a></li><li><a href="Moment.LED.html">LED</a><ul class='methods'><li data-type='method'><a href="Moment.LED.html#.loopColor">loopColor</a></li><li data-type='method'><a href="Moment.LED.html#.setColor">setColor</a></li><li data-type='method'><a href="Moment.LED.html#.tweenColor">tweenColor</a></li></ul></li><li><a href="Moment.Magnetometer.html">Magnetometer</a><ul class='methods'><li data-type='method'><a href="Moment.Magnetometer.html#.update">update</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -61,8 +61,6 @@
 var Moment = Function('return this')()['Moment'];
 
 function ThreeAxis(type) {
-    this.type = type;
-    this.update = Moment["_update_" + type];
 }
 
 ThreeAxis['prototype']['x'] = 0;
@@ -78,14 +76,18 @@ ThreeAxis['prototype']['z'] = 0;
   * @namespace
   * @name Moment.Accelerometer
   */
-Moment['Accelerometer'] = new ThreeAxis("accelerometer");
+Moment['Accelerometer'] = new ThreeAxis();
 
-/** Obtain the latest reading from the accelerometer for the x, y, and z axes.
+/** This event is fired every time a reading from the accelerometer is obtained.
+  * The appropriate x, y, and z axis values are provided to the event handler.
   *
-  * @function
-  * @name Moment.Accelerometer.update
-  * @returns {Object} An object containing the x, y, and z acceleration values
-  */
+  * @event Moment.Accelerometer.accelerometer
+  * @memberof Moment.Accelerometer
+  * @type {Object}
+  * @property {Number} x - The x-axis reading value
+  * @property {Number} y - The y-axis reading value
+  * @property {Number} z - The z-axis reading value
+ */
 
 /** The x-axis measurement from the accelerometer.
   *
@@ -117,14 +119,18 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
   * @namespace
   * @name Moment.Gyroscope
   */
-Moment['Gyroscope'] = new ThreeAxis("gyroscope");
+Moment['Gyroscope'] = new ThreeAxis();
 
-/** Obtain the latest reading from the gyroscope for the x, y, and z axes.
+/** This event is fired every time a reading from the gyroscope is obtained.
+  * The appropriate x, y, and z axis values are provided to the event handler.
   *
-  * @function
-  * @name Moment.Gyroscope.update
-  * @returns {Object} An object containing the x, y, and z gyroscope values
-  */
+  * @event Moment.Gyroscope.gyroscope
+  * @memberof Moment.Gyroscope
+  * @type {Object}
+  * @property {Number} x - The x-axis reading value
+  * @property {Number} y - The y-axis reading value
+  * @property {Number} z - The z-axis reading value
+ */
 
 /** The x-axis measurement from the gyroscope.
   *
@@ -154,7 +160,18 @@ Moment['Gyroscope'] = new ThreeAxis("gyroscope");
   * @namespace
   * @name Moment.Magnetometer
   */
-Moment['Magnetometer'] = new ThreeAxis("magnetometer");
+Moment['Magnetometer'] = new ThreeAxis();
+
+/** This event is fired every time a reading from the magnetometer is obtained.
+  * The appropriate x, y, and z axis values are provided to the event handler.
+  *
+  * @event Moment.Magnetometer.magnetometer
+  * @memberof Moment.Magnetometer
+  * @type {Object}
+  * @property {Number} x - The x-axis reading value
+  * @property {Number} y - The y-axis reading value
+  * @property {Number} z - The z-axis reading value
+ */
 
 /** Obtain the latest reading from the magnetometer for the x, y, and z axes.
   *
@@ -191,14 +208,20 @@ Moment['Magnetometer'] = new ThreeAxis("magnetometer");
   * @namespace
   * @name Moment.AHRS
   */
-Moment['AHRS'] = new ThreeAxis("ahrs");
+Moment['AHRS'] = new ThreeAxis();
 
-/** Obtain the latest processed AHRS position for the x, y, and z axes.
+/** This event is fired every time a reading from the inertial measurement unit
+  * is processed using an AHRS algorithm to provide a more accurate orientation
+  * measurement. The processed orientation measurement is provided to the event
+  * handler as an object.
   *
-  * @function
-  * @name Moment.AHRS.update
-  * @returns {Object} An object containing the x, y, and z AHRS values
-  */
+  * @event Moment.AHRS.ahrs
+  * @memberof Moment.AHRS
+  * @type {Object}
+  * @property {Number} x - The x-axis reading value
+  * @property {Number} y - The y-axis reading value
+  * @property {Number} z - The z-axis reading value
+ */
 
 /** The x-axis measurement obtained from processed IMU data.
   *
@@ -234,7 +257,7 @@ Moment['AHRS'] = new ThreeAxis("ahrs");
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Dec 12 2016 15:54:28 GMT-0700 (DST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Dec 12 2016 16:13:03 GMT-0700 (DST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

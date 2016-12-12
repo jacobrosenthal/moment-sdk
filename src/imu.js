@@ -22,8 +22,6 @@
 var Moment = Function('return this')()['Moment'];
 
 function ThreeAxis(type) {
-    this.type = type;
-    this.update = Moment["_update_" + type];
 }
 
 ThreeAxis['prototype']['x'] = 0;
@@ -39,14 +37,18 @@ ThreeAxis['prototype']['z'] = 0;
   * @namespace
   * @name Moment.Accelerometer
   */
-Moment['Accelerometer'] = new ThreeAxis("accelerometer");
+Moment['Accelerometer'] = new ThreeAxis();
 
-/** Obtain the latest reading from the accelerometer for the x, y, and z axes.
+/** This event is fired every time a reading from the accelerometer is obtained.
+  * The appropriate x, y, and z axis values are provided to the event handler.
   *
-  * @function
-  * @name Moment.Accelerometer.update
-  * @returns {Object} An object containing the x, y, and z acceleration values
-  */
+  * @event Moment.Accelerometer.accelerometer
+  * @memberof Moment.Accelerometer
+  * @type {Object}
+  * @property {Number} x - The x-axis reading value
+  * @property {Number} y - The y-axis reading value
+  * @property {Number} z - The z-axis reading value
+ */
 
 /** The x-axis measurement from the accelerometer.
   *
@@ -78,14 +80,18 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
   * @namespace
   * @name Moment.Gyroscope
   */
-Moment['Gyroscope'] = new ThreeAxis("gyroscope");
+Moment['Gyroscope'] = new ThreeAxis();
 
-/** Obtain the latest reading from the gyroscope for the x, y, and z axes.
+/** This event is fired every time a reading from the gyroscope is obtained.
+  * The appropriate x, y, and z axis values are provided to the event handler.
   *
-  * @function
-  * @name Moment.Gyroscope.update
-  * @returns {Object} An object containing the x, y, and z gyroscope values
-  */
+  * @event Moment.Gyroscope.gyroscope
+  * @memberof Moment.Gyroscope
+  * @type {Object}
+  * @property {Number} x - The x-axis reading value
+  * @property {Number} y - The y-axis reading value
+  * @property {Number} z - The z-axis reading value
+ */
 
 /** The x-axis measurement from the gyroscope.
   *
@@ -115,7 +121,18 @@ Moment['Gyroscope'] = new ThreeAxis("gyroscope");
   * @namespace
   * @name Moment.Magnetometer
   */
-Moment['Magnetometer'] = new ThreeAxis("magnetometer");
+Moment['Magnetometer'] = new ThreeAxis();
+
+/** This event is fired every time a reading from the magnetometer is obtained.
+  * The appropriate x, y, and z axis values are provided to the event handler.
+  *
+  * @event Moment.Magnetometer.magnetometer
+  * @memberof Moment.Magnetometer
+  * @type {Object}
+  * @property {Number} x - The x-axis reading value
+  * @property {Number} y - The y-axis reading value
+  * @property {Number} z - The z-axis reading value
+ */
 
 /** Obtain the latest reading from the magnetometer for the x, y, and z axes.
   *
@@ -152,14 +169,20 @@ Moment['Magnetometer'] = new ThreeAxis("magnetometer");
   * @namespace
   * @name Moment.AHRS
   */
-Moment['AHRS'] = new ThreeAxis("ahrs");
+Moment['AHRS'] = new ThreeAxis();
 
-/** Obtain the latest processed AHRS position for the x, y, and z axes.
+/** This event is fired every time a reading from the inertial measurement unit
+  * is processed using an AHRS algorithm to provide a more accurate orientation
+  * measurement. The processed orientation measurement is provided to the event
+  * handler as an object.
   *
-  * @function
-  * @name Moment.AHRS.update
-  * @returns {Object} An object containing the x, y, and z AHRS values
-  */
+  * @event Moment.AHRS.ahrs
+  * @memberof Moment.AHRS
+  * @type {Object}
+  * @property {Number} x - The x-axis reading value
+  * @property {Number} y - The y-axis reading value
+  * @property {Number} z - The z-axis reading value
+ */
 
 /** The x-axis measurement obtained from processed IMU data.
   *
