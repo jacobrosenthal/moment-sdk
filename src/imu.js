@@ -53,6 +53,7 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
   * @property
   * @name Moment.Accelerometer.x
   * @type {Number}
+  * @memberof Moment.Accelerometer
   */
 
 /** The y-axis measurement from the accelerometer.
@@ -60,6 +61,7 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
   * @property
   * @name Moment.Accelerometer.y
   * @type {Number}
+  * @memberof Moment.Accelerometer
   */
 
 /** The z-axis measurement from the accelerometer.
@@ -67,6 +69,7 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
   * @property
   * @name Moment.Accelerometer.z
   * @type {Number}
+  * @memberof Moment.Accelerometer
   */
 
 // GYROSCOPE
@@ -83,22 +86,25 @@ Moment['Gyroscope'] = new ThreeAxis("gyroscope");
 /** The x-axis measurement from the gyroscope.
   *
   * @property
-  * @name Moment.Accelerometer.x
+  * @name Moment.Gyroscope.x
   * @type {Number}
+  * @memberof Moment.Gyroscope
   */
 
 /** The y-axis measurement from the gyroscope.
   *
   * @property
-  * @name Moment.Accelerometer.y
+  * @name Moment.Gyroscope.y
   * @type {Number}
+  * @memberof Moment.Gyroscope
   */
 
 /** The z-axis measurement from the gyroscope.
   *
   * @property
-  * @name Moment.Accelerometer.z
+  * @name Moment.Gyroscope.z
   * @type {Number}
+  * @memberof Moment.Gyroscope
   */
 
 /** Interface for accessing magnetometer data.
@@ -113,22 +119,25 @@ Moment['Magnetometer'] = new ThreeAxis("magnetometer");
 /** The x-axis measurement from the magnetometer.
   *
   * @property
-  * @name Moment.Accelerometer.x
+  * @name Moment.Magnetometer.x
   * @type {Number}
+  * @memberof Moment.Magnetometer
   */
 
 /** The y-axis measurement from the magnetometer.
   *
   * @property
-  * @name Moment.Accelerometer.y
+  * @name Moment.Magnetometer.y
   * @type {Number}
+  * @memberof Moment.Magnetometer
   */
 
 /** The z-axis measurement from the magnetometer.
   *
   * @property
-  * @name Moment.Accelerometer.z
+  * @name Moment.Magnetometer.z
   * @type {Number}
+  * @memberof Moment.Magnetometer
   */
 
 /** Interface for accessing processed AHRS position data.
@@ -143,22 +152,25 @@ Moment['AHRS'] = new ThreeAxis("ahrs");
 /** The x-axis measurement obtained from processed IMU data.
   *
   * @property
-  * @name Moment.Accelerometer.x
+  * @name Moment.AHRS.x
   * @type {Number}
+  * @memberof Moment.AHRS
   */
 
 /** The y-axis measurement obtained from processed IMU data.
   *
   * @property
-  * @name Moment.Accelerometer.y
+  * @name Moment.AHRS.y
   * @type {Number}
+  * @memberof Moment.AHRS
   */
 
 /** The z-axis measurement obtained from processed IMU data.
   *
   * @property
-  * @name Moment.Accelerometer.z
+  * @name Moment.AHRS.z
   * @type {Number}
+  * @memberof Moment.AHRS
   */
 
 })();
