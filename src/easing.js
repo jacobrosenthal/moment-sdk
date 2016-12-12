@@ -22,9 +22,10 @@
 var Moment = Function('return this')()['Moment'];
 
 function Equation(ineq, out, combined) {
-    this['in'] = ineq;
-    this['out'] = out;
-    this['combined'] = combined;
+    var self = this;
+    self['in'] = ineq;
+    self['out'] = out;
+    self['combined'] = combined;
 }
 
 /** Namespace for constants that define the different easing equations that
