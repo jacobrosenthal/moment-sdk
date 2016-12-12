@@ -30,12 +30,14 @@ function Actuator(pin) {
   *
   * @namespace
   * @name Moment.Actuators
+  * @memberof Moment
   */
 var Actuators = {
     /** The top-left actuator on Moment (automatically changes based on
       * whether the user wears Moment on their left or right hand).
       *
       * @memberof Moment.Actuators
+      * @name Moment.Actuators.topLeft
       * @public
       * @constant
       * @type {Actuator}
@@ -62,6 +64,7 @@ var Actuators = {
       * whether the user wears Moment on their left or right hand).
       *
       * @memberof Moment.Actuators
+      * @name Moment.Actuators.topRight
       * @public
       * @constant
       * @type {Actuator}
@@ -75,7 +78,7 @@ var Actuators = {
       * );
       *
       * var trFade = new Vibration(
-      *     Moment.Actuators.topLeft, // select top right actuator
+      *     Moment.Actuators.topRight, // select top right actuator
       *     fadeOut, // use the 750ms exponential fade out effect
       *     100 // begin effect after 100ms
       * );
@@ -88,6 +91,7 @@ var Actuators = {
       * whether the user wears Moment on their left or right hand).
       *
       * @memberof Moment.Actuators
+      * @name Moment.Actuators.bottomRight
       * @public
       * @constant
       * @type {Actuator}
@@ -114,6 +118,7 @@ var Actuators = {
       * whether the user wears Moment on their left or right hand).
       *
       * @memberof Moment.Actuators
+      * @name Moment.Actuators.bottomLeft
       * @public
       * @constant
       * @type {Actuator}

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>actuators.js - Documentation</title>
+    <title>easing.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">actuators.js</h1>
+    <h1 class="page-title">easing.js</h1>
     
 
     
@@ -60,128 +60,130 @@
 
 var Moment = Function('return this')()['Moment'];
 
-function Actuator(pin) {
-    this.pin = pin;
+function Equation(ineq, out, combined) {
+    this['in'] = ineq;
+    this['out'] = out;
+    this['combined'] = combined;
 }
 
-/** Namespace for constants and functions related to direct control of the
-  * actuators on Moment.
+/** Namespace for constants that define the different easing equations that
+  * can be used to transition actuator vibrations.
   *
   * @namespace
-  * @name Moment.Actuators
-  * @memberof Moment
+  * @name Moment.Easing
   */
-var Actuators = {
-    /** The top-left actuator on Moment (automatically changes based on
-      * whether the user wears Moment on their left or right hand).
+var Easing = {
+    /** Use a step function to transition to the next value - instantly
+      * change the actuator intensity without any easing.
       *
-      * @memberof Moment.Actuators
-      * @name Moment.Actuators.topLeft
+      * @memberof Moment.Easing
       * @public
       * @constant
-      * @type {Actuator}
-      *
-      * @example
-      * var fadeOut = new Moment.Effect(
-      *     75, // start at 75% intensity
-      *     25, // end at 25% intensity
-      *     Moment.Easing.Linear.out, // ease out with linear curve
-      *     750 // linear transition lasts 750ms
-      * );
-      *
-      * var tlFade = new Vibration(
-      *     Moment.Actuators.topLeft, // select top left actuator
-      *     fadeOut, // use the 750ms exponential fade out effect
-      *     100 // begin effect after 100ms
-      * );
-      *
-      * tlFade.start();
+      * @type {Equation}
       */
-    'topLeft': new Actuator(21),
+    'Step':        new Equation(1, 0, 0),
 
-    /** The top-right actuator on Moment (automatically changes based on
-      * whether the user wears Moment on their left or right hand).
+    /** Use a linear equation to transition to the next value over time.
       *
-      * @memberof Moment.Actuators
-      * @name Moment.Actuators.topRight
+      * @memberof Moment.Easing
       * @public
       * @constant
-      * @type {Actuator}
-      *
-      * @example
-      * var fadeOut = new Moment.Effect(
-      *     75, // start at 75% intensity
-      *     25, // end at 25% intensity
-      *     Moment.Easing.Linear.out, // ease out with linear curve
-      *     750 // linear transition lasts 750ms
-      * );
-      *
-      * var trFade = new Vibration(
-      *     Moment.Actuators.topRight, // select top right actuator
-      *     fadeOut, // use the 750ms exponential fade out effect
-      *     100 // begin effect after 100ms
-      * );
-      *
-      * trFade.start();
+      * @type {Equation}
       */
-    'topRight': new Actuator(22),
+    'Linear':      new Equation(2, 2, 2),
 
-    /** The bottom-right actuator on Moment (automatically changes based on
-      * whether the user wears Moment on their left or right hand).
+    /** Use a quadratic equation to transition to the next value over time.
       *
-      * @memberof Moment.Actuators
-      * @name Moment.Actuators.bottomRight
+      * @memberof Moment.Easing
       * @public
       * @constant
-      * @type {Actuator}
-      *
-      * @example
-      * var fadeOut = new Moment.Effect(
-      *     75, // start at 75% intensity
-      *     25, // end at 25% intensity
-      *     Moment.Easing.Linear.out, // ease out with linear curve
-      *     750 // linear transition lasts 750ms
-      * );
-      *
-      * var brFade = new Vibration(
-      *     Moment.Actuators.bottomRight, // select bottom right actuator
-      *     fadeOut, // use the 750ms exponential fade out effect
-      *     100 // begin effect after 100ms
-      * );
-      *
-      * brFade.start();
+      * @type {Equation}
       */
-    'bottomRight': new Actuator(23),
+    'Quadratic':   new Equation(3, 4, 5),
 
-    /** The bottom-left actuator on Moment (automatically changes based on
-      * whether the user wears Moment on their left or right hand).
+    /** Use a cubic equation to transition to the next value over time.
       *
-      * @memberof Moment.Actuators
-      * @name Moment.Actuators.bottomLeft
+      * @memberof Moment.Easing
       * @public
       * @constant
-      * @type {Actuator}
-      *
-      * @example
-      * var fadeOut = new Moment.Effect(
-      *     75, // start at 75% intensity
-      *     25, // end at 25% intensity
-      *     Moment.Easing.Linear.out, // ease out with linear curve
-      *     750 // linear transition lasts 750ms
-      * );
-      *
-      * var blFade = new Vibration(
-      *     Moment.Actuators.topLeft, // select bottom left actuator
-      *     fadeOut, // use the 750ms exponential fade out effect
-      *     100 // begin effect after 100ms
-      * );
-      *
-      * blFade.start();
+      * @type {Equation}
       */
-    'bottomLeft': new Actuator(24)
+    'Cubic':       new Equation(6, 7, 8),
+
+    /** Use a quartic equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Quartic':     new Equation(9, 10, 11),
+
+    /** Use a quintic equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Quintic':     new Equation(12, 13, 14),
+
+    /** Use a sinosudial equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Sine':        new Equation(15, 16, 17),
+
+    /** Use a circular equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Circle':      new Equation(18, 19, 20),
+
+    /** Use an exponential equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Exponential': new Equation(21, 22, 23),
+
+    /** Use an elastic equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Elastic':     new Equation(24, 25, 26),
+
+    /** Use a backing equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Back':        new Equation(27, 28, 29),
+
+    /** Use a bouncing equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Bounce':      new Equation(30, 31, 32)
 };
 
-Moment['Actuators'] = Actuators;
+Moment['Easing'] = Easing;
 
 })();
 </code></pre>

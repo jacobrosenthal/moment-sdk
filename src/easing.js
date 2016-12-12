@@ -21,25 +21,129 @@
 
 var Moment = Function('return this')()['Moment'];
 
-function EquationId(ineq, out, combined) {
+function Equation(ineq, out, combined) {
     this['in'] = ineq;
     this['out'] = out;
     this['combined'] = combined;
 }
 
-Moment['Easing'] = {
-    'Step':        new EquationId(1, 0, 0),
-    'Linear':      new EquationId(2, 2, 2),
-    'Quadratic':   new EquationId(3, 4, 5),
-    'Cubic':       new EquationId(6, 7, 8),
-    'Quartic':     new EquationId(9, 10, 11),
-    'Quintic':     new EquationId(12, 13, 14),
-    'Sine':        new EquationId(15, 16, 17),
-    'Circle':      new EquationId(18, 19, 20),
-    'Exponential': new EquationId(21, 22, 23),
-    'Elastic':     new EquationId(24, 25, 26),
-    'Back':        new EquationId(27, 28, 29),
-    'Bounce':      new EquationId(30, 31, 32)
+/** Namespace for constants that define the different easing equations that
+  * can be used to transition actuator vibrations.
+  *
+  * @namespace
+  * @name Moment.Easing
+  */
+var Easing = {
+    /** Use a step function to transition to the next value - instantly
+      * change the actuator intensity without any easing.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Step':        new Equation(1, 0, 0),
+
+    /** Use a linear equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Linear':      new Equation(2, 2, 2),
+
+    /** Use a quadratic equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Quadratic':   new Equation(3, 4, 5),
+
+    /** Use a cubic equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Cubic':       new Equation(6, 7, 8),
+
+    /** Use a quartic equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Quartic':     new Equation(9, 10, 11),
+
+    /** Use a quintic equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Quintic':     new Equation(12, 13, 14),
+
+    /** Use a sinosudial equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Sine':        new Equation(15, 16, 17),
+
+    /** Use a circular equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Circle':      new Equation(18, 19, 20),
+
+    /** Use an exponential equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Exponential': new Equation(21, 22, 23),
+
+    /** Use an elastic equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Elastic':     new Equation(24, 25, 26),
+
+    /** Use a backing equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Back':        new Equation(27, 28, 29),
+
+    /** Use a bouncing equation to transition to the next value over time.
+      *
+      * @memberof Moment.Easing
+      * @public
+      * @constant
+      * @type {Equation}
+      */
+    'Bounce':      new Equation(30, 31, 32)
 };
+
+Moment['Easing'] = Easing;
 
 })();

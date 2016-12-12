@@ -64,6 +64,15 @@ entering the following command into your terminal:
 
     npm install
 
+## Namespacing
+
+All features of the SDK are contained within the [`Moment` namespace](https://somaticlabs.github.io/moment-sdk/Moment.html). This is a
+global object that contains submodules of functionality in their own individual
+namespaces. This is the only global variable exposed by the SDK, and is the
+only global variable you must avoid reassigning. However, we recommend using
+[a self-invoking function](https://stackoverflow.com/questions/592396/what-is-the-purpose-of-a-self-executing-function-in-javascript) for all of
+your code to avoid polluting the global namespace.
+
 ## Typical Development Workflow
 
 ### Creating and Running Tests

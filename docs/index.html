@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Moment.Color.html">Color</a><ul class='methods'><li data-type='method'><a href="Moment.Color.html#blend">blend</a></li><li data-type='method'><a href="Moment.Color.html#intensify">intensify</a></li></ul></li><li><a href="Moment.Effect.html">Effect</a><ul class='methods'><li data-type='method'><a href="Moment.Effect.html#scale">scale</a></li></ul></li><li><a href="Moment.LED.Transition.html">Transition</a></li><li><a href="Moment.Vibration.html">Vibration</a><ul class='methods'><li data-type='method'><a href="Moment.Vibration.html#start">start</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="Moment.html">Moment</a><ul class='methods'><li data-type='method'><a href="Moment.html#.off">off</a></li><li data-type='method'><a href="Moment.html#.on">on</a></li><li data-type='method'><a href="Moment.html#.once">once</a></li><li data-type='method'><a href="Moment.html#.trigger">trigger</a></li></ul></li><li><a href="Moment.Actuators.html">Actuators</a></li><li><a href="Moment.Battery.html">Battery</a><ul class='methods'><li data-type='method'><a href="Moment.Battery.html#.getCharge">getCharge</a></li><li data-type='method'><a href="Moment.Battery.html#.isCharging">isCharging</a></li><li data-type='method'><a href="Moment.Battery.html#.isConnected">isConnected</a></li></ul></li><li><a href="Moment.LED.html">LED</a><ul class='methods'><li data-type='method'><a href="Moment.LED.html#.loopColor">loopColor</a></li><li data-type='method'><a href="Moment.LED.html#.setColor">setColor</a></li><li data-type='method'><a href="Moment.LED.html#.tweenColor">tweenColor</a></li></ul></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Moment.Color.html">Color</a><ul class='methods'><li data-type='method'><a href="Moment.Color.html#blend">blend</a></li><li data-type='method'><a href="Moment.Color.html#intensify">intensify</a></li></ul></li><li><a href="Moment.Effect.html">Effect</a><ul class='methods'><li data-type='method'><a href="Moment.Effect.html#scale">scale</a></li></ul></li><li><a href="Moment.LED.Transition.html">Transition</a></li><li><a href="Moment.Vibration.html">Vibration</a><ul class='methods'><li data-type='method'><a href="Moment.Vibration.html#start">start</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="Moment.html">Moment</a><ul class='methods'><li data-type='method'><a href="Moment.html#.off">off</a></li><li data-type='method'><a href="Moment.html#.on">on</a></li><li data-type='method'><a href="Moment.html#.once">once</a></li><li data-type='method'><a href="Moment.html#.trigger">trigger</a></li></ul></li><li><a href="Moment.Actuators.html">Actuators</a></li><li><a href="Moment.Battery.html">Battery</a><ul class='methods'><li data-type='method'><a href="Moment.Battery.html#.getCharge">getCharge</a></li><li data-type='method'><a href="Moment.Battery.html#.isCharging">isCharging</a></li><li data-type='method'><a href="Moment.Battery.html#.isConnected">isConnected</a></li></ul></li><li><a href="Moment.Easing.html">Easing</a></li><li><a href="Moment.LED.html">LED</a><ul class='methods'><li data-type='method'><a href="Moment.LED.html#.loopColor">loopColor</a></li><li data-type='method'><a href="Moment.LED.html#.setColor">setColor</a></li><li data-type='method'><a href="Moment.LED.html#.tweenColor">tweenColor</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -71,7 +71,13 @@ you can obtain by entering the following command into your terminal:</p>
 as part of the build process.</p>
 <h3>Step 5: Install NPM Dependencies</h3><p>For the rest of our build system, you can install all the necessary software by
 entering the following command into your terminal:</p>
-<pre class="prettyprint source"><code>npm install</code></pre><h2>Typical Development Workflow</h2><h3>Creating and Running Tests</h3><p>Unit tests are run using <a href="https://www.npmjs.com/package/mocha">Mocha</a>, and
+<pre class="prettyprint source"><code>npm install</code></pre><h2>Namespacing</h2><p>All features of the SDK are contained within the <a href="https://somaticlabs.github.io/moment-sdk/Moment.html"><code>Moment</code> namespace</a>. This is a
+global object that contains submodules of functionality in their own individual
+namespaces. This is the only global variable exposed by the SDK, and is the
+only global variable you must avoid reassigning. However, we recommend using
+<a href="https://stackoverflow.com/questions/592396/what-is-the-purpose-of-a-self-executing-function-in-javascript">a self-invoking function</a> for all of
+your code to avoid polluting the global namespace.</p>
+<h2>Typical Development Workflow</h2><h3>Creating and Running Tests</h3><p>Unit tests are run using <a href="https://www.npmjs.com/package/mocha">Mocha</a>, and
 all test files are in the <code>test/</code> folder. Running tests is easy:</p>
 <pre class="prettyprint source"><code>npm test</code></pre><p>To create new tests, you will do one of the following:</p>
 <ol>
@@ -114,7 +120,7 @@ GNU General Public License for more details.</p>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Dec 12 2016 12:34:10 GMT-0700 (DST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Dec 12 2016 14:55:35 GMT-0700 (DST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
