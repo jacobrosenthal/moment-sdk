@@ -22,7 +22,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Moment.Color.html">Color</a><ul class='methods'><li data-type='method'><a href="Moment.Color.html#blend">blend</a></li><li data-type='method'><a href="Moment.Color.html#intensify">intensify</a></li></ul></li><li><a href="Moment.Effect.html">Effect</a><ul class='methods'><li data-type='method'><a href="Moment.Effect.html#scale">scale</a></li></ul></li><li><a href="Moment.LED.Transition.html">Transition</a></li><li><a href="Moment.Vibration.html">Vibration</a><ul class='methods'><li data-type='method'><a href="Moment.Vibration.html#start">start</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="Moment.html">Moment</a><ul class='methods'><li data-type='method'><a href="Moment.html#.off">off</a></li><li data-type='method'><a href="Moment.html#.on">on</a></li><li data-type='method'><a href="Moment.html#.once">once</a></li><li data-type='method'><a href="Moment.html#.trigger">trigger</a></li></ul></li><li><a href="Moment.Accelerometer.html">Accelerometer</a><ul class='methods'><li data-type='method'><a href="Moment.Accelerometer.html#.update">update</a></li></ul></li><li><a href="Moment.Actuators.html">Actuators</a></li><li><a href="Moment.AHRS.html">AHRS</a></li><li><a href="Moment.Battery.html">Battery</a><ul class='methods'><li data-type='method'><a href="Moment.Battery.html#.getCharge">getCharge</a></li><li data-type='method'><a href="Moment.Battery.html#.isCharging">isCharging</a></li><li data-type='method'><a href="Moment.Battery.html#.isConnected">isConnected</a></li></ul></li><li><a href="Moment.Easing.html">Easing</a></li><li><a href="Moment.Gyroscope.html">Gyroscope</a></li><li><a href="Moment.LED.html">LED</a><ul class='methods'><li data-type='method'><a href="Moment.LED.html#.loopColor">loopColor</a></li><li data-type='method'><a href="Moment.LED.html#.setColor">setColor</a></li><li data-type='method'><a href="Moment.LED.html#.tweenColor">tweenColor</a></li></ul></li><li><a href="Moment.Magnetometer.html">Magnetometer</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Moment.Color.html">Color</a><ul class='methods'><li data-type='method'><a href="Moment.Color.html#blend">blend</a></li><li data-type='method'><a href="Moment.Color.html#intensify">intensify</a></li></ul></li><li><a href="Moment.Effect.html">Effect</a><ul class='methods'><li data-type='method'><a href="Moment.Effect.html#scale">scale</a></li></ul></li><li><a href="Moment.LED.Transition.html">Transition</a></li><li><a href="Moment.Vibration.html">Vibration</a><ul class='methods'><li data-type='method'><a href="Moment.Vibration.html#start">start</a></li></ul></li></ul><h3>Namespaces</h3><ul><li><a href="Moment.html">Moment</a><ul class='methods'><li data-type='method'><a href="Moment.html#.off">off</a></li><li data-type='method'><a href="Moment.html#.on">on</a></li><li data-type='method'><a href="Moment.html#.once">once</a></li><li data-type='method'><a href="Moment.html#.trigger">trigger</a></li></ul></li><li><a href="Moment.Accelerometer.html">Accelerometer</a><ul class='methods'><li data-type='method'><a href="Moment.Accelerometer.html#.update">update</a></li></ul></li><li><a href="Moment.Actuators.html">Actuators</a></li><li><a href="Moment.AHRS.html">AHRS</a><ul class='methods'><li data-type='method'><a href="Moment.AHRS.html#.update">update</a></li></ul></li><li><a href="Moment.Battery.html">Battery</a><ul class='methods'><li data-type='method'><a href="Moment.Battery.html#.getCharge">getCharge</a></li><li data-type='method'><a href="Moment.Battery.html#.isCharging">isCharging</a></li><li data-type='method'><a href="Moment.Battery.html#.isConnected">isConnected</a></li></ul></li><li><a href="Moment.Easing.html">Easing</a></li><li><a href="Moment.Gyroscope.html">Gyroscope</a><ul class='methods'><li data-type='method'><a href="Moment.Gyroscope.html#.update">update</a></li></ul></li><li><a href="Moment.LED.html">LED</a><ul class='methods'><li data-type='method'><a href="Moment.LED.html#.loopColor">loopColor</a></li><li data-type='method'><a href="Moment.LED.html#.setColor">setColor</a></li><li data-type='method'><a href="Moment.LED.html#.tweenColor">tweenColor</a></li></ul></li><li><a href="Moment.Magnetometer.html">Magnetometer</a><ul class='methods'><li data-type='method'><a href="Moment.Magnetometer.html#.update">update</a></li></ul></li></ul>
 </nav>
 
 <div id="main">
@@ -89,7 +89,6 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
 
 /** The x-axis measurement from the accelerometer.
   *
-  * @property
   * @name Moment.Accelerometer.x
   * @type {Number}
   * @memberof Moment.Accelerometer
@@ -97,7 +96,6 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
 
 /** The y-axis measurement from the accelerometer.
   *
-  * @property
   * @name Moment.Accelerometer.y
   * @type {Number}
   * @memberof Moment.Accelerometer
@@ -105,7 +103,6 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
 
 /** The z-axis measurement from the accelerometer.
   *
-  * @property
   * @name Moment.Accelerometer.z
   * @type {Number}
   * @memberof Moment.Accelerometer
@@ -122,9 +119,15 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
   */
 Moment['Gyroscope'] = new ThreeAxis("gyroscope");
 
+/** Obtain the latest reading from the gyroscope for the x, y, and z axes.
+  *
+  * @function
+  * @name Moment.Gyroscope.update
+  * @returns {Object} An object containing the x, y, and z gyroscope values
+  */
+
 /** The x-axis measurement from the gyroscope.
   *
-  * @property
   * @name Moment.Gyroscope.x
   * @type {Number}
   * @memberof Moment.Gyroscope
@@ -132,7 +135,6 @@ Moment['Gyroscope'] = new ThreeAxis("gyroscope");
 
 /** The y-axis measurement from the gyroscope.
   *
-  * @property
   * @name Moment.Gyroscope.y
   * @type {Number}
   * @memberof Moment.Gyroscope
@@ -140,7 +142,6 @@ Moment['Gyroscope'] = new ThreeAxis("gyroscope");
 
 /** The z-axis measurement from the gyroscope.
   *
-  * @property
   * @name Moment.Gyroscope.z
   * @type {Number}
   * @memberof Moment.Gyroscope
@@ -155,9 +156,15 @@ Moment['Gyroscope'] = new ThreeAxis("gyroscope");
   */
 Moment['Magnetometer'] = new ThreeAxis("magnetometer");
 
+/** Obtain the latest reading from the magnetometer for the x, y, and z axes.
+  *
+  * @function
+  * @name Moment.Magnetometer.update
+  * @returns {Object} An object containing the x, y, and z magnetometer values
+  */
+
 /** The x-axis measurement from the magnetometer.
   *
-  * @property
   * @name Moment.Magnetometer.x
   * @type {Number}
   * @memberof Moment.Magnetometer
@@ -165,7 +172,6 @@ Moment['Magnetometer'] = new ThreeAxis("magnetometer");
 
 /** The y-axis measurement from the magnetometer.
   *
-  * @property
   * @name Moment.Magnetometer.y
   * @type {Number}
   * @memberof Moment.Magnetometer
@@ -173,7 +179,6 @@ Moment['Magnetometer'] = new ThreeAxis("magnetometer");
 
 /** The z-axis measurement from the magnetometer.
   *
-  * @property
   * @name Moment.Magnetometer.z
   * @type {Number}
   * @memberof Moment.Magnetometer
@@ -188,9 +193,15 @@ Moment['Magnetometer'] = new ThreeAxis("magnetometer");
   */
 Moment['AHRS'] = new ThreeAxis("ahrs");
 
+/** Obtain the latest processed AHRS position for the x, y, and z axes.
+  *
+  * @function
+  * @name Moment.AHRS.update
+  * @returns {Object} An object containing the x, y, and z AHRS values
+  */
+
 /** The x-axis measurement obtained from processed IMU data.
   *
-  * @property
   * @name Moment.AHRS.x
   * @type {Number}
   * @memberof Moment.AHRS
@@ -198,7 +209,6 @@ Moment['AHRS'] = new ThreeAxis("ahrs");
 
 /** The y-axis measurement obtained from processed IMU data.
   *
-  * @property
   * @name Moment.AHRS.y
   * @type {Number}
   * @memberof Moment.AHRS
@@ -206,7 +216,6 @@ Moment['AHRS'] = new ThreeAxis("ahrs");
 
 /** The z-axis measurement obtained from processed IMU data.
   *
-  * @property
   * @name Moment.AHRS.z
   * @type {Number}
   * @memberof Moment.AHRS
@@ -225,7 +234,7 @@ Moment['AHRS'] = new ThreeAxis("ahrs");
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Dec 12 2016 15:51:10 GMT-0700 (DST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon Dec 12 2016 15:54:28 GMT-0700 (DST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

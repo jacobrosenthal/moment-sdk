@@ -50,7 +50,6 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
 
 /** The x-axis measurement from the accelerometer.
   *
-  * @property
   * @name Moment.Accelerometer.x
   * @type {Number}
   * @memberof Moment.Accelerometer
@@ -58,7 +57,6 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
 
 /** The y-axis measurement from the accelerometer.
   *
-  * @property
   * @name Moment.Accelerometer.y
   * @type {Number}
   * @memberof Moment.Accelerometer
@@ -66,7 +64,6 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
 
 /** The z-axis measurement from the accelerometer.
   *
-  * @property
   * @name Moment.Accelerometer.z
   * @type {Number}
   * @memberof Moment.Accelerometer
@@ -83,9 +80,15 @@ Moment['Accelerometer'] = new ThreeAxis("accelerometer");
   */
 Moment['Gyroscope'] = new ThreeAxis("gyroscope");
 
+/** Obtain the latest reading from the gyroscope for the x, y, and z axes.
+  *
+  * @function
+  * @name Moment.Gyroscope.update
+  * @returns {Object} An object containing the x, y, and z gyroscope values
+  */
+
 /** The x-axis measurement from the gyroscope.
   *
-  * @property
   * @name Moment.Gyroscope.x
   * @type {Number}
   * @memberof Moment.Gyroscope
@@ -93,7 +96,6 @@ Moment['Gyroscope'] = new ThreeAxis("gyroscope");
 
 /** The y-axis measurement from the gyroscope.
   *
-  * @property
   * @name Moment.Gyroscope.y
   * @type {Number}
   * @memberof Moment.Gyroscope
@@ -101,7 +103,6 @@ Moment['Gyroscope'] = new ThreeAxis("gyroscope");
 
 /** The z-axis measurement from the gyroscope.
   *
-  * @property
   * @name Moment.Gyroscope.z
   * @type {Number}
   * @memberof Moment.Gyroscope
@@ -116,9 +117,15 @@ Moment['Gyroscope'] = new ThreeAxis("gyroscope");
   */
 Moment['Magnetometer'] = new ThreeAxis("magnetometer");
 
+/** Obtain the latest reading from the magnetometer for the x, y, and z axes.
+  *
+  * @function
+  * @name Moment.Magnetometer.update
+  * @returns {Object} An object containing the x, y, and z magnetometer values
+  */
+
 /** The x-axis measurement from the magnetometer.
   *
-  * @property
   * @name Moment.Magnetometer.x
   * @type {Number}
   * @memberof Moment.Magnetometer
@@ -126,7 +133,6 @@ Moment['Magnetometer'] = new ThreeAxis("magnetometer");
 
 /** The y-axis measurement from the magnetometer.
   *
-  * @property
   * @name Moment.Magnetometer.y
   * @type {Number}
   * @memberof Moment.Magnetometer
@@ -134,7 +140,6 @@ Moment['Magnetometer'] = new ThreeAxis("magnetometer");
 
 /** The z-axis measurement from the magnetometer.
   *
-  * @property
   * @name Moment.Magnetometer.z
   * @type {Number}
   * @memberof Moment.Magnetometer
@@ -149,9 +154,15 @@ Moment['Magnetometer'] = new ThreeAxis("magnetometer");
   */
 Moment['AHRS'] = new ThreeAxis("ahrs");
 
+/** Obtain the latest processed AHRS position for the x, y, and z axes.
+  *
+  * @function
+  * @name Moment.AHRS.update
+  * @returns {Object} An object containing the x, y, and z AHRS values
+  */
+
 /** The x-axis measurement obtained from processed IMU data.
   *
-  * @property
   * @name Moment.AHRS.x
   * @type {Number}
   * @memberof Moment.AHRS
@@ -159,7 +170,6 @@ Moment['AHRS'] = new ThreeAxis("ahrs");
 
 /** The y-axis measurement obtained from processed IMU data.
   *
-  * @property
   * @name Moment.AHRS.y
   * @type {Number}
   * @memberof Moment.AHRS
@@ -167,7 +177,6 @@ Moment['AHRS'] = new ThreeAxis("ahrs");
 
 /** The z-axis measurement obtained from processed IMU data.
   *
-  * @property
   * @name Moment.AHRS.z
   * @type {Number}
   * @memberof Moment.AHRS
