@@ -41,8 +41,8 @@ Change the working directory:
 
 ### Step 1: Install NPM
 
-Follow the instructions on [https://www.npmjs.com/](https://www.npmjs.com/) to install NPM for your
-operating system.
+Follow this [Getting Started Guide](https://docs.npmjs.com/getting-started/installing-node) to
+install NPM for your operating system.
 
 ### Step 2: Install Gulp
 
