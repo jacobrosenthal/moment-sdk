@@ -64,7 +64,7 @@ function Effect(start, end, func, duration, position) {
     this.position = position || 0;
 }
 
-/** The default gray color in the LED color palette: #646464
+/** The default effect for turning off an individual motor.
   *
   * @memberof Moment.Effect
   * @name Moment.Effect.OFF
@@ -111,7 +111,7 @@ Moment['Effect'] = Effect;
   * @constructor
   * @param {number} pin - The pin ID of the motor to vibrate
   * @param {Effect} effect - The effect to apply to the motor
-  * @param {number} delay - Milliseconds before starting the vibration
+  * @param {number} delay - Milliseconds before starting the vibration (optional)
   * @memberof Moment
   *
   * @example

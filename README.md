@@ -41,8 +41,8 @@ Change the working directory:
 
 ### Step 1: Install NPM
 
-Follow the instructions on [https://www.npmjs.com/](https://www.npmjs.com/) to install NPM for your
-operating system.
+Follow this [Getting Started Guide](https://docs.npmjs.com/getting-started/installing-node) to
+install NPM for your operating system.
 
 ### Step 2: Install Gulp
 
@@ -101,10 +101,10 @@ To generate documentation for your code, simply run the following command:
 
 ### Compiling with Closure Compiler
 
-The last step before the SDK code can be used onboard Moment is compilation
+The last step before the SDK code can be used on-board Moment is compilation
 using the
 [Google Closure Compiler](https://github.com/google/closure-compiler/).
-The Closure Compiler is configured to use all of itsadvanced optimizations,
+The Closure Compiler is configured to use all of its advanced optimizations,
 and will also enforce several code style rules to allow for aggressive size
 reduction and optimization. To compile the JavaScript source for the SDK, run the following command:
 
