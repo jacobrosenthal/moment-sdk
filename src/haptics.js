@@ -28,7 +28,7 @@ var Moment = Function('return this')()['Moment'];
   * @param {number} end - The ending intensity of the motor (0-100)
   * @param {number} func - The ID of the easing equation to use for the effect
   * @param {number} duration - The duration of effect in milliseconds
-  * @param {number} position - Starting position in milliseconds (optional)
+  * @param {number=} position - Starting position in milliseconds (optional)
   * @memberof Moment
   *
   * @example
@@ -111,7 +111,7 @@ Moment['Effect'] = Effect;
   * @constructor
   * @param {number} pin - The pin ID of the motor to vibrate
   * @param {Effect} effect - The effect to apply to the motor
-  * @param {number} delay - Milliseconds before starting the vibration (optional)
+  * @param {number=} delay - Milliseconds before starting the vibration (optional)
   * @memberof Moment
   *
   * @example

@@ -25,7 +25,7 @@ var Moment = Function('return this')()['Moment'];
   *
   * @constructor
   */
-function ThreeAxis(type) {
+function ThreeAxis() {
 }
 
 ThreeAxis['prototype']['x'] = 0;
