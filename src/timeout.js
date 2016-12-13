@@ -252,8 +252,7 @@ Moment['_run_timers'] = function () {
 /** This event is fired every time the timer is incremented - typically, the
   * timer is incremented every 10ms, providing resolution to a hundredth of a
   * second, but all timer-related API's (including the `Moment.uptime()`
-  * function) make use of millisecond values in the API calls. In a future
-  * firmware update, the precision of the timer may be increased to 10ms.
+  * function) make use of millisecond values in the API calls.
   *
   * @event Moment.timertick
   * @memberof Moment
