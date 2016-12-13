@@ -39,21 +39,21 @@ var LED = Moment['LED'] = {};
   *
   * @example
   * // a 500ms quadratic transition to an orange color
-  * var orangeTransition = new Moment.Transition(
+  * var orangeTransition = new Moment.LED.Transition(
   *     new Moment.Color(0xff, 0x99, 0x33),
   *     Moment.Easing.Quadratic.in,
   *     500
   * );
   * @example
   * // a 100ms inverse exponential transition to a green color
-  * var greenTransition = new Moment.Transition(
+  * var greenTransition = new Moment.LED.Transition(
   *     new Moment.Color(0x00, 0x88, 0x11),
   *     Moment.Easing.Exponential.out,
   *     100
   * );
   * @example
   * // a 200ms combined sinosudial transition to a white color
-  * var whiteTransition = new Moment.Transition(
+  * var whiteTransition = new Moment.LED.Transition(
   *     new Moment.Color(0xff, 0xff, 0xff),
   *     Moment.Easing.Sine.combined,
   *     200
@@ -99,7 +99,7 @@ LED['setColor'] = function (color) {
   *
   * @example
   * // a 500ms quadratic transition to an orange color
-  * var orangeTransition = new Moment.Transition(
+  * var orangeTransition = new Moment.LED.Transition(
   *     new Moment.Color(0xff, 0x99, 0x33),
   *     Moment.Easing.Quadratic.in,
   *     500
@@ -108,7 +108,7 @@ LED['setColor'] = function (color) {
   *
   * @example
   * // a 100ms inverse exponential transition to a green color
-  * var greenTransition = new Moment.Transition(
+  * var greenTransition = new Moment.LED.Transition(
   *     new Moment.Color(0x00, 0x88, 0x11),
   *     Moment.Easing.Exponential.out,
   *     100
@@ -117,7 +117,7 @@ LED['setColor'] = function (color) {
   *
   * @example
   * // a 200ms combined sinosudial transition to a white color
-  * var whiteTransition = new Moment.Transition(
+  * var whiteTransition = new Moment.LED.Transition(
   *     new Moment.Color(0xff, 0xff, 0xff),
   *     Moment.Easing.Sine.combined,
   *     200
@@ -147,13 +147,13 @@ LED['tweenColor'] = function (transition) {
   * @example
   * // loop between a 500ms quadratic transition to an orange color
   * // and a 100ms inverse exponential transition to a green color
-  * var orangeTransition = new Moment.Transition(
+  * var orangeTransition = new Moment.LED.Transition(
   *     new Moment.Color(0xff, 0x99, 0x33),
   *     Moment.Easing.Quadratic.in,
   *     500
   * );
   *
-  * var greenTransition = new Moment.Transition(
+  * var greenTransition = new Moment.LED.Transition(
   *     new Moment.Color(0x00, 0x88, 0x11),
   *     Moment.Easing.Exponential.out,
   *     100
