@@ -66,7 +66,8 @@ function Effect(start, end, func, duration, position) {
 
 /** The default gray color in the LED color palette: #646464
   *
-  * @memberof Effect.OFF
+  * @memberof Moment.Effect
+  * @name Moment.Effect.OFF
   * @public
   * @constant
   * @type {Effect}
