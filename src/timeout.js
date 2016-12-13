@@ -21,6 +21,10 @@
 
 var Moment = Function('return this')()['Moment'];
 
+/** Provides the prototype for a timer callback object.
+  *
+  * @constructor
+  */
 function Timer(fn, timeout) {
     this.fn = fn;
     this.timeout = timeout;
