@@ -48,6 +48,14 @@ Moment['Accelerometer'] = new ThreeAxis();
   * @property {Number} x - The x-axis reading value
   * @property {Number} y - The y-axis reading value
   * @property {Number} z - The z-axis reading value
+  *
+  * @example
+  * Moment.on("accelerometer", function () {
+  *     // replace doSomething with your own code
+  *     doSomething(Moment.Accelerometer.x); // x-axis value
+  *     doSomething(Moment.Accelerometer.y); // y-axis value
+  *     doSomething(Moment.Accelerometer.z); // z-axis value
+  * });
  */
 
 /** The x-axis measurement from the accelerometer.
@@ -91,6 +99,14 @@ Moment['Gyroscope'] = new ThreeAxis();
   * @property {Number} x - The x-axis reading value
   * @property {Number} y - The y-axis reading value
   * @property {Number} z - The z-axis reading value
+  *
+  * @example
+  * Moment.on("gyroscope", function () {
+  *     // replace doSomething with your own code
+  *     doSomething(Moment.Gyroscope.x); // x-axis value
+  *     doSomething(Moment.Gyroscope.y); // y-axis value
+  *     doSomething(Moment.Gyroscope.z); // z-axis value
+  * });
  */
 
 /** The x-axis measurement from the gyroscope.
@@ -132,6 +148,14 @@ Moment['Magnetometer'] = new ThreeAxis();
   * @property {Number} x - The x-axis reading value
   * @property {Number} y - The y-axis reading value
   * @property {Number} z - The z-axis reading value
+  *
+  * @example
+  * Moment.on("magnetometer", function () {
+  *     // replace doSomething with your own code
+  *     doSomething(Moment.Magnetometer.x); // x-axis value
+  *     doSomething(Moment.Magnetometer.y); // y-axis value
+  *     doSomething(Moment.Magnetometer.z); // z-axis value
+  * });
  */
 
 /** The x-axis measurement from the magnetometer.
@@ -175,6 +199,14 @@ Moment['AHRS'] = new ThreeAxis();
   * @property {Number} x - The x-axis reading value
   * @property {Number} y - The y-axis reading value
   * @property {Number} z - The z-axis reading value
+  *
+  * @example
+  * Moment.on("ahrs", function () {
+  *     // replace doSomething with your own code
+  *     doSomething(Moment.AHRS.x); // x-axis value
+  *     doSomething(Moment.AHRS.y); // y-axis value
+  *     doSomething(Moment.AHRS.z); // z-axis value
+  * });
  */
 
 /** The x-axis measurement obtained from processed IMU data.
