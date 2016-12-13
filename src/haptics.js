@@ -64,7 +64,7 @@ function Effect(start, end, func, duration, position) {
     this.position = position || 0;
 }
 
-/** The default gray color in the LED color palette: #646464
+/** The default effect for turning off an individual motor.
   *
   * @memberof Moment.Effect
   * @name Moment.Effect.OFF
