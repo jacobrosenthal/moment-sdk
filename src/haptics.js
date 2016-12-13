@@ -109,7 +109,7 @@ Moment['Effect'] = Effect;
   * timeline of effects.
   *
   * @constructor
-  * @param {number} pin - The pin ID of the motor to vibrate
+  * @param {Number|Object} pin - The pin ID of the motor to vibrate
   * @param {Effect} effect - The effect to apply to the motor
   * @param {number=} delay - Milliseconds before starting the vibration (optional)
   * @memberof Moment
