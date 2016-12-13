@@ -29,6 +29,32 @@ function Timer(fn, timeout) {
 var timeouts = [];
 var intervals = [];
 
+/** Schedule a callback function to be executed after a certain number of
+  * milliseconds. `Moment.setTimeout` will execute the callback a single time,
+  * similar to the `window.setTimeout` function available in many JavaScript
+  * runtime environments. Although the value for the timeout is set in
+  * milliseconds, millisecond-level precision is not always guaranteed. Under
+  * most circumstances, the timeout will execute within 10ms of the specified
+  * time - software should be designed with the assumption of 10ms precision
+  * for timers.
+  *
+  * @memberof Moment
+  * @name Moment.setTimeout
+  * @method
+  * @static
+  *
+  * @param {Function} fn - The callback function to execute
+  * @param {Number} timeout - The number of milliseconds before execution
+  *
+  * @example
+  * function setOrange() {
+  *     // set the LED color to orange
+  *     Moment.LED.setColor(Moment.Color.ORANGE);
+  * };
+  *
+  * // turn LED orange after 10 seconds
+  * Moment.setTimeout(setOrange, 10000);
+  */
 Moment['setTimeout'] = function (fn, timeout) {
     timeout += Moment.uptime();
 
@@ -45,6 +71,47 @@ Moment['setTimeout'] = function (fn, timeout) {
     return t;
 };
 
+/** Schedule a callback function to be executed after every elapsed interval of
+  * milliseconds. `Moment.setInterval` will execute the callback indefinitely,
+  * similar to the `window.setInterval` function available in many JavaScript
+  * runtime environments. Although the value for the interval is set in
+  * milliseconds, millisecond-level precision is not always guaranteed. Under
+  * most circumstances, the interval will execute within 10ms of the specified
+  * time - software should be designed with the assumption of 10ms precision
+  * for timers.
+  *
+  * @memberof Moment
+  * @name Moment.setInterval
+  * @method
+  * @static
+  *
+  * @param {Function} fn - The callback function to execute
+  * @param {Number} timeout - The number of milliseconds between executions
+  *
+  * @example
+  * function setOrange() {
+  *     // set the LED color to orange
+  *     Moment.LED.setColor(Moment.Color.ORANGE);
+  * };
+  *
+  * function turnOff() {
+  *     // turn off LED
+  *     Moment.LED.setColor(Moment.Color.BLACK);
+  * };
+  *
+  * var on = false;
+  * function blink() {
+  *     if (on) {
+  *         turnOff();
+  *     }
+  *     else {
+  *         setOrange();
+  *     }
+  * }
+  *
+  * // blink LED (1 second on, 1 second off)
+  * Moment.setInterval(blink, 10000);
+  */
 Moment['setInterval'] = function (fn, timeout) {
     var t = new Timer(fn, timeout),
         i = 0,
@@ -60,6 +127,25 @@ Moment['setInterval'] = function (fn, timeout) {
     return t;
 };
 
+/** Removes a callback function from the queue of timeouts to be executed
+  * `Moment.clearTimeout` will delete the timeout and prevent it from running
+  * similar to the `window.clearTimeout` function available in many JavaScript
+  * runtime environments.
+  *
+  * @memberof Moment
+  * @name Moment.clearTimeout
+  * @method
+  * @static
+  *
+  * @param {Timer} t - The timeout to clear
+  *
+  * @example
+  * // setOrange is from the `Moment.setTimeout` example
+  * // turn LED orange after 10 seconds
+  * var t = Moment.setTimeout(setOrange, 10000);
+  * // prevent timeout from executing
+  * Moment.clearTimeout(t);
+  */
 Moment['clearTimeout'] = function (t) {
     var i = 0, len = timeouts.length;
 
@@ -71,6 +157,25 @@ Moment['clearTimeout'] = function (t) {
     }
 };
 
+/** Removes an interval function from the queue of intervals to be executed
+  * `Moment.clearInterval` will delete the interval and prevent it from running
+  * similar to the `window.clearInterval` function available in many JavaScript
+  * runtime environments.
+  *
+  * @memberof Moment
+  * @name Moment.clearInterval
+  * @method
+  * @static
+  *
+  * @param {Timer} t - The interval to clear
+  *
+  * @example
+  * // blink is from the `Moment.setInterval` example
+  * // blink LED orange for 1 second on/off intervals
+  * var t = Moment.setInterval(blink, 10000);
+  * // prevent interval from executing
+  * Moment.clearInterval(t);
+  */
 Moment['clearInterval'] = function (t) {
     var i = 0, len = intervals.length;
 
@@ -133,6 +238,13 @@ Moment['_run_timers'] = function () {
   * @method
   * @static
   * @returns {Number} Milliseconds since device was turned on
+  *
+  * @example
+  * var ms = Moment.uptime(); // get milliseconds of uptime
+  * if (ms > 60000) {
+  *     // set LED color to orange after the device is on for a minute
+  *     Moment.LED.setColor(Moment.Color.ORANGE);
+  * }
   */
 
 /** This event is fired every time the timer is incremented - typically, the
@@ -143,6 +255,12 @@ Moment['_run_timers'] = function () {
   *
   * @event Moment.timertick
   * @memberof Moment
+  *
+  * @example
+  * Moment.on("timertick", function () {
+  *     var ms = Moment.uptime();
+  *     // do something time-related here
+  * });
   */
 
 })();
