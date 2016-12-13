@@ -23,4 +23,36 @@ var assert = require('assert'),
 
 
 describe('Moment IMU', function () {
+    describe('#Accelerometer', function () {
+        it('should exist with 3-axis measurements', function () {
+            assert.ok(Moment.Accelerometer);
+            assert.equal(Moment.Accelerometer.x, 0);
+            assert.equal(Moment.Accelerometer.y, 0);
+            assert.equal(Moment.Accelerometer.z, 0);
+        });
+    });
+    describe('#Gyroscope', function () {
+        it('should exist with 3-axis measurements', function () {
+            assert.ok(Moment.Gyroscope);
+            assert.equal(Moment.Gyroscope.x, 0);
+            assert.equal(Moment.Gyroscope.y, 0);
+            assert.equal(Moment.Gyroscope.z, 0);
+        });
+    });
+    describe('#Magnetometer', function () {
+        it('should exist with 3-axis measurements', function () {
+            assert.ok(Moment.Magnetometer);
+            assert.equal(Moment.Magnetometer.x, 0);
+            assert.equal(Moment.Magnetometer.y, 0);
+            assert.equal(Moment.Magnetometer.z, 0);
+        });
+    });
+    describe('#AHRS', function () {
+        it('should exist with 3-axis measurements', function () {
+            assert.ok(Moment.AHRS);
+            assert.equal(Moment.AHRS.x, 0);
+            assert.equal(Moment.AHRS.y, 0);
+            assert.equal(Moment.AHRS.z, 0);
+        });
+    });
 });
