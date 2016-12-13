@@ -134,13 +134,6 @@ Moment['Magnetometer'] = new ThreeAxis();
   * @property {Number} z - The z-axis reading value
  */
 
-/** Obtain the latest reading from the magnetometer for the x, y, and z axes.
-  *
-  * @function
-  * @name Moment.Magnetometer.update
-  * @returns {Object} An object containing the x, y, and z magnetometer values
-  */
-
 /** The x-axis measurement from the magnetometer.
   *
   * @name Moment.Magnetometer.x
