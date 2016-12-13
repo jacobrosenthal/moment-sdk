@@ -187,12 +187,14 @@ Moment['clearInterval'] = function (t) {
     }
 };
 
+/***Triggers the execution of timers.
+  */
 Moment['_run_timers'] = function () {
-    var i,
-        k,
-        len,
-        m,
-        t;
+    var i, // index for timeouts and intervals while looping
+        j, // index for interval sorting loop
+        len, // length of array while looping
+        m, // current uptime in ms
+        t; // temporary storage for Timer object
 
     m = Moment['uptime']();
 
