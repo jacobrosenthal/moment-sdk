@@ -21,6 +21,10 @@
 
 var Moment = Function('return this')()['Moment'];
 
+/** Provides the prototype for a 3-axis measurement object.
+  *
+  * @constructor
+  */
 function ThreeAxis(type) {
 }
 
