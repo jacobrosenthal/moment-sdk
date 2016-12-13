@@ -79,7 +79,7 @@ function Effect(start, end, func, duration, position) {
   *     Moment.Effect.OFF
   * );
   */
-Effect['OFF'] = new Effect(0, 0, Moment.Easing.Step.out, 10);
+Effect['OFF'] = new Effect(0, 0, Moment['Easing']['Step']['out'], 10);
 
 /** Scales the duration of an Effect object and rounds to the nearest
   * millisecond.
