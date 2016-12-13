@@ -64,6 +64,22 @@ function Effect(start, end, func, duration, position) {
     this.position = position || 0;
 }
 
+/** The default gray color in the LED color palette: #646464
+  *
+  * @memberof Effect.OFF
+  * @public
+  * @constant
+  * @type {Effect}
+  *
+  * @example
+  * // turn off the top left motor
+  * var tlOff = new Vibration(
+  *     Moment.Actuators.topLeft,
+  *     Moment.Effect.OFF
+  * );
+  */
+Effect['OFF'] = new Effect(0, 0, Moment.Easing.Step.out, 10);
+
 /** Scales the duration of an Effect object and rounds to the nearest
   * millisecond.
   *
