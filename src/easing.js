@@ -21,6 +21,10 @@
 
 var Moment = Function('return this')()['Moment'];
 
+/** Provides the prototype for an equation object.
+  *
+  * @constructor
+  */
 function Equation(ineq, out, combined) {
     var self = this;
     self['in'] = ineq;
