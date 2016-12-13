@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>events.js - Documentation</title>
+    <title>time.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">events.js</h1>
+    <h1 class="page-title">time.js</h1>
     
 
     
@@ -60,129 +60,80 @@
 
 var Moment = Function('return this')()['Moment'];
 
-/** A map of event ID's to arrays of event handlers.
-  */
-var handlers = {};
+function Timer(fn, timeout) {
+    this.fn = fn;
+    this.timeout = timeout;
+}
 
-/** Attach an event handler to a specific event ID to execute when the event
-  * is triggered.
-  *
-  * @memberof Moment
-  * @name Moment.on
-  * @method
-  * @static
-  *
-  * @param {string} event - The event identifier string
-  * @param {Function} fn - The callback function to execute
-  *
-  * @example
-  * Moment.on("ble.connected", function () {
-  *     // set LED color to blue when Bluetooth is connected
-  *     Moment.LED.setColor(Moment.Color.BLUE);
-  * });
-  */
-Moment['on'] = function (event, fn) {
-    if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
-        handlers[event].push(fn); // append to array of event handlers
+var timeouts = [];
+var intervals = [];
+
+Moment['setTimeout'] = function (fn, timeout) {
+    timeout += Moment.uptime();
+
+    var t = new Timer(fn, timeout),
+        i = 0,
+        len = timeouts.length;
+
+    while (i &lt; len &amp;&amp; timeouts[i].timeout &lt;= t.timeout) {
+        i += 1;
     }
-    else {
-        handlers[event] = [fn]; // initialize an array to store event handlers
-    }
+
+    timeouts.splice(i, 0, t);
+
+    return t;
 };
 
-/** Remove an event handler from a specific event ID to avoid execution when
-  * the event is triggered.
-  *
-  * @memberof Moment
-  * @name Moment.off
-  * @method
-  * @static
-  *
-  * @param {string} event - The event identifier string
-  * @param {Function} fn - The callback function to remove
-  *
-  * @example
-  * function onConnect() {
-  *     // set LED color to blue when Bluetooth is connected
-  *     Moment.LED.setColor(Moment.Color.BLUE);
-  * }
-  *
-  * Moment.on("ble.connected", onConnect); // attach event handler
-  * Moment.off("ble.connected", onConnect); // remove event handler
-  */
-Moment['off'] = function (event, fn) {
-    var funcs, // stores the array of attached event handlers
-        index; // stores the index of the function to remove
+Moment['setInterval'] = function (fn, timeout) {
+    var t = new Timer(fn, timeout);
+    t.clock = 0;
+    intervals.push(t);
+    return t;
+};
 
-    if (handlers.hasOwnProperty(event)) { // if event handlers exist for ID
-        funcs = handlers[event];
-        index = funcs.indexOf(fn);
+Moment['clearTimeout'] = function (t) {
+    var i = 0, len = timeouts.length;
 
-        if (index >= 0) {
-            funcs.splice(index, 1); // remove the event handler
+    for (i = 0; i &lt; len; i += 1) {
+        if (timeouts[i] == t) {
+            timeouts.splice(i, 1);
+            break;
         }
     }
 };
 
-/** Attach an event handler to a specific event ID to only be executed once -
-  * the next trigger of the event - and subsequently removed before it can
-  * be executed again.
-  *
-  * @memberof Moment
-  * @name Moment.once
-  * @method
-  * @static
-  *
-  * @param {string} event - The event identifier string
-  * @param {Function} fn - The callback function to execute
-  *
-  * @example
-  * Moment.once("init", function () {
-  *     // set LED color to orange when Moment turns on
-  *     Moment.LED.setColor(Moment.Color.ORANGE);
-  * });
-  */
-Moment['once'] = function (event, fn) {
-    // create a function that removes the attached event after trigger
-    function newFunc() {
-        fn();
-        Moment['off'](event, newFunc);
-    }
+Moment['clearInterval'] = function (t) {
+    var i = 0, len = intervals.length;
 
-    Moment['on'](event, newFunc);
-};
-
-/** Trigger the event with a particular ID - begin execution of all attached
-  * handlers for the event.
-  *
-  * @memberof Moment
-  * @name Moment.trigger
-  * @method
-  * @static
-  *
-  * @param {string} event - The event identifier string
-  *
-  * Moment.on("myEvent", function () {
-  *     // do something here
-  * });
-  *
-  * // trigger myEvent
-  * Moment.trigger("myEvent");
-  */
-Moment['trigger'] = function (event) {
-    var funcs,
-        index,
-        len;
-
-    if (handlers.hasOwnProperty(event)) {
-        funcs = handlers[event];
-        len = funcs.length;
-
-        for (index = 0; index &lt; len; index += 1) {
-            funcs[index]();
+    for (i = 0; i &lt; len; i += 1) {
+        if (intervals[i] == t) {
+            intervals.splice(i, 1);
+            break;
         }
     }
 };
+
+/** This function returns the number of milliseconds during which the device
+  * has been turned on. It is the basis for most other timer features in the
+  * Moment SDK.
+  *
+  * @function
+  * @name Moment.uptime
+  * @memberof Moment
+  * @method
+  * @static
+  * @returns {Number} Milliseconds since device was turned on
+  */
+
+/** This event is fired every time the timer is incremented - typically, the
+  * timer is incremented every 10ms, providing resolution to a hundredth of a
+  * second, but all timer-related API's (including the `Moment.uptime()`
+  * function) make use of millisecond values in the API calls. In a future
+  * firmware update, the precision of the timer may be increased to 10ms.
+  *
+  * @event Moment.timertick
+  * @memberof Moment
+  */
 
 })();
 </code></pre>
@@ -197,7 +148,7 @@ Moment['trigger'] = function (event) {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Dec 13 2016 11:53:49 GMT-0700 (DST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Dec 13 2016 11:39:56 GMT-0700 (DST) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
