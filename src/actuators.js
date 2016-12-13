@@ -21,6 +21,10 @@
 
 var Moment = Function('return this')()['Moment'];
 
+/** Provides the prototype for an actuator object.
+  *
+  * @constructor
+  */
 function Actuator(pin) {
     this.pin = pin;
 }
