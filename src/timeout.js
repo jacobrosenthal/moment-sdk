@@ -60,7 +60,7 @@ var intervals = [];
   * Moment.setTimeout(setOrange, 10000);
   */
 Moment['setTimeout'] = function (fn, timeout) {
-    timeout += Moment.uptime();
+    timeout += Moment['uptime']();
 
     var t = new Timer(fn, timeout),
         i = 0,
@@ -120,7 +120,7 @@ Moment['setInterval'] = function (fn, timeout) {
     var t = new Timer(fn, timeout),
         i = 0,
         len = intervals.length;
-    t.next = Moment.uptime() + timeout;
+    t.next = Moment['uptime']() + timeout;
 
     while (i < len && intervals[i].next <= t.next) {
         i += 1;
