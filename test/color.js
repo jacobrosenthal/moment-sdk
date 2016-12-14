@@ -65,6 +65,7 @@ describe('Moment colors', function () {
 
     describe('color presets', function() {
         it('must contain valid color values', function () {
+            // checks that the color values are within range
             function checkColor(c) {
                 assert.ok(c.red <= 255);
                 assert.ok(c.red >= 0);
@@ -74,6 +75,7 @@ describe('Moment colors', function () {
                 assert.ok(c.blue >= 0);
             }
 
+            // check that all the preset colors exist
             checkColor(Moment.Color.ORANGE);
             checkColor(Moment.Color.RED);
             checkColor(Moment.Color.PINK);
