@@ -43,6 +43,13 @@ describe('Moment colors', function () {
         });
     });
 
+    describe('#clone()', function () {
+        it('clones a color object', function () {
+            var redder = Moment.Color.RED.clone().intensify(1.2);
+            assert.ok(redder != Moment.Color.RED);
+        });
+    });
+
     describe('#blend()', function () {
         it('blends two colors together', function () {
             var newColor = new Moment.Color(100, 120, 140);

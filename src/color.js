@@ -45,6 +45,27 @@ function Color(red, green, blue) {
     this.blue = blue;
 }
 
+/** Clone a `Color` object to allow direct manipulation of the properties of
+  * a copy of the object.
+  *
+  * @public
+  * @memberof Moment.Color
+  * @method
+  * @name Moment.Color#clone
+  * @returns {Color}
+  *
+  * @example
+  * var redder = Moment.Color.RED.clone().intensify(1.2);
+  * redder != Moment.Color.RED // true
+  */
+Color['prototype']['clone'] = function () {
+    return new Color(
+        this.red,
+        this.green,
+        this.blue
+    );
+};
+
 /** Ensures a color value is an integer between 0 and 255.
   */
 function minMax(number) {
@@ -67,6 +88,7 @@ function minMax(number) {
   * @memberof Moment.Color
   * @method
   * @name Moment.Color#intensify
+  * @returns {Color}
   *
   * @example
   * // represents the color #224466
@@ -86,6 +108,7 @@ Color['prototype']['intensify'] = function (multiplier) {
     this.red = minMax(multiplier * this.red);
     this.green = minMax(multiplier * this.green);
     this.blue = minMax(multiplier * this.blue);
+    return this;
 };
 
 /** Blends a new color in using a multiplier value betwee 0.0 and 1.0 to
@@ -99,6 +122,7 @@ Color['prototype']['intensify'] = function (multiplier) {
   * @memberof Moment.Color
   * @method
   * @name Moment.Color#blend
+  * @returns {Color}
   *
   * @example
   * // represents the color #ffffff
@@ -118,6 +142,7 @@ Color['prototype']['blend'] = function (color, multiplier) {
     this.red = minMax(multiplier * color.red + invMult * this.red);
     this.green = minMax(multiplier * color.green + invMult * this.green);
     this.blue = minMax(multiplier * color.blue + invMult * this.blue);
+    return this;
 };
 
 /** The default orange color in the LED color palette: #fdaa00

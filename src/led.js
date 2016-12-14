@@ -65,6 +65,58 @@ function Transition (color, func, duration) {
     this.duration = duration;
 }
 
+/** Scales the duration of an Transition object and rounds to the nearest
+  * millisecond.
+  *
+  * @memberof Moment.LED.Transition
+  * @name Moment.LED.Transition#scale
+  * @method
+  * @param {number} multiplier - The multiplier for the duration of effect
+  * @returns {Transition}
+  *
+  * @example
+  * var quickPulse = new Moment.LED.Transition(
+  *     new Moment.Color(0xff, 0x99, 0x33),
+  *     Moment.Easing.Quadratic.in,
+  *     500
+  * );
+  * quickPulse.scale(1.2); // duration is now 600ms
+  */
+Transition['prototype']['scale'] = function (multiplier) {
+    this.duration = Math.round(multiplier * this.duration);
+    return this;
+};
+
+/** Returns a new instance of `Transition` with the exact same parameters, allowing
+  * direct manipulation of a copy of the effect (e.g. changing the easing or
+  * duration) without modifying all of the references to the old object.
+  *
+  * @memberof Moment.LED.Transition
+  * @name Moment.LED.Transition#clone
+  * @method
+  * @returns {Transition}
+  *
+  * @example
+  * var quickPulse = new Moment.LED.Transition(
+  *     new Moment.Color(0xff, 0x99, 0x33),
+  *     Moment.Easing.Quadratic.in,
+  *     500
+  * );
+  *
+  * var scaled = quickPulse.scale(1.2); // duration is now 600ms
+  * scaled == quickPulse // true
+  *
+  * scaled = quickPulse.clone().scale(1.5); // duration is now 900ms
+  * scaled == quickPulse //false
+  */
+Transition['prototype']['clone'] = function () {
+    return new Transition(
+        this.color,
+        this.func,
+        this.duration
+    );
+};
+
 LED['Transition'] = Transition;
 
 /** Sets the current color of the LED to a specific value.
