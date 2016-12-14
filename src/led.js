@@ -73,7 +73,7 @@ function Transition (color, func, duration) {
   * @name Moment.LED.Transition#scale
   * @method
   * @param {number} multiplier - The multiplier for the duration of effect
-  * @returns {Transition}
+  * @returns {Transition} `this`, chainable return value
   *
   * @example
   * var quickPulse = new Moment.LED.Transition(

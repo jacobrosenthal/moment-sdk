@@ -89,7 +89,7 @@ Effect['OFF'] = new Effect(0, 0, Moment['Easing']['Step']['out'], 10);
   * @name Moment.Effect#scale
   * @method
   * @param {number} multiplier - The multiplier for the duration of effect
-  * @returns {Effect}
+  * @returns {Effect} `this`, chainable return value
   *
   * @example
   * var quickPulse = new Moment.Effect(
@@ -207,7 +207,7 @@ function Vibration(pin, effect, delay) {
   * @memberof Moment.Vibration
   * @name Moment.Vibration#start
   * @method
-  * @returns {Vibration}
+  * @returns {Vibration} `this`, chainable return value
   *
   * @example
   * var fadeOut = new Moment.Effect(
@@ -268,7 +268,7 @@ Vibration['prototype']['clone'] = function () {
   * @memberof Moment.Vibration
   * @name Moment.Vibration#scale
   * @method
-  * @returns {Vibration}
+  * @returns {Vibration} `this`, chainable return value
   *
   * @example
   * var fadeOut = new Moment.Effect(
