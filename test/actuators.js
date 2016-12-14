@@ -25,9 +25,16 @@ describe('Moment actuators', function () {
 
     describe('#Actuators', function () {
         it('four actuators present', function () {
+            // top left actuator exists in object
             assert.ok(Moment.Actuators.hasOwnProperty("topLeft"));
+
+            // top right actuator exists in object
             assert.ok(Moment.Actuators.hasOwnProperty("topRight"));
+
+            // bottom left actuator exists in object
             assert.ok(Moment.Actuators.hasOwnProperty("bottomLeft"));
+
+            // bottom right actuator exists in object
             assert.ok(Moment.Actuators.hasOwnProperty("bottomRight"));
         });
     });
