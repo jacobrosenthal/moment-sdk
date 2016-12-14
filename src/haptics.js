@@ -88,6 +88,7 @@ Effect['OFF'] = new Effect(0, 0, Moment['Easing']['Step']['out'], 10);
   * @name Moment.Effect#scale
   * @method
   * @param {number} multiplier - The multiplier for the duration of effect
+  * @returns {Effect}
   *
   * @example
   * var quickPulse = new Moment.Effect(
@@ -101,7 +102,41 @@ Effect['OFF'] = new Effect(0, 0, Moment['Easing']['Step']['out'], 10);
 Effect['prototype']['scale'] = function (multiplier) {
     this.duration = Math.round(multiplier * this.duration);
     this.position = Math.round(multiplier * this.position);
-}
+    return this;
+};
+
+/** Returns a new instance of `Effect` with the exact same parameters, allowing
+  * direct manipulation of a copy of the effect (e.g. changing the easing or
+  * duration) without modifying all of the references to the old object.
+  *
+  * @memberof Moment.Effect
+  * @name Moment.Effect#clone
+  * @method
+  * @returns {Effect}
+  *
+  * @example
+  * var quickPulse = new Moment.Effect(
+  *     0, // start at zero intensity (actuator off)
+  *     75, // end at 75% intensity
+  *     Moment.Easing.Exponential.in, // ease in with exponential curve
+  *     500 // exponential transition lasts 500ms
+  * );
+  *
+  * var scaled = quickPulse.scale(1.2); // duration is now 600ms
+  * scaled == quickPulse // true
+  *
+  * scaled = quickPulse.clone().scale(1.5); // duration is now 900ms
+  * scaled == quickPulse //false
+  */
+Effect['prototype']['clone'] = function () {
+    return new Effect(
+        this.start,
+        this.end,
+        this.func,
+        this.duration,
+        this.position
+    );
+};
 
 Moment['Effect'] = Effect;
 
@@ -171,6 +206,7 @@ function Vibration(pin, effect, delay) {
   * @memberof Moment.Vibration
   * @name Moment.Vibration#start
   * @method
+  * @returns {Vibration}
   *
   * @example
   * var fadeOut = new Moment.Effect(
@@ -199,6 +235,87 @@ Vibration['prototype']['start'] = function () {
         e.position,
         this.delay
     );
+    return this;
+};
+
+/** Returns a new instance of `Moment.Vibration` with the exact same
+  * parameters, allowing direct manipulation of a copy of without modifying
+  * all of the references to the old object.
+  *
+  * @memberof Moment.Vibration
+  * @name Moment.Vibration#clone
+  * @method
+  * @returns {Vibration}
+  *
+  * @example
+  * var scaled = trFade.scale(1.33333); // duration is now 1000ms
+  * scaled == trFade // true
+  *
+  * scaled = trFade.clone().scale(0.5); // duration is now 500ms
+  * scaled == trFade //false
+  */
+Vibration['prototype']['clone'] = function () {
+    return new Vibration(
+        this.pin,
+        this.effect,
+        this.delay
+    );
+};
+
+/** Scales the duration of the effect by a multiplier value.
+  *
+  * @memberof Moment.Vibration
+  * @name Moment.Vibration#scale
+  * @method
+  * @returns {Vibration}
+  *
+  * @example
+  * var fadeOut = new Moment.Effect(
+  *     75, // start at 75% intensity
+  *     25, // end at 25% intensity
+  *     Moment.Easing.Linear.out, // ease out with linear curve
+  *     750 // linear transition lasts 750ms
+  * );
+  *
+  * var trFade = new Vibration(
+  *     Moment.Actuators.topRight, // select top right actuator
+  *     fadeOut, // use the 750ms exponential fade out effect
+  *     100 // begin effect after 100ms
+  * );
+  *
+  * trFade.scale(2.0); // effect now lasts 1500ms
+  */
+Vibration['prototype']['scale'] = function (multiplier) {
+    this.effect = this.effect.clone().scale(multiplier);
+    return this;
+};
+
+/** Get the total amount of time required to execute the vibration, including
+  * the delay before the start of the effect as well as the effect duration.
+  *
+  * @memberof Moment.Vibration
+  * @name Moment.Vibration#totalTime
+  * @method
+  * @returns {Number}
+  *
+  * @example
+  * var fadeOut = new Moment.Effect(
+  *     75, // start at 75% intensity
+  *     25, // end at 25% intensity
+  *     Moment.Easing.Linear.out, // ease out with linear curve
+  *     750 // linear transition lasts 750ms
+  * );
+  *
+  * var trFade = new Vibration(
+  *     Moment.Actuators.topRight, // select top right actuator
+  *     fadeOut, // use the 750ms exponential fade out effect
+  *     100 // begin effect after 100ms
+  * );
+  *
+  * trFade.totalTime() == 850 // duration + delay = 850ms
+  */
+Vibration['prototype']['totalTime'] = function () {
+    return this.delay - this.effect.position + this.effect.duration;
 };
 
 Moment['Vibration'] = Vibration;

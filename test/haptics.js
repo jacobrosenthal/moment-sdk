@@ -46,6 +46,23 @@ describe('Moment haptics', function () {
         });
     });
 
+    describe('#clone()', function () {
+        it('clones the effect object', function () {
+            var quickPulse = new Moment.Effect(
+                0, // start at zero intensity (actuator off)
+                75, // end at 75% intensity
+                Moment.Easing.Exponential.in, // ease in with exponential curve
+                500 // exponential transition lasts 500ms
+            );
+
+            var scaled = quickPulse.scale(1.2); // duration is now 600ms
+            assert.ok(scaled == quickPulse);
+
+            scaled = quickPulse.clone().scale(1.5); // duration is now 900ms
+            assert.ok(scaled != quickPulse);
+        });
+    });
+
     describe('#Vibration()', function () {
         it('encapsulates a vibration on a motor', function () {
             var newEffect = new Moment.Effect(25, 75, 8, 400, 200);
@@ -80,7 +97,87 @@ describe('Moment haptics', function () {
         });
     });
 
+    describe('#clone()', function () {
+        it('clones a vibration object for a motor', function () {
+            var newEffect = new Moment.Effect(25, 75, 8, 400, 200);
+            var newVibration = new Moment.Vibration(2, newEffect, 100);
+            Moment._add_transition = function (
+                pin,
+                start,
+                end,
+                func,
+                duration,
+                position,
+                delay
+              ) {
+                  assert.equal(pin, 2);
+                  assert.equal(start, 25);
+                  assert.equal(end, 75);
+                  assert.equal(func, 8);
+                  assert.equal(duration, 400);
+                  assert.equal(position, 200);
+                  assert.equal(delay, 100);
+            }
+
+            var scaled = newVibration.scale(1.333333);
+            assert.ok(scaled == newVibration);
+            scaled = newVibration.clone().scale(0.5);
+            assert.ok(scaled != newVibration);
+        });
+    });
+
+    describe('#scale()', function () {
+        it('scales a vibration object with multiplier', function () {
+            var newEffect = new Moment.Effect(25, 75, 8, 400, 200);
+            var newVibration = new Moment.Vibration(2, newEffect, 100);
+            Moment._add_transition = function (
+                pin,
+                start,
+                end,
+                func,
+                duration,
+                position,
+                delay
+              ) {
+                  assert.equal(pin, 2);
+                  assert.equal(start, 25);
+                  assert.equal(end, 75);
+                  assert.equal(func, 8);
+                  assert.equal(duration, 400);
+                  assert.equal(position, 200);
+                  assert.equal(delay, 100);
+            }
+
+            var scaled = newVibration.scale(0.5);
+            assert.ok(scaled.effect.duration == 200);
+        });
+    });
 
 
+    describe('#totalTime()', function () {
+        it('gets the total execution time for vibration', function () {
+            var newEffect = new Moment.Effect(25, 75, 8, 400, 200);
+            var newVibration = new Moment.Vibration(2, newEffect, 100);
+            Moment._add_transition = function (
+                pin,
+                start,
+                end,
+                func,
+                duration,
+                position,
+                delay
+              ) {
+                  assert.equal(pin, 2);
+                  assert.equal(start, 25);
+                  assert.equal(end, 75);
+                  assert.equal(func, 8);
+                  assert.equal(duration, 400);
+                  assert.equal(position, 200);
+                  assert.equal(delay, 100);
+            }
+
+            assert.ok(newVibration.totalTime() == 300);
+        });
+    });
 
 });
