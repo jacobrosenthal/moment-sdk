@@ -89,7 +89,7 @@ function minMax(number) {
   * @memberof Moment.Color
   * @method
   * @name Moment.Color#intensify
-  * @returns {Color}
+  * @returns {Color} `this`, chainable return value
   *
   * @example
   * // represents the color #224466
@@ -123,7 +123,7 @@ Color['prototype']['intensify'] = function (multiplier) {
   * @memberof Moment.Color
   * @method
   * @name Moment.Color#blend
-  * @returns {Color}
+  * @returns {Color} `this`, chainable return value
   *
   * @example
   * // represents the color #ffffff
