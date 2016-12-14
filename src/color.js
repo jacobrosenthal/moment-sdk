@@ -19,6 +19,7 @@
 
 (function () {
 
+// local variable reference to global `Moment` object
 var Moment = Function('return this')()['Moment'];
 
 /** Represents a color using a combination of red, green, and blue values. This

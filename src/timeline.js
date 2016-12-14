@@ -19,6 +19,7 @@
 
 (function () {
 
+// local variable reference to global `Moment` object
 var Moment = Function('return this')()['Moment'];
 
 function Timeline() {
@@ -34,6 +35,7 @@ function Timeline() {
 
     this.vibrations = vibrations;
 }
+
 
 
 })();

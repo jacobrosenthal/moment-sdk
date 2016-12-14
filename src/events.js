@@ -19,6 +19,7 @@
 
 (function () {
 
+// local variable reference to global `Moment` object
 var Moment = Function('return this')()['Moment'];
 
 /** A map of event ID's to arrays of event handlers.
