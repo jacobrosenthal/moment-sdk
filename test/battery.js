@@ -27,6 +27,7 @@ describe('Moment battery', function () {
         it('checks if the battery is currently charging', function () {
             var charging = true;
 
+            // ensure that the underlying JS API controls the return value
             Moment._is_battery_charging = function () {
                 return charging;
             };
@@ -43,6 +44,7 @@ describe('Moment battery', function () {
         it('checks if the charger is currently connected', function () {
             var connected = true;
 
+            // ensure that the underlying JS API controls the return value
             Moment._is_charger_connected = function () {
                 return connected;
             };
@@ -59,6 +61,7 @@ describe('Moment battery', function () {
         it('checks the current amount of battery charge', function () {
             var charge = 60;
 
+            // ensure that the underlying JS API controls the return value
             Moment._get_battery_charge = function () {
                 return charge;
             };
