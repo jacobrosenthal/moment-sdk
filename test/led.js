@@ -18,7 +18,7 @@
   */
 
 var assert = require('assert'),
-    init = require('../src/init'),
+    init = require('../src/_init'),
     color = require('../src/color'),
     led = require('../src/led');
 

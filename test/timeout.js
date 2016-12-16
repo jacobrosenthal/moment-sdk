@@ -18,7 +18,7 @@
   */
 
 var assert = require('assert'),
-    init = require('../src/init'),
+    init = require('../src/_init'),
     timeout = require('../src/timeout');
 
 
