@@ -19,13 +19,12 @@
 
 (function (global) {
 
-global.Moment = global.Moment || {};
-
 /**
   * Moment namespace for SDK functions.
   * @global
+  * @name Moment
   * @namespace
   */
-var Moment = global.Moment;
+global['Moment'] = global['Moment'] || {};
 
 })(Function('return this')());
