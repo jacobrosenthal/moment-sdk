@@ -22,20 +22,60 @@
 // local variable reference to global `Moment` object
 var Moment = Function('return this')()['Moment'];
 
-function Timeline() {
-    var i = 0,
-        len = arguments.length,
-        vibrations = [];
-
-    vibrations = [];
-
-    for (i = 0; i < len; i += 1) {
-        vibrations.push(arguments[i]);
-    }
-
+function Timeline(vibrations) {
     this.vibrations = vibrations;
 }
 
+var inheritsChain = [
+    'push',
+    'splice'
+];
 
+var inheritsNew = {
+    'slice',
+    'concat'
+}
+
+var inheritsResult = [
+    'includes'
+];
+
+inheritsChain.forEach(function (name) {
+    Timeline['prototype'][name] = function () {
+        Array['prototype'][name].apply(this.vibrations, arguments);
+        return this;
+    };
+});
+
+inheritsNew.forEach(function (name) {
+    Timeline['prototype'][name] = function () {
+        var n = Array['prototype'][name].apply(this.vibrations, arguments);
+        return new Timeline(n);
+    };
+});
+
+inheritsResult.forEach(function (name) {
+    Timeline['prototype'][name] = function () {
+        return Array['prototype'][name].apply(this.vibrations, arguments);
+    };
+});
+
+Timeline['prototype']['clone'] = function () {
+    return this.slice();
+};
+
+Timeline['prototype']['start'] = function () {
+    var i = 0,
+        v = this.vibrations,
+        l;
+
+    l = v.length;
+
+    for (i = 0; i < len; i += 1) {
+        v[i].start();
+    }
+};
+
+Moment['Timeline'] = Timeline;
 
 })();
