@@ -139,6 +139,30 @@ Effect['prototype']['clone'] = function () {
     );
 };
 
+/** Swaps the start and end values of the effect.
+  *
+  * @memberof Moment.Effect
+  * @name Moment.Effect#invert
+  * @method
+  * @returns {Effect}
+  *
+  * @example
+  * var quickPulse = new Moment.Effect(
+  *     0, // start at zero intensity (actuator off)
+  *     75, // end at 75% intensity
+  *     Moment.Easing.Exponential.in, // ease in with exponential curve
+  *     500 // exponential transition lasts 500ms
+  * );
+  *
+  * quickPulse.invert(); // effect now starts at 75% and ends at zero
+  */
+Effect['prototype']['invert'] = function () {
+    var temp = this.start;
+    this.start = this.end;
+    this.end = temp;
+    return this;
+};
+
 Moment['Effect'] = Effect;
 
 /** Represents a vibration on a specific motor for future execution on a
@@ -288,6 +312,34 @@ Vibration['prototype']['clone'] = function () {
   */
 Vibration['prototype']['scale'] = function (multiplier) {
     this.effect = this.effect.clone().scale(multiplier);
+    return this;
+};
+
+/** Swaps the starting and ending intensity of the vibration.
+  *
+  * @memberof Moment.Vibration
+  * @name Moment.Vibration#invert
+  * @method
+  * @returns {Vibration} `this`, chainable return value
+  *
+  * @example
+  * var fadeOut = new Moment.Effect(
+  *     75, // start at 75% intensity
+  *     25, // end at 25% intensity
+  *     Moment.Easing.Linear.out, // ease out with linear curve
+  *     750 // linear transition lasts 750ms
+  * );
+  *
+  * var trFade = new Vibration(
+  *     Moment.Actuators.topRight, // select top right actuator
+  *     fadeOut, // use the 750ms exponential fade out effect
+  *     100 // begin effect after 100ms
+  * );
+  *
+  * trFade.invert(); // vibration now fades in (25%->75%)
+  */
+Vibration['prototype']['invert'] = function () {
+    this.effect = this.effect.clone().invert();
     return this;
 };
 

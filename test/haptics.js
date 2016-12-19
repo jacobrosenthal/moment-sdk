@@ -46,6 +46,19 @@ describe('Moment haptics', function () {
         });
     });
 
+    describe('#invert()', function () {
+        it('inverts the start and end of an effect', function () {
+            var newEffect = new Moment.Effect(25, 75, 8, 400, 200);
+            newEffect.scale(1.5);
+            newEffect.invert();
+            assert.equal(newEffect.start, 75);
+            assert.equal(newEffect.end, 25);
+            assert.equal(newEffect.func, 8);
+            assert.equal(newEffect.duration, 600);
+            assert.equal(newEffect.position, 300);
+        });
+    });
+
     describe('#clone()', function () {
         it('clones the effect object', function () {
             var quickPulse = new Moment.Effect(
@@ -130,26 +143,20 @@ describe('Moment haptics', function () {
         it('scales a vibration object with multiplier', function () {
             var newEffect = new Moment.Effect(25, 75, 8, 400, 200);
             var newVibration = new Moment.Vibration(2, newEffect, 100);
-            Moment._add_transition = function (
-                pin,
-                start,
-                end,
-                func,
-                duration,
-                position,
-                delay
-              ) {
-                  assert.equal(pin, 2);
-                  assert.equal(start, 25);
-                  assert.equal(end, 75);
-                  assert.equal(func, 8);
-                  assert.equal(duration, 400);
-                  assert.equal(position, 200);
-                  assert.equal(delay, 100);
-            }
-
             var scaled = newVibration.scale(0.5);
             assert.ok(scaled.effect.duration == 200);
+        });
+    });
+
+    describe('#scale()', function () {
+        it('scales a vibration object with multiplier', function () {
+            var newEffect = new Moment.Effect(25, 75, 8, 400, 200);
+            var newVibration = new Moment.Vibration(2, newEffect, 100);
+            var scaled = newVibration.scale(0.5);
+            scaled.invert();
+            assert.ok(scaled.effect.duration == 200);
+            assert.ok(scaled.effect.start == 75);
+            assert.ok(scaled.effect.end == 25);
         });
     });
 
