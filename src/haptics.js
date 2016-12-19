@@ -159,7 +159,7 @@ Effect['prototype']['clone'] = function () {
 Effect['prototype']['invert'] = function () {
     var temp = this.start;
     this.start = this.end;
-    this.end = this.temp;
+    this.end = temp;
     return this;
 };
 
