@@ -22,6 +22,15 @@
 // local variable reference to global `Moment` object
 var Moment = Function('return this')()['Moment'];
 
+/** Represents a sequence of vibrations arranged in a timeline that can be
+  * evaluated by the firmware.
+  *
+  * @constructor
+  * @name Moment.Timeline
+  * @memberof Moment
+  *
+  * @param {Array} vibrations - The sequence of vibrations to place in timeline
+  */
 function Timeline(vibrations) {
     this.vibrations = vibrations;
 }
