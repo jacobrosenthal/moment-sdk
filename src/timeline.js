@@ -141,7 +141,7 @@ Timeline['prototype']['start'] = function () {
   * @memberof Moment.Timeline
   * @name Moment.Timeline#addDelay
   * @method
-  * @param {Number} The number of milliseconds to add to the delay
+  * @param {Number} delay - The number of milliseconds to add to the delay
   */
 Timeline['prototype']['addDelay'] = function (delay) {
     var i, len, vibrations;
