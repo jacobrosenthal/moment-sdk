@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>imu.js - Documentation</title>
+    <title>timeline.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">imu.js</h1>
+    <h1 class="page-title">timeline.js</h1>
     
 
     
@@ -61,218 +61,139 @@
 // local variable reference to global `Moment` object
 var Moment = Function('return this')()['Moment'];
 
-/** Provides the prototype for a 3-axis measurement object.
+/** Represents a sequence of vibrations arranged in a timeline that can be
+  * evaluated by Moment's internal haptic drivers.
   *
   * @constructor
+  * @memberof Moment
+  *
+  * @param {Array} vibrations - The sequence of vibrations to place in timeline
   */
-function ThreeAxis() {
+function Timeline(vibrations) {
+    this.vibrations = vibrations || [];
 }
 
-ThreeAxis['prototype']['x'] = 0;
-ThreeAxis['prototype']['y'] = 0;
-ThreeAxis['prototype']['z'] = 0;
+var inheritsChain = [
+    /** Appends a vibration to the timeline object.
+      *
+      * @method
+      * @memberof Moment.Timeline
+      * @name Moment.Timeline#push
+      * @param {Vibration} vibration - The `Vibration` object to append
+      * @returns {Timeline} - `this`, a chainable return value
+      */
+    'push',
 
-// ACCELEROMETER
+    /** Similar to `Array.prototype.splice()`, this allows insertion and
+      * deletion of items at a specific index in the timeline.
+      *
+      * @method
+      * @memberof Moment.Timeline
+      * @name Moment.Timeline#splice
+      * @returns {Timeline} - `this`, a chainable return value
+      */
+    'splice'
+];
 
-/** Interface for accessing accelerometer data.
+var inheritsNew = [
+    /** Returns a new `Timeline` instance with a subset of the vibrations
+      * in the original timeline.
+      *
+      * @method
+      * @memberof Moment.Timeline
+      * @name Moment.Timeline#slice
+      * @returns {Timeline} - a new timeline of vibrations (subset of original)
+      */
+    'slice',
+];
+
+var inheritsResult = [
+    /** Checks if a timeline includes a specific instance of `Vibration`.
+      *
+      * @method
+      * @memberof Moment.Timeline
+      * @name Moment.Timeline#includes
+      * @param {Vibration} vibration - The `Vibration` object to search for
+      * @returns {Boolean} whether or not the `Vibration` exists in timeline
+      */
+    'includes'
+];
+
+inheritsChain.forEach(function (name) {
+    Timeline['prototype'][name] = function () {
+        Array['prototype'][name].apply(this.vibrations, arguments);
+        return this;
+    };
+});
+
+inheritsNew.forEach(function (name) {
+    Timeline['prototype'][name] = function () {
+        var n = Array['prototype'][name].apply(this.vibrations, arguments);
+        return new Timeline(n);
+    };
+});
+
+inheritsResult.forEach(function (name) {
+    Timeline['prototype'][name] = function () {
+        return Array['prototype'][name].apply(this.vibrations, arguments);
+    };
+});
+
+/** Returns a clone of the timeline object with the same vibration sequence,
+  * allowing direct manipulation of the timeline without modifying the original
+  * object.
   *
-  * @memberof Moment
-  * @public
-  * @namespace
-  * @name Moment.Accelerometer
+  * @method
+  * @memberof Moment.Timeline
+  * @name Moment.Timeline#clone
+  * @returns {Timeline} a new `Timeline` clone of the original object
   */
-Moment['Accelerometer'] = new ThreeAxis();
+Timeline['prototype']['clone'] = function () {
+    return this.slice();
+};
 
-/** This event is fired every time a reading from the accelerometer is obtained.
-  * The appropriate x, y, and z axis values are provided to the event handler.
-  *
-  * @event Moment.Accelerometer.accelerometer
-  * @memberof Moment.Accelerometer
-  * @type {Object}
-  * @property {Number} x - The x-axis reading value
-  * @property {Number} y - The y-axis reading value
-  * @property {Number} z - The z-axis reading value
-  *
-  * @example
-  * Moment.on("accelerometer", function () {
-  *     // replace doSomething with your own code
-  *     doSomething(Moment.Accelerometer.x); // x-axis value
-  *     doSomething(Moment.Accelerometer.y); // y-axis value
-  *     doSomething(Moment.Accelerometer.z); // z-axis value
-  * });
- */
 
-/** The x-axis measurement from the accelerometer.
+/** Starts execution of a timeline sequence of vibrations.
   *
-  * @name Moment.Accelerometer.x
-  * @type {Number}
-  * @memberof Moment.Accelerometer
+  * @memberof Moment.Timeline
+  * @name Moment.Timeline#start
+  * @method
+  * @returns {Timeline} `this`, chainable return value
   */
+Timeline['prototype']['start'] = function () {
+    var i = 0,
+        v = this.vibrations,
+        l;
 
-/** The y-axis measurement from the accelerometer.
+    l = v.length;
+
+    for (i = 0; i &lt; len; i += 1) {
+        v[i].start();
+    }
+
+    return this;
+};
+
+/** Adds a delay to all vibrations in the timeline. A negative number will
+  * reduce the delay.
   *
-  * @name Moment.Accelerometer.y
-  * @type {Number}
-  * @memberof Moment.Accelerometer
+  * @memberof Moment.Timeline
+  * @name Moment.Timeline#addDelay
+  * @method
+  * @param {Number} The number of milliseconds to add to the delay
   */
+Timeline['prototype']['addDelay'] = function (delay) {
+    var i, len, vibrations;
+    i = 0;
+    vibrations = this.vibrations;
+    len = vibrations.length;
 
-/** The z-axis measurement from the accelerometer.
-  *
-  * @name Moment.Accelerometer.z
-  * @type {Number}
-  * @memberof Moment.Accelerometer
-  */
+    for (i = 0; i &lt; len; i += 1) {
+        vibrations[i].delay += delay;
+    }
+};
 
-// GYROSCOPE
-
-/** Interface for accessing gyroscope data.
-  *
-  * @memberof Moment
-  * @public
-  * @namespace
-  * @name Moment.Gyroscope
-  */
-Moment['Gyroscope'] = new ThreeAxis();
-
-/** This event is fired every time a reading from the gyroscope is obtained.
-  * The appropriate x, y, and z axis values are provided to the event handler.
-  *
-  * @event Moment.Gyroscope.gyroscope
-  * @memberof Moment.Gyroscope
-  * @type {Object}
-  * @property {Number} x - The x-axis reading value
-  * @property {Number} y - The y-axis reading value
-  * @property {Number} z - The z-axis reading value
-  *
-  * @example
-  * Moment.on("gyroscope", function () {
-  *     // replace doSomething with your own code
-  *     doSomething(Moment.Gyroscope.x); // x-axis value
-  *     doSomething(Moment.Gyroscope.y); // y-axis value
-  *     doSomething(Moment.Gyroscope.z); // z-axis value
-  * });
- */
-
-/** The x-axis measurement from the gyroscope.
-  *
-  * @name Moment.Gyroscope.x
-  * @type {Number}
-  * @memberof Moment.Gyroscope
-  */
-
-/** The y-axis measurement from the gyroscope.
-  *
-  * @name Moment.Gyroscope.y
-  * @type {Number}
-  * @memberof Moment.Gyroscope
-  */
-
-/** The z-axis measurement from the gyroscope.
-  *
-  * @name Moment.Gyroscope.z
-  * @type {Number}
-  * @memberof Moment.Gyroscope
-  */
-
-/** Interface for accessing magnetometer data.
-  *
-  * @memberof Moment
-  * @public
-  * @namespace
-  * @name Moment.Magnetometer
-  */
-Moment['Magnetometer'] = new ThreeAxis();
-
-/** This event is fired every time a reading from the magnetometer is obtained.
-  * The appropriate x, y, and z axis values are provided to the event handler.
-  *
-  * @event Moment.Magnetometer.magnetometer
-  * @memberof Moment.Magnetometer
-  * @type {Object}
-  * @property {Number} x - The x-axis reading value
-  * @property {Number} y - The y-axis reading value
-  * @property {Number} z - The z-axis reading value
-  *
-  * @example
-  * Moment.on("magnetometer", function () {
-  *     // replace doSomething with your own code
-  *     doSomething(Moment.Magnetometer.x); // x-axis value
-  *     doSomething(Moment.Magnetometer.y); // y-axis value
-  *     doSomething(Moment.Magnetometer.z); // z-axis value
-  * });
- */
-
-/** The x-axis measurement from the magnetometer.
-  *
-  * @name Moment.Magnetometer.x
-  * @type {Number}
-  * @memberof Moment.Magnetometer
-  */
-
-/** The y-axis measurement from the magnetometer.
-  *
-  * @name Moment.Magnetometer.y
-  * @type {Number}
-  * @memberof Moment.Magnetometer
-  */
-
-/** The z-axis measurement from the magnetometer.
-  *
-  * @name Moment.Magnetometer.z
-  * @type {Number}
-  * @memberof Moment.Magnetometer
-  */
-
-/** Interface for accessing processed AHRS position data.
-  *
-  * @memberof Moment
-  * @public
-  * @namespace
-  * @name Moment.AHRS
-  */
-Moment['AHRS'] = new ThreeAxis();
-
-/** This event is fired every time a reading from the inertial measurement unit
-  * is processed using an AHRS algorithm to provide a more accurate orientation
-  * measurement. The processed orientation measurement is provided to the event
-  * handler as an object.
-  *
-  * @event Moment.AHRS.ahrs
-  * @memberof Moment.AHRS
-  * @type {Object}
-  * @property {Number} x - The x-axis reading value
-  * @property {Number} y - The y-axis reading value
-  * @property {Number} z - The z-axis reading value
-  *
-  * @example
-  * Moment.on("ahrs", function () {
-  *     // replace doSomething with your own code
-  *     doSomething(Moment.AHRS.x); // x-axis value
-  *     doSomething(Moment.AHRS.y); // y-axis value
-  *     doSomething(Moment.AHRS.z); // z-axis value
-  * });
- */
-
-/** The x-axis measurement obtained from processed IMU data.
-  *
-  * @name Moment.AHRS.x
-  * @type {Number}
-  * @memberof Moment.AHRS
-  */
-
-/** The y-axis measurement obtained from processed IMU data.
-  *
-  * @name Moment.AHRS.y
-  * @type {Number}
-  * @memberof Moment.AHRS
-  */
-
-/** The z-axis measurement obtained from processed IMU data.
-  *
-  * @name Moment.AHRS.z
-  * @type {Number}
-  * @memberof Moment.AHRS
-  */
+Moment['Timeline'] = Timeline;
 
 })();
 </code></pre>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>imu.js - Documentation</title>
+    <title>_init.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">imu.js</h1>
+    <h1 class="page-title">_init.js</h1>
     
 
     
@@ -56,225 +56,17 @@
   *
   */
 
-(function () {
+(function (global) {
 
-// local variable reference to global `Moment` object
-var Moment = Function('return this')()['Moment'];
-
-/** Provides the prototype for a 3-axis measurement object.
-  *
-  * @constructor
-  */
-function ThreeAxis() {
-}
-
-ThreeAxis['prototype']['x'] = 0;
-ThreeAxis['prototype']['y'] = 0;
-ThreeAxis['prototype']['z'] = 0;
-
-// ACCELEROMETER
-
-/** Interface for accessing accelerometer data.
-  *
-  * @memberof Moment
-  * @public
+/**
+  * Moment namespace for SDK functions.
+  * @global
+  * @name Moment
   * @namespace
-  * @name Moment.Accelerometer
   */
-Moment['Accelerometer'] = new ThreeAxis();
+global['Moment'] = global['Moment'] || {};
 
-/** This event is fired every time a reading from the accelerometer is obtained.
-  * The appropriate x, y, and z axis values are provided to the event handler.
-  *
-  * @event Moment.Accelerometer.accelerometer
-  * @memberof Moment.Accelerometer
-  * @type {Object}
-  * @property {Number} x - The x-axis reading value
-  * @property {Number} y - The y-axis reading value
-  * @property {Number} z - The z-axis reading value
-  *
-  * @example
-  * Moment.on("accelerometer", function () {
-  *     // replace doSomething with your own code
-  *     doSomething(Moment.Accelerometer.x); // x-axis value
-  *     doSomething(Moment.Accelerometer.y); // y-axis value
-  *     doSomething(Moment.Accelerometer.z); // z-axis value
-  * });
- */
-
-/** The x-axis measurement from the accelerometer.
-  *
-  * @name Moment.Accelerometer.x
-  * @type {Number}
-  * @memberof Moment.Accelerometer
-  */
-
-/** The y-axis measurement from the accelerometer.
-  *
-  * @name Moment.Accelerometer.y
-  * @type {Number}
-  * @memberof Moment.Accelerometer
-  */
-
-/** The z-axis measurement from the accelerometer.
-  *
-  * @name Moment.Accelerometer.z
-  * @type {Number}
-  * @memberof Moment.Accelerometer
-  */
-
-// GYROSCOPE
-
-/** Interface for accessing gyroscope data.
-  *
-  * @memberof Moment
-  * @public
-  * @namespace
-  * @name Moment.Gyroscope
-  */
-Moment['Gyroscope'] = new ThreeAxis();
-
-/** This event is fired every time a reading from the gyroscope is obtained.
-  * The appropriate x, y, and z axis values are provided to the event handler.
-  *
-  * @event Moment.Gyroscope.gyroscope
-  * @memberof Moment.Gyroscope
-  * @type {Object}
-  * @property {Number} x - The x-axis reading value
-  * @property {Number} y - The y-axis reading value
-  * @property {Number} z - The z-axis reading value
-  *
-  * @example
-  * Moment.on("gyroscope", function () {
-  *     // replace doSomething with your own code
-  *     doSomething(Moment.Gyroscope.x); // x-axis value
-  *     doSomething(Moment.Gyroscope.y); // y-axis value
-  *     doSomething(Moment.Gyroscope.z); // z-axis value
-  * });
- */
-
-/** The x-axis measurement from the gyroscope.
-  *
-  * @name Moment.Gyroscope.x
-  * @type {Number}
-  * @memberof Moment.Gyroscope
-  */
-
-/** The y-axis measurement from the gyroscope.
-  *
-  * @name Moment.Gyroscope.y
-  * @type {Number}
-  * @memberof Moment.Gyroscope
-  */
-
-/** The z-axis measurement from the gyroscope.
-  *
-  * @name Moment.Gyroscope.z
-  * @type {Number}
-  * @memberof Moment.Gyroscope
-  */
-
-/** Interface for accessing magnetometer data.
-  *
-  * @memberof Moment
-  * @public
-  * @namespace
-  * @name Moment.Magnetometer
-  */
-Moment['Magnetometer'] = new ThreeAxis();
-
-/** This event is fired every time a reading from the magnetometer is obtained.
-  * The appropriate x, y, and z axis values are provided to the event handler.
-  *
-  * @event Moment.Magnetometer.magnetometer
-  * @memberof Moment.Magnetometer
-  * @type {Object}
-  * @property {Number} x - The x-axis reading value
-  * @property {Number} y - The y-axis reading value
-  * @property {Number} z - The z-axis reading value
-  *
-  * @example
-  * Moment.on("magnetometer", function () {
-  *     // replace doSomething with your own code
-  *     doSomething(Moment.Magnetometer.x); // x-axis value
-  *     doSomething(Moment.Magnetometer.y); // y-axis value
-  *     doSomething(Moment.Magnetometer.z); // z-axis value
-  * });
- */
-
-/** The x-axis measurement from the magnetometer.
-  *
-  * @name Moment.Magnetometer.x
-  * @type {Number}
-  * @memberof Moment.Magnetometer
-  */
-
-/** The y-axis measurement from the magnetometer.
-  *
-  * @name Moment.Magnetometer.y
-  * @type {Number}
-  * @memberof Moment.Magnetometer
-  */
-
-/** The z-axis measurement from the magnetometer.
-  *
-  * @name Moment.Magnetometer.z
-  * @type {Number}
-  * @memberof Moment.Magnetometer
-  */
-
-/** Interface for accessing processed AHRS position data.
-  *
-  * @memberof Moment
-  * @public
-  * @namespace
-  * @name Moment.AHRS
-  */
-Moment['AHRS'] = new ThreeAxis();
-
-/** This event is fired every time a reading from the inertial measurement unit
-  * is processed using an AHRS algorithm to provide a more accurate orientation
-  * measurement. The processed orientation measurement is provided to the event
-  * handler as an object.
-  *
-  * @event Moment.AHRS.ahrs
-  * @memberof Moment.AHRS
-  * @type {Object}
-  * @property {Number} x - The x-axis reading value
-  * @property {Number} y - The y-axis reading value
-  * @property {Number} z - The z-axis reading value
-  *
-  * @example
-  * Moment.on("ahrs", function () {
-  *     // replace doSomething with your own code
-  *     doSomething(Moment.AHRS.x); // x-axis value
-  *     doSomething(Moment.AHRS.y); // y-axis value
-  *     doSomething(Moment.AHRS.z); // z-axis value
-  * });
- */
-
-/** The x-axis measurement obtained from processed IMU data.
-  *
-  * @name Moment.AHRS.x
-  * @type {Number}
-  * @memberof Moment.AHRS
-  */
-
-/** The y-axis measurement obtained from processed IMU data.
-  *
-  * @name Moment.AHRS.y
-  * @type {Number}
-  * @memberof Moment.AHRS
-  */
-
-/** The z-axis measurement obtained from processed IMU data.
-  *
-  * @name Moment.AHRS.z
-  * @type {Number}
-  * @memberof Moment.AHRS
-  */
-
-})();
+})(Function('return this')());
 </code></pre>
         </article>
     </section>
