@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Exo+2:400,400i,700,700i|Ubuntu+Mono|PT+Sans:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Exo+2:400,400i,700,700i|PT+Mono|PT+Sans:400,400i,700,700i');
 
 * {
   box-sizing: border-box
@@ -114,7 +114,7 @@ h6 {
 }
 
 tt, code, kbd, samp {
-  font-family: 'Ubuntu Mono', Consolas, Monaco, 'Andale Mono', monospace;
+  font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono', monospace;
   background: #D1EAFF;
   padding: 1px 5px;
 }
@@ -275,7 +275,7 @@ footer {
 }
 
 .name, .signature {
-  font-family: 'Ubuntu Mono', Consolas, Monaco, 'Andale Mono', monospace;
+  font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono', monospace;
 }
 
 .signature {
@@ -414,7 +414,7 @@ footer {
 
 .params td, .params .name, .props .name, .name code {
    color: #4D4E53;
-   font-family: 'Ubuntu Mono', Consolas, Monaco, 'Andale Mono', monospace;
+   font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono', monospace;
    font-size: 100%;
 }
 
@@ -452,7 +452,7 @@ footer {
 
 span.param-type, .params td .param-type, .param-type dd {
    color: #FDAA00;
-  font-family: 'Ubuntu Mono', Consolas, Monaco, 'Andale Mono', monospace
+  font-family: 'PT Mono', Consolas, Monaco, 'Andale Mono', monospace
 }
 
 .param-type dt, .param-type dd {
