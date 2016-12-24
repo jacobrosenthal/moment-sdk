@@ -23,22 +23,158 @@
 var Moment = Function('return this')()['Moment'];
 
 function computeComponent(x, y, z) {
-    return ((0.25 * x + 0.25) + (0.25 * y + 0.25)) * (z * 100.0);
+    return ((0.5 * x + 0.25) + (0.5 * y + 0.25)) * (z * 100.0);
 }
 
-function Plot(x, y, z, effect) {
+/** Represents a point of vibrations with cartesian coordinates on 3 dimensions
+  * `x`, `y`, and `z`. The x-axis corresponds to the horizontal location of
+  * the vibration relative to the user's wrist, and the y-axis corresponds to
+  * the vertical location. The z-axis corresponds to the intensity of the
+  * vibration at that point.
+  *
+  * @constructor
+  * @memberof Moment
+  *
+  * @param {Number} x - the horizontal location of the vibration
+  * @param {Number} y - the vertical location of the vibration
+  * @param {Number} z - the intensity of the vibration
+  */
+function Point(x, y, z) {
     this.x = x;
     this.y = y;
     this.z = z;
 
-    var topLeft, topRight, bottomLeft, bottomRight;
+    x -= 0.5;
+    y -= 0.5;
 
-    topLeft = computeComponent(-x, y, z);
-    topRight = computeComponent(x, y, z);
-    bottomLeft = computeComponent(-x, -y, z);
-    bottomRight = computeComponent(x, -y, z);
+    this.topLeft = computeComponent(-x, y, z);
+    this.topRight = computeComponent(x, y, z);
+    this.bottomLeft = computeComponent(-x, -y, z);
+    this.bottomRight = computeComponent(x, -y, z);
 }
 
-Moment['Plot'] = Plot;
+/** Create a timeline of vibrations from effects passed as arguments.
+  *
+  * @method
+  * @memberof Moment.Point
+  * @name Moment.Point#vibration
+  *
+  * @param {...Effect} effect - The effects to use in the generated timeline
+  * @returns {Timeline} The timeline of vibrations at the point
+  */
+Point['prototype']['vibration'] = function () {
+    var vibrations = [], temp, i, len, effect, delay = 0;
+
+    for (i = 0, len = arguments.length; i < len; i += 1) {
+        effect = arguments[i];
+        temp = effect.clone();
+        temp.start *= this.topLeft / 100.0;
+        temp.end *= this.topLeft / 100.0;
+        vibrations.push(
+          new Moment.Vibration(
+            Moment.Actuators.topLeft,
+            temp,
+            delay
+          )
+        );
+
+        temp = effect.clone();
+        temp.start *= this.topRight / 100.0;
+        temp.end *= this.topRight / 100.0;
+        vibrations.push(
+          new Moment.Vibration(
+            Moment.Actuators.topRight,
+            temp,
+            delay
+          )
+        );
+
+        temp = effect.clone();
+        temp.start *= this.bottomLeft / 100.0;
+        temp.end *= this.bottomLeft / 100.0;
+        vibrations.push(
+          new Moment.Vibration(
+            Moment.Actuators.bottomLeft,
+            temp,
+            delay
+          )
+        );
+
+        temp = effect.clone();
+        temp.start *= this.bottomRight / 100.0;
+        temp.end *= this.bottomRight / 100.0;
+        vibrations.push(
+          new Moment.Vibration(
+            Moment.Actuators.bottomRight,
+            temp,
+            delay
+          )
+        );
+
+        delay += effect.duration;
+    }
+
+    return new Moment.Timeline(vibrations);
+};
+
+Moment['Point'] = Point;
+
+/** Represents a transition between two points of vibration - a straight line
+  * is drawn between the two points using a pre-defined effect for transition.
+  *
+  * @constructor
+  * @memberof Moment
+  *
+  * @param {Point} p1 - the first point
+  * @param {Point} p2 - the second point
+  * @param {Effect} effect - the effect to use for transitioning
+  */
+function Line(p1, p2, effect) {
+    var vibrations = [], temp;
+
+    temp = effect.clone();
+    temp.start *= p1.topLeft / 100.0;
+    temp.end *= p2.topLeft / 100.0;
+    vibrations.push(
+      new Moment.Vibration(
+        Moment.Actuators.topLeft,
+        temp
+      )
+    );
+
+    temp = effect.clone();
+    temp.start *= p1.topRight / 100.0;
+    temp.end *= p2.topRight / 100.0;
+    vibrations.push(
+      new Moment.Vibration(
+        Moment.Actuators.topRight,
+        temp
+      )
+    );
+
+    temp = effect.clone();
+    temp.start *= p1.bottomLeft / 100.0;
+    temp.end *= p2.bottomLeft / 100.0;
+    vibrations.push(
+      new Moment.Vibration(
+        Moment.Actuators.bottomLeft,
+        temp
+      )
+    );
+
+    temp = effect.clone();
+    temp.start *= p1.bottomRight / 100.0;
+    temp.end *= p2.bottomRight / 100.0;
+    vibrations.push(
+      new Moment.Vibration(
+        Moment.Actuators.bottomRight,
+        temp
+      )
+    );
+
+    this.timeline = new Moment.Timeline(vibrations);
+}
+
+Moment['Line'] = Line;
 
 })();
