@@ -185,6 +185,33 @@ Timeline['prototype']['addDelay'] = function (delay) {
     }
 };
 
+function reduceTime(time, v) {
+    var t = v.totalTime();
+    if (time > t) {
+        return time;
+    }
+    else {
+        return t;
+    }
+}
+
+/** Compute the total time required to execute the timeline of vibrations.
+  *
+  * @memberof Moment.Timeline
+  * @name Moment.Timeline#totalTime
+  * @method
+  * @returns {Number} the total time required to execute the timeline
+  *
+  * @example
+  * var t = new Moment.Timeline([v1, v2, v3]);
+  * t.totalTime(); // 1500ms
+  * t.addDelay(500); // adds 500ms delay to all vibrations
+  * t.totalTime(); // 2000ms
+  */
+Timeline['prototype']['totalTime'] = function () {
+    return this.vibrations.reduce(reduceTime, 0);
+};
+
 Moment['Timeline'] = Timeline;
 
 })();
