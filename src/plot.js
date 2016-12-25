@@ -172,7 +172,14 @@ function Line(p1, p2, effect) {
       )
     );
 
-    this.timeline = new Moment.Timeline(vibrations);
+    /** The timeline object representing the transition between two points.
+      *
+      * @public
+      * @name Moment.Line#timeline
+      * @type {Timeline}
+      * @memberof Moment.Line
+      */
+    this['timeline'] = new Moment.Timeline(vibrations);
 }
 
 Moment['Line'] = Line;

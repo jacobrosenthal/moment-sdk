@@ -42,6 +42,10 @@ var inheritsChain = [
       * @name Moment.Timeline#push
       * @param {Vibration} vibration - The `Vibration` object to append
       * @returns {Timeline} - `this`, a chainable return value
+      *
+      * @example
+      * var t = new Moment.Timeline([v1, v2]); // timeline with v1 and v2
+      * t.push(v3); // t now contains v1, v2, and v3
       */
     'push',
 
@@ -52,6 +56,10 @@ var inheritsChain = [
       * @memberof Moment.Timeline
       * @name Moment.Timeline#splice
       * @returns {Timeline} - `this`, a chainable return value
+      *
+      * @example
+      * var t = new Moment.Timeline([v1, v2, v3]);
+      * t.splice(1, 1, v4, v5); // t now contains [v1, v4, v5, v3]
       */
     'splice'
 ];
@@ -64,6 +72,10 @@ var inheritsNew = [
       * @memberof Moment.Timeline
       * @name Moment.Timeline#slice
       * @returns {Timeline} - a new timeline of vibrations (subset of original)
+      *
+      * @example
+      * var t = new Moment.Timeline([v1, v2, v3, v4, v5]);
+      * var n = t.slice(1, 3); // n contains [v2, v3, v4]
       */
     'slice',
 ];
@@ -76,6 +88,11 @@ var inheritsResult = [
       * @name Moment.Timeline#includes
       * @param {Vibration} vibration - The `Vibration` object to search for
       * @returns {Boolean} whether or not the `Vibration` exists in timeline
+      *
+      * @example
+      * var t = new Moment.Timeline([v1, v2, v3, v4, v5]);
+      * t.includes(v2); // true
+      * t.includes(v6); // false
       */
     'includes'
 ];
@@ -108,6 +125,11 @@ inheritsResult.forEach(function (name) {
   * @memberof Moment.Timeline
   * @name Moment.Timeline#clone
   * @returns {Timeline} a new `Timeline` clone of the original object
+  *
+  * @example
+  * var t = new Moment.Timeline([v1, v2, v3]);
+  * var n = t.clone().push(v4); // contains v1...v4
+  * t.includes(v4); // false
   */
 Timeline['prototype']['clone'] = function () {
     return this.slice();
@@ -120,6 +142,10 @@ Timeline['prototype']['clone'] = function () {
   * @name Moment.Timeline#start
   * @method
   * @returns {Timeline} `this`, chainable return value
+  *
+  * @example
+  * var t = new Moment.Timeline([v1, v2, v3, v4, v5]);
+  * t.start(); // starts the vibrations v1...v5
   */
 Timeline['prototype']['start'] = function () {
     var i = 0,
@@ -142,6 +168,11 @@ Timeline['prototype']['start'] = function () {
   * @name Moment.Timeline#addDelay
   * @method
   * @param {Number} delay - The number of milliseconds to add to the delay
+  *
+  * @example
+  * var t = new Moment.Timeline([v1, v2, v3, v4, v5]);
+  * t.addDelay(500); // adds 500ms delay to all vibrations
+  * t.start(); // starts the vibrations v1...v5
   */
 Timeline['prototype']['addDelay'] = function (delay) {
     var i, len, vibrations;
