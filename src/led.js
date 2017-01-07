@@ -140,7 +140,7 @@ LED['Transition'] = Transition;
   * Moment.LED.setColor(new Moment.Color(0x00, 0x7e, 0xeb));
   */
 LED['setColor'] = function (color) {
-    Moment['_set_led_color'](color.red, color.green, color.blue);
+    Moment['_set_led_color'](color['red'], color['green'], color['blue']);
 };
 
 /** Tweens the current color of the LED using a transition object
@@ -180,9 +180,9 @@ LED['setColor'] = function (color) {
 LED['tweenColor'] = function (transition) {
     var color = transition.color;
     Moment['_tween_led_color'](
-        color.red,
-        color.green,
-        color.blue,
+        color['red'],
+        color['green'],
+        color['blue'],
         transition.func,
         transition.duration
     );
@@ -217,18 +217,18 @@ LED['tweenColor'] = function (transition) {
 LED['loopColor'] = function (transitionIn, transitionOut) {
     var color = transitionIn.color;
     Moment['_tween_led_color'](
-        color.red,
-        color.green,
-        color.blue,
+        color['red'],
+        color['green'],
+        color['blue'],
         transitionIn.func,
         transitionIn.duration
     );
 
     color = transitionOut.color;
     Moment['_loop_led_color'](
-        color.red,
-        color.green,
-        color.blue,
+        color['red'],
+        color['green'],
+        color['blue'],
         transitionOut.func,
         transitionOut.duration
     );

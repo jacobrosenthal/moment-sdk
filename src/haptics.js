@@ -219,7 +219,7 @@ Moment['Effect'] = Effect;
   */
 function Vibration(pin, effect, delay) {
     if (pin.hasOwnProperty('pin')) {
-        pin = pin.pin;
+        pin = pin['pin'];
     }
     this.pin = pin;
     this.effect = effect;
@@ -339,7 +339,7 @@ Vibration['prototype']['scale'] = function (multiplier) {
   * trFade.invert(); // vibration now fades in (25%->75%)
   */
 Vibration['prototype']['invert'] = function () {
-    this.effect = this.effect.clone().invert();
+    this.effect = this.effect['clone']()['invert']();
     return this;
 };
 

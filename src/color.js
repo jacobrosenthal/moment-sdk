@@ -41,9 +41,9 @@ var Moment = Function('return this')()['Moment'];
   * var white = new Color(255, 255, 255);
   */
 function Color(red, green, blue) {
-    this.red = red;
-    this.green = green;
-    this.blue = blue;
+    this['red'] = red;
+    this['green'] = green;
+    this['blue'] = blue;
 }
 
 /** Clone a `Color` object to allow direct manipulation of the properties of

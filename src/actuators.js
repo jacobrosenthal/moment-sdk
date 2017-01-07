@@ -27,7 +27,7 @@ var Moment = Function('return this')()['Moment'];
   * @constructor
   */
 function Actuator(pin) {
-    this.pin = pin;
+    this['pin'] = pin;
 }
 
 /** Namespace for constants and functions related to direct control of the
