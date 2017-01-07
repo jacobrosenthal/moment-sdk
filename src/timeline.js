@@ -150,7 +150,8 @@ Timeline['prototype']['clone'] = function () {
 Timeline['prototype']['start'] = function () {
     var i = 0,
         v = this.vibrations,
-        l;
+        l,
+        len = this.vibrations.length;
 
     l = v.length;
 
