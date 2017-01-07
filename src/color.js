@@ -157,7 +157,7 @@ Color['prototype']['blend'] = function (color, multiplier) {
   * // set the LED color to orange
   * Moment.LED.setColor(Moment.Color.ORANGE);
   */
-Color.ORANGE = new Color(0xfd, 0xaa, 0x00);
+Color['ORANGE'] = new Color(0xfd, 0xaa, 0x00);
 
 /** The default red color in the LED color palette: #e63014
   *
@@ -170,7 +170,7 @@ Color.ORANGE = new Color(0xfd, 0xaa, 0x00);
   * // set the LED color to red
   * Moment.LED.setColor(Moment.Color.RED);
   */
-Color.RED = new Color(0xe6, 0x30, 0x14);
+Color['RED'] = new Color(0xe6, 0x30, 0x14);
 
 /** The default pink color in the LED color palette: #b8008f
   *
@@ -183,7 +183,7 @@ Color.RED = new Color(0xe6, 0x30, 0x14);
   * // set the LED color to pink
   * Moment.LED.setColor(Moment.Color.PINK);
   */
-Color.PINK = new Color(0xb8, 0x00, 0x8f);
+Color['PINK'] = new Color(0xb8, 0x00, 0x8f);
 
 /** The default green color in the LED color palette: #b9f100
   *
@@ -196,7 +196,7 @@ Color.PINK = new Color(0xb8, 0x00, 0x8f);
   * // set the LED color to green
   * Moment.LED.setColor(Moment.Color.GREEN);
   */
-Color.GREEN = new Color(0xb9, 0xf1, 0x00);
+Color['GREEN'] = new Color(0xb9, 0xf1, 0x00);
 
 /** The default blue color in the LED color palette: #007eed
   *
@@ -209,7 +209,7 @@ Color.GREEN = new Color(0xb9, 0xf1, 0x00);
   * // set the LED color to blue
   * Moment.LED.setColor(Moment.Color.BLUE);
   */
-Color.BLUE = new Color(0x00, 0x7e, 0xed);
+Color['BLUE'] = new Color(0x00, 0x7e, 0xed);
 
 /** The default black color in the LED color palette: #000000
   *
@@ -222,7 +222,7 @@ Color.BLUE = new Color(0x00, 0x7e, 0xed);
   * // set the LED color to black (turns off LED)
   * Moment.LED.setColor(Moment.Color.BLACK);
   */
-Color.BLACK = new Color(0, 0, 0);
+Color['BLACK'] = new Color(0, 0, 0);
 
 /** The default gray color in the LED color palette: #646464
   *
@@ -235,7 +235,7 @@ Color.BLACK = new Color(0, 0, 0);
   * // set the LED color to gray
   * Moment.LED.setColor(Moment.Color.GRAY);
   */
-Color.GRAY = new Color(100, 100, 100);
+Color['GRAY'] = new Color(100, 100, 100);
 
 /** The default white color in the LED color palette: #ffffff
   *
@@ -248,7 +248,7 @@ Color.GRAY = new Color(100, 100, 100);
   * // set the LED color to white
   * Moment.LED.setColor(Moment.Color.WHITE);
   */
-Color.WHITE = new Color(255, 255, 255);
+Color['WHITE'] = new Color(255, 255, 255);
 
 Moment['Color'] = Color;
 
