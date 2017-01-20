@@ -27,7 +27,7 @@ function computeComponent(x1, y1, x2, y2, z) {
     var b = y1 - y2;
     var d = Math.sqrt( a*a + b*b );
     if (d > 2.0) d = 2.0;
-    return 100.0 * z * (2.0 - d);
+    return 50.0 * z * (2.0 - d);
 }
 
 /** Represents a point of vibrations with cartesian coordinates on 3 dimensions
