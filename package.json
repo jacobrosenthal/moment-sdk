@@ -9,7 +9,7 @@
     "compile": "gulp compile"
   },
   "dependencies": {
-    "docdash": "git://github.com/SomaticLabs/docdash",
+    "docdash": "https://github.com/SomaticLabs/docdash",
     "google-closure-compiler": "^20161201.0.0",
     "gulp": "^3.9.1",
     "jsdoc": "^3.4.3",
