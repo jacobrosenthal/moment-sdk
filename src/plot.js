@@ -22,8 +22,12 @@
 // local variable reference to global `Moment` object
 var Moment = Function('return this')()['Moment'];
 
-function computeComponent(x, y, z) {
-    return ((0.5 * x + 0.25) + (0.5 * y + 0.25)) * (z * 100.0);
+function computeComponent(x1, y1, x2, y2, z) {
+    var a = x1 - x2;
+    var b = y1 - y2;
+    var d = Math.sqrt( a*a + b*b );
+    if (d > 2.0) d = 2.0;
+    return 50.0 * z * (2.0 - d);
 }
 
 /** Represents a point of vibrations with cartesian coordinates on 3 dimensions
@@ -44,13 +48,10 @@ function Point(x, y, z) {
     this.y = y;
     this.z = z;
 
-    x -= 0.5;
-    y -= 0.5;
-
-    this.topLeft = computeComponent(-x, y, z);
-    this.topRight = computeComponent(x, y, z);
-    this.bottomLeft = computeComponent(-x, -y, z);
-    this.bottomRight = computeComponent(x, -y, z);
+    this.topLeft = computeComponent(-1, 1, x, y, z);
+    this.topRight = computeComponent(1, 1, x, y, z);
+    this.bottomLeft = computeComponent(-1, -1, x, y, z);
+    this.bottomRight = computeComponent(1, -1, x, y, z);
 }
 
 /** Create a timeline of vibrations from effects passed as arguments.
