@@ -25,9 +25,9 @@ var Moment = Function('return this')()['Moment'];
 function computeComponent(x1, y1, x2, y2, z) {
     var a = x1 - x2;
     var b = y1 - y2;
-    var d = Math.sqrt( a*a + b*b );
-    if (d > 2.0) d = 2.0;
-    return 50.0 * z * (2.0 - d);
+    var c = Math.sqrt( a*a + b*b );
+    if (c > 2.0) c = 2.0;
+    return 50.0 * z * (2.0 - c);
 }
 
 /** Represents a point of vibrations with cartesian coordinates on 3 dimensions
