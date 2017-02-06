@@ -13,6 +13,7 @@ gulp.task('compile', function () {
         '--js', './src/imu.js',
         '--js', './src/led.js',
         '--js', './src/timeline.js',
+        '--js', './src/plot.js',
         '--js', './src/timeout.js',
         '--language_in', 'ECMASCRIPT6_STRICT',
         '--language_out', 'ECMASCRIPT5_STRICT',

@@ -72,8 +72,8 @@ Point['prototype']['vibration'] = function () {
         temp.start *= this.topLeft / 100.0;
         temp.end *= this.topLeft / 100.0;
         vibrations.push(
-          new Moment.Vibration(
-            Moment.Actuators.topLeft,
+          new Moment['Vibration'](
+            Moment['Actuators'].topLeft,
             temp,
             delay
           )
@@ -83,8 +83,8 @@ Point['prototype']['vibration'] = function () {
         temp.start *= this.topRight / 100.0;
         temp.end *= this.topRight / 100.0;
         vibrations.push(
-          new Moment.Vibration(
-            Moment.Actuators.topRight,
+          new Moment['Vibration'](
+            Moment['Actuators'].topRight,
             temp,
             delay
           )
@@ -94,8 +94,8 @@ Point['prototype']['vibration'] = function () {
         temp.start *= this.bottomLeft / 100.0;
         temp.end *= this.bottomLeft / 100.0;
         vibrations.push(
-          new Moment.Vibration(
-            Moment.Actuators.bottomLeft,
+          new Moment['Vibration'](
+            Moment['Actuators'].bottomLeft,
             temp,
             delay
           )
@@ -105,8 +105,8 @@ Point['prototype']['vibration'] = function () {
         temp.start *= this.bottomRight / 100.0;
         temp.end *= this.bottomRight / 100.0;
         vibrations.push(
-          new Moment.Vibration(
-            Moment.Actuators.bottomRight,
+          new Moment['Vibration'](
+            Moment['Actuators'].bottomRight,
             temp,
             delay
           )
@@ -115,7 +115,7 @@ Point['prototype']['vibration'] = function () {
         delay += effect.duration;
     }
 
-    return new Moment.Timeline(vibrations);
+    return new Moment['Timeline'](vibrations);
 };
 
 Moment['Point'] = Point;
@@ -137,8 +137,8 @@ function Line(p1, p2, effect) {
     temp.start *= p1.topLeft / 100.0;
     temp.end *= p2.topLeft / 100.0;
     vibrations.push(
-      new Moment.Vibration(
-        Moment.Actuators.topLeft,
+      new Moment['Vibration'](
+        Moment['Actuators'].topLeft,
         temp
       )
     );
@@ -147,8 +147,8 @@ function Line(p1, p2, effect) {
     temp.start *= p1.topRight / 100.0;
     temp.end *= p2.topRight / 100.0;
     vibrations.push(
-      new Moment.Vibration(
-        Moment.Actuators.topRight,
+      new Moment['Vibration'](
+        Moment['Actuators'].topRight,
         temp
       )
     );
@@ -157,8 +157,8 @@ function Line(p1, p2, effect) {
     temp.start *= p1.bottomLeft / 100.0;
     temp.end *= p2.bottomLeft / 100.0;
     vibrations.push(
-      new Moment.Vibration(
-        Moment.Actuators.bottomLeft,
+      new Moment['Vibration'](
+        Moment['Actuators'].bottomLeft,
         temp
       )
     );
@@ -167,8 +167,8 @@ function Line(p1, p2, effect) {
     temp.start *= p1.bottomRight / 100.0;
     temp.end *= p2.bottomRight / 100.0;
     vibrations.push(
-      new Moment.Vibration(
-        Moment.Actuators.bottomRight,
+      new Moment['Vibration'](
+        Moment['Actuators'].bottomRight,
         temp
       )
     );
@@ -180,7 +180,7 @@ function Line(p1, p2, effect) {
       * @type {Timeline}
       * @memberof Moment.Line
       */
-    this['timeline'] = new Moment.Timeline(vibrations);
+    this['timeline'] = new Moment['Timeline'](vibrations);
 }
 
 Moment['Line'] = Line;
