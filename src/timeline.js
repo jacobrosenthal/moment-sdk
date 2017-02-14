@@ -135,12 +135,11 @@ Timeline['prototype']['clone'] = function () {
 Timeline['prototype']['start'] = function () {
     var i = 0,
         v = this.vibrations,
-        l,
-        len = this.vibrations.length;
+        l;
 
     l = v.length;
 
-    for (i = 0; i < len; i += 1) {
+    for (i = 0; i < l; i += 1) {
         v[i].start();
     }
 
