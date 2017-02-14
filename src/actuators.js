@@ -63,7 +63,7 @@ var Actuators = {
       *
       * tlFade.start();
       */
-    'topLeft': new Actuator(21),
+    'topLeft': new Actuator(0),
 
     /** The top-right actuator on Moment (automatically changes based on
       * whether the user wears Moment on their left or right hand).
@@ -90,7 +90,7 @@ var Actuators = {
       *
       * trFade.start();
       */
-    'topRight': new Actuator(22),
+    'topRight': new Actuator(1),
 
     /** The bottom-right actuator on Moment (automatically changes based on
       * whether the user wears Moment on their left or right hand).
@@ -117,7 +117,7 @@ var Actuators = {
       *
       * brFade.start();
       */
-    'bottomRight': new Actuator(23),
+    'bottomRight': new Actuator(3),
 
     /** The bottom-left actuator on Moment (automatically changes based on
       * whether the user wears Moment on their left or right hand).
@@ -144,7 +144,7 @@ var Actuators = {
       *
       * blFade.start();
       */
-    'bottomLeft': new Actuator(24)
+    'bottomLeft': new Actuator(2)
 };
 
 Moment['Actuators'] = Actuators;
