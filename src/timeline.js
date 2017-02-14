@@ -34,88 +34,73 @@ function Timeline(vibrations) {
     this.vibrations = vibrations || [];
 }
 
-var inheritsChain = [
-    /** Appends a vibration to the timeline object.
-      *
-      * @method
-      * @memberof Moment.Timeline
-      * @name Moment.Timeline#push
-      * @param {Vibration} vibration - The `Vibration` object to append
-      * @returns {Timeline} - `this`, a chainable return value
-      *
-      * @example
-      * var t = new Moment.Timeline([v1, v2]); // timeline with v1 and v2
-      * t.push(v3); // t now contains v1, v2, and v3
-      */
-    'push',
+/** Appends a vibration to the timeline object.
+  *
+  * @method
+  * @memberof Moment.Timeline
+  * @name Moment.Timeline#push
+  * @param {Vibration} vibration - The `Vibration` object to append
+  * @returns {Timeline} - `this`, a chainable return value
+  *
+  * @example
+  * var t = new Moment.Timeline([v1, v2]); // timeline with v1 and v2
+  * t.push(v3); // t now contains v1, v2, and v3
+  */
+Timeline['prototype']['push'] = function () {
+    Array['prototype']['push'].apply(this.vibrations, arguments);
+    return this;
+};
 
-    /** Similar to `Array.prototype.splice()`, this allows insertion and
-      * deletion of items at a specific index in the timeline.
-      *
-      * @method
-      * @memberof Moment.Timeline
-      * @name Moment.Timeline#splice
-      * @returns {Timeline} - `this`, a chainable return value
-      *
-      * @example
-      * var t = new Moment.Timeline([v1, v2, v3]);
-      * t.splice(1, 1, v4, v5); // t now contains [v1, v4, v5, v3]
-      */
-    'splice'
-];
+/** Similar to `Array.prototype.splice()`, this allows insertion and
+  * deletion of items at a specific index in the timeline.
+  *
+  * @method
+  * @memberof Moment.Timeline
+  * @name Moment.Timeline#splice
+  * @returns {Timeline} - `this`, a chainable return value
+  *
+  * @example
+  * var t = new Moment.Timeline([v1, v2, v3]);
+  * t.splice(1, 1, v4, v5); // t now contains [v1, v4, v5, v3]
+  */
+Timeline['prototype']['splice'] = function () {
+    Array['prototype']['splice'].apply(this.vibrations, arguments);
+    return this;
+};
 
-var inheritsNew = [
-    /** Returns a new `Timeline` instance with a subset of the vibrations
-      * in the original timeline.
-      *
-      * @method
-      * @memberof Moment.Timeline
-      * @name Moment.Timeline#slice
-      * @returns {Timeline} - a new timeline of vibrations (subset of original)
-      *
-      * @example
-      * var t = new Moment.Timeline([v1, v2, v3, v4, v5]);
-      * var n = t.slice(1, 3); // n contains [v2, v3, v4]
-      */
-    'slice',
-];
+/** Returns a new `Timeline` instance with a subset of the vibrations
+  * in the original timeline.
+  *
+  * @method
+  * @memberof Moment.Timeline
+  * @name Moment.Timeline#slice
+  * @returns {Timeline} - a new timeline of vibrations (subset of original)
+  *
+  * @example
+  * var t = new Moment.Timeline([v1, v2, v3, v4, v5]);
+  * var n = t.slice(1, 3); // n contains [v2, v3, v4]
+  */
+Timeline['prototype']['slice'] = function () {
+    var n = Array['prototype']['slice'].apply(this.vibrations, arguments);
+    return new Timeline(n);
+};
 
-var inheritsResult = [
-    /** Checks if a timeline includes a specific instance of `Vibration`.
-      *
-      * @method
-      * @memberof Moment.Timeline
-      * @name Moment.Timeline#includes
-      * @param {Vibration} vibration - The `Vibration` object to search for
-      * @returns {Boolean} whether or not the `Vibration` exists in timeline
-      *
-      * @example
-      * var t = new Moment.Timeline([v1, v2, v3, v4, v5]);
-      * t.includes(v2); // true
-      * t.includes(v6); // false
-      */
-    'includes'
-];
-
-inheritsChain.forEach(function (name) {
-    Timeline['prototype'][name] = function () {
-        Array['prototype'][name].apply(this.vibrations, arguments);
-        return this;
-    };
-});
-
-inheritsNew.forEach(function (name) {
-    Timeline['prototype'][name] = function () {
-        var n = Array['prototype'][name].apply(this.vibrations, arguments);
-        return new Timeline(n);
-    };
-});
-
-inheritsResult.forEach(function (name) {
-    Timeline['prototype'][name] = function () {
-        return Array['prototype'][name].apply(this.vibrations, arguments);
-    };
-});
+/** Checks if a timeline includes a specific instance of `Vibration`.
+  *
+  * @method
+  * @memberof Moment.Timeline
+  * @name Moment.Timeline#includes
+  * @param {Vibration} vibration - The `Vibration` object to search for
+  * @returns {Boolean} whether or not the `Vibration` exists in timeline
+  *
+  * @example
+  * var t = new Moment.Timeline([v1, v2, v3, v4, v5]);
+  * t.includes(v2); // true
+  * t.includes(v6); // false
+  */
+Timeline['prototype']['includes'] = function () {
+    return Array['prototype']['includes'].apply(this.vibrations, arguments);
+};
 
 /** Returns a clone of the timeline object with the same vibration sequence,
   * allowing direct manipulation of the timeline without modifying the original
