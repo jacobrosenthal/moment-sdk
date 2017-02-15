@@ -311,7 +311,7 @@ Vibration['prototype']['clone'] = function () {
   * trFade.scale(2.0); // effect now lasts 1500ms
   */
 Vibration['prototype']['scale'] = function (multiplier) {
-    this.effect = this.effect.clone().scale(multiplier);
+    this.effect = this.effect['clone']().scale(multiplier);
     return this;
 };
 

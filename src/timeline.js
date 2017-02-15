@@ -117,7 +117,7 @@ Timeline['prototype']['includes'] = function () {
   * t.includes(v4); // false
   */
 Timeline['prototype']['clone'] = function () {
-    return this.slice();
+    return this['slice']();
 };
 
 
@@ -140,7 +140,7 @@ Timeline['prototype']['start'] = function () {
     l = v.length;
 
     for (i = 0; i < l; i += 1) {
-        v[i].start();
+        v[i]['start']();
     }
 
     return this;
