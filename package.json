@@ -12,6 +12,7 @@
     "docdash": "https://github.com/SomaticLabs/docdash",
     "google-closure-compiler": "^20161201.0.0",
     "gulp": "^3.9.1",
+    "istanbul": "^0.4.5",
     "jsdoc": "^3.4.3",
     "mocha": "^3.2.0"
   },
