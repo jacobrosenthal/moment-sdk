@@ -6,7 +6,8 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
     "generate-docs": "./node_modules/.bin/jsdoc -c jsdoc.json -R README.md",
-    "compile": "gulp compile"
+    "compile": "gulp compile",
+    "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --ui bdd -R spec -t 5000"
   },
   "dependencies": {
     "docdash": "https://github.com/SomaticLabs/docdash",
