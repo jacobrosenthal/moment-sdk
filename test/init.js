@@ -24,6 +24,7 @@ describe('Moment global object', function () {
 
     describe('#Moment', function () {
         it('must exist in the global scope', function () {
+            // checks if Moment global object is available for use
             assert.ok(Moment);
         });
     });

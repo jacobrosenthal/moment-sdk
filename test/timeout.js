@@ -25,11 +25,13 @@ var assert = require('assert'),
 describe('Moment timeout', function () {
     describe('#setTimeout', function () {
         it('should attach a callback for future execution', function () {
-            Moment.uptime = function () { return 0; };
+            Moment.uptime = function () { return 0; }; // mock uptime function
             assert.ok(Moment.setTimeout);
             var val = false;
+
             Moment.setTimeout(function () { val = true; }, 1000);
             Moment.uptime = function () { return 1500; };
+
             Moment._run_timers();
             assert.ok(val);
         });
@@ -37,14 +39,16 @@ describe('Moment timeout', function () {
 
     describe('#setInterval', function () {
         it('should attach a callback for interval execution', function () {
-            Moment.uptime = function () { return 0; };
+            Moment.uptime = function () { return 0; }; // mock uptime function
             assert.ok(Moment.setInterval);
             var val = false;
             Moment.setInterval(function () { val = true; }, 500);
+
             Moment.uptime = function () { return 501; };
             Moment._run_timers();
             assert.ok(val);
             val = false;
+
             Moment.uptime = function () { return 1501; };
             Moment._run_timers();
             assert.ok(val);
@@ -57,6 +61,7 @@ describe('Moment timeout', function () {
             assert.ok(Moment.setTimeout);
             var val = true;
             var t = Moment.setTimeout(function () { val = false; }, 1000);
+
             Moment.uptime = function () { return 1500; };
             Moment.clearTimeout(t);
             Moment._run_timers();
@@ -70,6 +75,7 @@ describe('Moment timeout', function () {
             assert.ok(Moment.setInterval);
             var val = true;
             var t = Moment.setInterval(function () { val = false; }, 500);
+
             Moment.uptime = function () { return 501; };
             Moment.clearInterval(t);
             Moment._run_timers();
