@@ -46,6 +46,8 @@ function Plugin(plugin) {
   *
   * @method
   * @memberof Moment
+  * @name Moment.extend
+  * @static
   *
   * @param {String} name - The name of the plugin
   * @param {Object} plugin - The methods for the plugin
@@ -60,6 +62,8 @@ Moment['extend'] = function(name, plugin) {
   *
   * @method
   * @memberof Moment
+  * @name Moment.remove
+  * @static
   *
   * @param {String} name - The name of the plugin to remove
   */
