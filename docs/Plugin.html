@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>battery.js - Documentation</title>
+    <title>Plugin - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,114 +27,183 @@
 
 <div id="main">
     
-    <h1 class="page-title">battery.js</h1>
+    <h1 class="page-title">Plugin</h1>
     
 
     
 
 
 
+
+<section>
+
+<header>
     
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/** Copyright (c) 2016 Somatic Labs. All Rights Reserved.
-  *
-  * This program is free software: you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation, either version 3 of the License, or
-  * (at your option) any later version.
-  *
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  * GNU General Public License for more details.
-  *
-  * You should have received a copy of the GNU General Public License
-  * along with this program.  If not, see &lt;http://www.gnu.org/licenses/>.
-  *
-  * The information contained herein is property of Somatic Technologies, Inc.
-  *
-  */
+        <h2>
+        Plugin
+        </h2>
+        
+    
+</header>
 
-(function () {
+<article>
+    <div class="container-overview">
+    
+        
 
-// local variable reference to global `Moment` object
-var Moment = Function('return this')()['Moment'];
+    
 
-/** Namespace for functions enabling Battery control.
-  * @namespace
-  * @name Moment.Battery
-  */
-var Battery = {};
+    <h4 class="name" id="Plugin"><span class="type-signature"></span>new Plugin<span class="signature">(plugin)</span><span class="type-signature"></span></h4>
 
-/** Check if the battery is currently charging
-  *
-  * @memberof Moment.Battery
-  * @name Moment.Battery.isCharging
-  * @method
-  * @returns {Boolean} Whether or not the battery is charging
-  *
-  * @example
-  * var charging = Moment.Battery.isCharging();
-  * if (charging) {
-  *     // red LED color if battery is charging
-  *     Moment.LED.setColor(Moment.Color.RED);
-  * }
-  * else {
-  *     // otherwise green LED color
-  *     Moment.LED.setColor(Moment.Color.GREEN);
-  * }
-  */
-Battery['isCharging'] = function () {
-    return Moment['_is_battery_charging']();
-};
+    
 
-/** Check if the battery charger is connected.
-  *
-  * @memberof Moment.Battery
-  * @name Moment.Battery.isConnected
-  * @method
-  * @returns {Boolean} Whether or not the charger is connected
-  *
-  * @example
-  * var connected = Moment.Battery.isConnected();
-  * if (connected) {
-  *     // orange LED color if charger is connected
-  *     Moment.LED.setColor(Moment.Color.ORANGE);
-  * }
-  * else {
-  *     // otherwise blue LED color
-  *     Moment.LED.setColor(Moment.Color.BLUE);
-  * }
-  */
-Battery['isConnected'] = function () {
-    return Moment['_is_charger_connected']();
-};
 
-/** Get the current charge level of the battery.
-  *
-  * @memberof Moment.Battery
-  * @name Moment.Battery.getCharge
-  * @method
-  * @returns {Number} The remaining battery charge in percent (0-100)
-  *
-  * @example
-  * var charge = Moment.Battery.getCharge();
-  * if (charge &lt; 25) {
-  *     // set red LED color when battery charge drops below 25%
-  *     Moment.LED.setColor(Moment.Color.RED);
-  * }
-  */
-Battery['getCharge'] = function () {
-    return Moment['_get_battery_charge']();
-};
 
-Moment['Battery'] = Battery;
 
-})();
-</code></pre>
-        </article>
-    </section>
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="plugins.js.html">plugins.js</a>, <a href="plugins.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Provides an constructor to encapsulate plugins within the SDK.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>plugin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The methods for the plugin</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 
