@@ -30,6 +30,13 @@ describe('Moment colors', function () {
             assert.equal(newColor.green, 34);
             assert.equal(newColor.blue, 56);
         });
+
+        it('properly applies min/max rules', function () {
+            var newColor = new Moment.Color(-5, 280, 100);
+            assert.equal(newColor.red, 0);
+            assert.equal(newColor.green, 255);
+            assert.equal(newColor.blue, 100);
+        });
     });
 
     describe('#intensify()', function () {

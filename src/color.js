@@ -22,6 +22,18 @@
 // local variable reference to global `Moment` object
 var Moment = Function('return this')()['Moment'];
 
+/** Ensures a color value is an integer between 0 and 255.
+  */
+function minMax(number) {
+    if (number > 255) {
+        return 255;
+    }
+    else if (number < 0) {
+        return 0;
+    }
+    return Math.round(number);
+}
+
 /** Represents a color using a combination of red, green, and blue values. This
   * class also provides helper methods for blending colors. Primarily, this
   * will be used to change the LED color in response to device events in a
@@ -41,9 +53,9 @@ var Moment = Function('return this')()['Moment'];
   * var white = new Color(255, 255, 255);
   */
 function Color(red, green, blue) {
-    this['red'] = red;
-    this['green'] = green;
-    this['blue'] = blue;
+    this['red'] = minMax(red);
+    this['green'] = minMax(green);
+    this['blue'] = minMax(blue);
 }
 
 /** Clone a `Color` object to allow direct manipulation of the properties of
@@ -66,18 +78,6 @@ Color['prototype']['clone'] = function () {
         this.blue
     );
 };
-
-/** Ensures a color value is an integer between 0 and 255.
-  */
-function minMax(number) {
-    if (number > 255) {
-        return 255;
-    }
-    else if (number < 0) {
-        return 0;
-    }
-    return Math.round(number);
-}
 
 /** Intensifies the color by a multiplying factor. After multiplying, the
   * individual components of the color (red, green, and blue) are rounded to
