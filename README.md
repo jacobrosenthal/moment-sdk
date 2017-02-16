@@ -91,6 +91,12 @@ If your changes involve several new classes and functions, you may want to
 create a new file; however, we prefer adding unit tests to existing test files
 under most circumstances.
 
+To ensure tests cases provide adequate code coverage, we make use if the
+[istanbul](https://www.npmjs.com/package/istanbul) package. To run a coverage
+test using it, just run the following command:
+
+    npm run coverage
+
 ### Generating Documentation
 
 Documentation is generated using [JSDoc](http://usejsdoc.org/), and all
