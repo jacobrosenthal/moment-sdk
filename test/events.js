@@ -49,6 +49,11 @@ describe('Moment events', function () {
             Moment.trigger('testct');
 
             assert.equal(count, 4);
+
+            for (var i = 0; i < 10; i++) {
+                Moment.trigger('testct');
+                assert.equal(count, (i + 2) * 4);
+            }
         })
     });
 
