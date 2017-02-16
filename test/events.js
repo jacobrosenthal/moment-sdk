@@ -66,6 +66,12 @@ describe('Moment events', function () {
 
             Moment.on('test', testfn);
 
+            Moment.trigger('test');
+
+            assert.equal(triggered, true);
+
+            triggered = false;
+
             Moment.off('test', testfn)
 
             Moment.trigger('test');
