@@ -48,5 +48,23 @@ describe('Moment plugins', function () {
             Moment.remove('test');
             assert.ok(remove);
         });
+
+        it('should provide default init and remove functions', function () {
+            var event = false;
+
+            Moment.extend('test', {
+                events: {
+                  'testevt': function() { event = true; }
+                }
+            });
+
+            assert.ok(!event);
+
+            Moment.trigger('testevt');
+
+            assert.ok(event);
+
+            Moment.remove('test');
+        });
     });
 });

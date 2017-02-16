@@ -66,7 +66,7 @@ describe('Moment LED', function () {
         });
     });
 
-    describe('#tweenColor()', function () {
+    describe('#loopColor()', function () {
         it('transitions to a looping effect on the LED', function () {
             Moment._tween_led_color = function (r, g, b, f, d) {
                 assert.equal(r, 12);
@@ -90,7 +90,31 @@ describe('Moment LED', function () {
             var newColor2 = new Moment.Color(112, 134, 156);
             var t2 = new Moment.LED.Transition(newColor2, 19, 1500);
 
-            Moment.LED.tweenColor(t1, t2);
+            Moment.LED.loopColor(t1, t2);
+        });
+    });
+
+    describe('#scale()', function () {
+        it('scales the duration of a transition', function () {
+            var newColor1 = new Moment.Color(12, 34, 56);
+            var t1 = new Moment.LED.Transition(newColor1, 9, 500);
+
+            t1.scale(1.5);
+
+            assert.equal(t1.duration, 750);
+        });
+    });
+
+    describe('#clone()', function () {
+        it('clones a transition', function () {
+            var newColor1 = new Moment.Color(12, 34, 56);
+            var t1 = new Moment.LED.Transition(newColor1, 9, 500);
+
+            var t2 = t1.clone();
+
+            assert.equal(t1.color, t2.color);
+            assert.equal(t1.func, t2.func);
+            assert.equal(t1.duration, t2.duration);
         });
     });
 });

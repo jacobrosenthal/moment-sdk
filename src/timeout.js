@@ -192,6 +192,10 @@ Moment['clearInterval'] = function (t) {
     }
 };
 
+function sortFn(a, b) {
+    return a.next - b.next;
+}
+
 /***Triggers the execution of timers.
   */
 Moment['_run_timers'] = function () {
@@ -215,24 +219,17 @@ Moment['_run_timers'] = function () {
     timeouts.splice(0, i);
 
     for (i = 0, len = intervals.length; i < len; i += 1) {
-        if (m > intervals[i].next) {
+        if (m >= intervals[i].next) {
             t = intervals[i];
             t.fn();
             t.next = m + t.timeout;
-
-            j = i;
-
-            while (j < len && intervals[i].next <= t.next) {
-                j += 1;
-            }
-
-            intervals.splice(i, 1);
-            intervals.splice(j, 0, t);
         }
         else {
             break;
         }
     }
+
+    intervals.sort(sortFn);
 };
 
 /** This function returns the number of milliseconds during which the device

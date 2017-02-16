@@ -19,7 +19,8 @@
 
 var assert = require('assert'),
     init = require('../src/_init'),
-    haptics = require('../src/haptics');
+    haptics = require('../src/haptics'),
+    haptics = require('../src/actuators');
 
 describe('Moment haptics', function () {
 
@@ -89,7 +90,7 @@ describe('Moment haptics', function () {
     describe('#start()', function () {
         it('starts a vibration on a motor', function () {
             var newEffect = new Moment.Effect(25, 75, 8, 400, 200);
-            var newVibration = new Moment.Vibration(2, newEffect, 100);
+            var newVibration = new Moment.Vibration(Moment.Actuators.bottomLeft, newEffect, 100);
             Moment._add_transition = function (
                 pin,
                 start,
@@ -107,6 +108,8 @@ describe('Moment haptics', function () {
                   assert.equal(position, 200);
                   assert.equal(delay, 100);
             }
+
+            newVibration.start();
         });
     });
 

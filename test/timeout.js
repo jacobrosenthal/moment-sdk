@@ -27,13 +27,17 @@ describe('Moment timeout', function () {
         it('should attach a callback for future execution', function () {
             Moment.uptime = function () { return 0; }; // mock uptime function
             assert.ok(Moment.setTimeout);
-            var val = false;
+            var val = 0;
 
-            Moment.setTimeout(function () { val = true; }, 1000);
+            Moment.setTimeout(function () { val++; }, 1000);
+            Moment.setTimeout(function () { val++; }, 1000);
+            Moment._run_timers();
+            assert.equal(val, 0);
+
             Moment.uptime = function () { return 1500; };
 
             Moment._run_timers();
-            assert.ok(val);
+            assert.equal(val, 2);
         });
     });
 
@@ -41,17 +45,19 @@ describe('Moment timeout', function () {
         it('should attach a callback for interval execution', function () {
             Moment.uptime = function () { return 0; }; // mock uptime function
             assert.ok(Moment.setInterval);
-            var val = false;
-            Moment.setInterval(function () { val = true; }, 500);
+            var val = 0;
+            Moment.setInterval(function () { val++; }, 500);
+            Moment.setInterval(function () { val++; }, 500);
 
             Moment.uptime = function () { return 501; };
             Moment._run_timers();
-            assert.ok(val);
-            val = false;
+            assert.equal(val, 2);
+            Moment._run_timers();
+            assert.equal(val, 2);
 
             Moment.uptime = function () { return 1501; };
             Moment._run_timers();
-            assert.ok(val);
+            assert.equal(val, 4);
         });
     });
 
