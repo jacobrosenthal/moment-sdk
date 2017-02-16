@@ -51,6 +51,33 @@ function Plugin(plugin) {
   *
   * @param {String} name - The name of the plugin
   * @param {Object} plugin - The methods for the plugin
+  *
+  * @example
+  * // structure for implementing a meditation timer plugin
+  * Moment.extend('meditate', {
+  *     init: function () {
+  *         this.interval = Moment.setInterval(5000, function () {
+  *             // create haptic patterns every 5 seconds
+  *         });
+  *     },
+  *
+  *     remove: function () {
+  *         Moment.clearInterval(this.interval);
+  *     },
+  *
+  *     // events to attach to the Moment global
+  *     events: {
+  *         'accelerometer': function () {
+  *             var data = Moment.Accelerometer;
+  *             Moment._log(data.x + "," + data.y + "," + data.z);
+  *             // implement some accelerometer logic here e.g. if values exceed threshold
+  *         },
+  *         'timertick': function () {
+  *             var time = Moment.uptime();
+  *             // implement something to change the haptic feedback based on the time
+  *         }
+  *     }
+  * });
   */
 Moment['extend'] = function(name, plugin) {
     plugins[name] = new Plugin(plugin);
@@ -66,6 +93,10 @@ Moment['extend'] = function(name, plugin) {
   * @static
   *
   * @param {String} name - The name of the plugin to remove
+  *
+  * @example
+  * // remove the "meditate" plugin
+  * Moment.remove('meditate');
   */
 Moment['remove'] = function(name) {
     plugins[name]._remove();
