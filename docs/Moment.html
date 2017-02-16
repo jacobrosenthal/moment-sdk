@@ -526,6 +526,35 @@ be easily enabled, disabled, or removed later.</p>
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// structure for implementing a meditation timer plugin
+Moment.extend('meditate', {
+    init: function () {
+        this.interval = Moment.setInterval(5000, function () {
+            // create haptic patterns every 5 seconds
+        });
+    },
+
+    remove: function () {
+        Moment.clearInterval(this.interval);
+    },
+
+    // events to attach to the Moment global
+    events: {
+        'accelerometer': function () {
+            var data = Moment.Accelerometer;
+            Moment._log(data.x + "," + data.y + "," + data.z);
+            // implement some accelerometer logic here e.g. if values exceed threshold
+        },
+        'timertick': function () {
+            var time = Moment.uptime();
+            // implement something to change the haptic feedback based on the time
+        }
+    }
+});</code></pre>
+
+
 
 
     <h5>Parameters:</h5>
@@ -1130,7 +1159,7 @@ be executed again.</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="plugins.js.html">plugins.js</a>, <a href="plugins.js.html#line59">line 59</a>
+        <a href="plugins.js.html">plugins.js</a>, <a href="plugins.js.html#line86">line 86</a>
     </li></ul></dd>
     
 
@@ -1181,6 +1210,12 @@ re-initialized using <code>Moment.extend()</code> to be reinstalled.</p>
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// remove the "meditate" plugin
+Moment.remove('meditate');</code></pre>
 
 
 
