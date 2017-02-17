@@ -22,18 +22,6 @@
 // local variable reference to global `Moment` object
 var Moment = Function('return this')()['Moment'];
 
-/** Ensures a color value is an integer between 0 and 255.
-  */
-function minMax(number) {
-    if (number > 255) {
-        return 255;
-    }
-    else if (number < 0) {
-        return 0;
-    }
-    return Math.round(number);
-}
-
 /** Represents a color using a combination of red, green, and blue values. This
   * class also provides helper methods for blending colors. Primarily, this
   * will be used to change the LED color in response to device events in a
@@ -53,10 +41,18 @@ function minMax(number) {
   * var white = new Color(255, 255, 255);
   */
 function Color(red, green, blue) {
-    this['red'] = minMax(red);
-    this['green'] = minMax(green);
-    this['blue'] = minMax(blue);
+    red = (red > 255) ? 255 : red;
+    red = (red < 0) ? 0 : red;
+    green = (green > 255) ? 255 : green;
+    green = (green < 0) ? 0 : green;
+    blue = (blue > 255) ? 255 : blue;
+    blue = (blue < 0) ? 0 : blue;
+
+    this['red'] = red;
+    this['green'] = green;
+    this['blue'] = blue;
 }
+
 
 /** Clone a `Color` object to allow direct manipulation of the properties of
   * a copy of the object.
@@ -73,9 +69,9 @@ function Color(red, green, blue) {
   */
 Color['prototype']['clone'] = function () {
     return new Color(
-        this.red,
-        this.green,
-        this.blue
+        this['red'],
+        this['green'],
+        this['blue']
     );
 };
 
@@ -106,9 +102,20 @@ Color['prototype']['clone'] = function () {
   * @param {number} multiplier - The multiplier for all of the color components.
   */
 Color['prototype']['intensify'] = function (multiplier) {
-    this.red = minMax(multiplier * this.red);
-    this.green = minMax(multiplier * this.green);
-    this.blue = minMax(multiplier * this.blue);
+    var red = this['red'] * multiplier,
+        green = this['green'] * multiplier,
+        blue = this['blue'] * multiplier;
+
+    red = (red > 255) ? 255 : red;
+    red = (red < 0) ? 0 : red;
+    green = (green > 255) ? 255 : green;
+    green = (green < 0) ? 0 : green;
+    blue = (blue > 255) ? 255 : blue;
+    blue = (blue < 0) ? 0 : blue;
+
+    this['red'] = red;
+    this['green'] = green;
+    this['blue'] = blue;
     return this;
 };
 
@@ -138,11 +145,25 @@ Color['prototype']['intensify'] = function (multiplier) {
   * @param {number} multiplier - The ratio of new color to use relative to the base color.
   */
 Color['prototype']['blend'] = function (color, multiplier) {
-    var invMult = 1.0 - multiplier;
+    var invMult = 1.0 - multiplier,
+        red = this['red'],
+        green = this['green'],
+        blue = this['blue'];
 
-    this.red = minMax(multiplier * color.red + invMult * this.red);
-    this.green = minMax(multiplier * color.green + invMult * this.green);
-    this.blue = minMax(multiplier * color.blue + invMult * this.blue);
+    red = multiplier * color['red'] + invMult * red;
+    green = multiplier * color['green'] + invMult * green;
+    blue = multiplier * color['blue'] + invMult * blue;
+
+    red = (red > 255) ? 255 : red;
+    red = (red < 0) ? 0 : red;
+    green = (green > 255) ? 255 : green;
+    green = (green < 0) ? 0 : green;
+    blue = (blue > 255) ? 255 : blue;
+    blue = (blue < 0) ? 0 : blue;
+
+    this['red'] = red;
+    this['green'] = green;
+    this['blue'] = blue;
     return this;
 };
 
@@ -157,7 +178,7 @@ Color['prototype']['blend'] = function (color, multiplier) {
   * // set the LED color to orange
   * Moment.LED.setColor(Moment.Color.ORANGE);
   */
-Color['ORANGE'] = new Color(0xfd, 0xaa, 0x00);
+Color['ORANGE'] = new Color(253, 170, 0);
 
 /** The default red color in the LED color palette: #e63014
   *
@@ -170,7 +191,7 @@ Color['ORANGE'] = new Color(0xfd, 0xaa, 0x00);
   * // set the LED color to red
   * Moment.LED.setColor(Moment.Color.RED);
   */
-Color['RED'] = new Color(0xe6, 0x30, 0x14);
+Color['RED'] = new Color(230, 48, 20);
 
 /** The default pink color in the LED color palette: #b8008f
   *
@@ -183,7 +204,7 @@ Color['RED'] = new Color(0xe6, 0x30, 0x14);
   * // set the LED color to pink
   * Moment.LED.setColor(Moment.Color.PINK);
   */
-Color['PINK'] = new Color(0xb8, 0x00, 0x8f);
+Color['PINK'] = new Color(184, 0x00, 143);
 
 /** The default green color in the LED color palette: #b9f100
   *
@@ -196,7 +217,7 @@ Color['PINK'] = new Color(0xb8, 0x00, 0x8f);
   * // set the LED color to green
   * Moment.LED.setColor(Moment.Color.GREEN);
   */
-Color['GREEN'] = new Color(0xb9, 0xf1, 0x00);
+Color['GREEN'] = new Color(185, 241, 0);
 
 /** The default blue color in the LED color palette: #007eed
   *
@@ -209,7 +230,7 @@ Color['GREEN'] = new Color(0xb9, 0xf1, 0x00);
   * // set the LED color to blue
   * Moment.LED.setColor(Moment.Color.BLUE);
   */
-Color['BLUE'] = new Color(0x00, 0x7e, 0xed);
+Color['BLUE'] = new Color(0, 126, 237);
 
 /** The default black color in the LED color palette: #000000
   *
