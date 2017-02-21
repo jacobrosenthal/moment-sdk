@@ -67,7 +67,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color.js.html">color.js</a>, <a href="color.js.html#line43">line 43</a>
+        <a href="color.js.html">color.js</a>, <a href="color.js.html#line47">line 47</a>
     </li></ul></dd>
     
 
@@ -110,8 +110,12 @@
     <p>Represents a color using a combination of red, green, and blue values. This
 class also provides helper methods for blending colors. Primarily, this
 will be used to change the LED color in response to device events in a
-streamlined way, but can be used in many circumstances where color
-blending may be required.</p>
+streamlined way, but can be used in any circumstances where color
+blending may be required. Note that the <code>new Color(red, green blue);</code>
+constructor expects each of the <code>red</code>, <code>green</code>, <code>blue</code> values to be
+between 0-255 inclusive. If provided a negative value, the value will be
+replaced with 0. If provided a value greater than 255, the value will be
+replaced with 255.</p>
 </div>
 
 
@@ -271,7 +275,7 @@ var white = new Color(255, 255, 255);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color.js.html">color.js</a>, <a href="color.js.html#line246">line 246</a>
+        <a href="color.js.html">color.js</a>, <a href="color.js.html#line252">line 252</a>
     </li></ul></dd>
     
 
@@ -350,7 +354,7 @@ Moment.LED.setColor(Moment.Color.BLACK);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color.js.html">color.js</a>, <a href="color.js.html#line233">line 233</a>
+        <a href="color.js.html">color.js</a>, <a href="color.js.html#line239">line 239</a>
     </li></ul></dd>
     
 
@@ -429,7 +433,7 @@ Moment.LED.setColor(Moment.Color.BLUE);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color.js.html">color.js</a>, <a href="color.js.html#line259">line 259</a>
+        <a href="color.js.html">color.js</a>, <a href="color.js.html#line265">line 265</a>
     </li></ul></dd>
     
 
@@ -508,7 +512,7 @@ Moment.LED.setColor(Moment.Color.GRAY);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color.js.html">color.js</a>, <a href="color.js.html#line220">line 220</a>
+        <a href="color.js.html">color.js</a>, <a href="color.js.html#line226">line 226</a>
     </li></ul></dd>
     
 
@@ -587,7 +591,7 @@ Moment.LED.setColor(Moment.Color.GREEN);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color.js.html">color.js</a>, <a href="color.js.html#line181">line 181</a>
+        <a href="color.js.html">color.js</a>, <a href="color.js.html#line187">line 187</a>
     </li></ul></dd>
     
 
@@ -666,7 +670,7 @@ Moment.LED.setColor(Moment.Color.ORANGE);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color.js.html">color.js</a>, <a href="color.js.html#line207">line 207</a>
+        <a href="color.js.html">color.js</a>, <a href="color.js.html#line213">line 213</a>
     </li></ul></dd>
     
 
@@ -745,7 +749,7 @@ Moment.LED.setColor(Moment.Color.PINK);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color.js.html">color.js</a>, <a href="color.js.html#line194">line 194</a>
+        <a href="color.js.html">color.js</a>, <a href="color.js.html#line200">line 200</a>
     </li></ul></dd>
     
 
@@ -824,7 +828,7 @@ Moment.LED.setColor(Moment.Color.RED);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color.js.html">color.js</a>, <a href="color.js.html#line272">line 272</a>
+        <a href="color.js.html">color.js</a>, <a href="color.js.html#line278">line 278</a>
     </li></ul></dd>
     
 
@@ -913,7 +917,7 @@ Moment.LED.setColor(Moment.Color.WHITE);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color.js.html">color.js</a>, <a href="color.js.html#line122">line 122</a>
+        <a href="color.js.html">color.js</a>, <a href="color.js.html#line128">line 128</a>
     </li></ul></dd>
     
 
@@ -1106,7 +1110,7 @@ black.blend(white, 0.5);</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color.js.html">color.js</a>, <a href="color.js.html#line57">line 57</a>
+        <a href="color.js.html">color.js</a>, <a href="color.js.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -1147,7 +1151,9 @@ black.blend(white, 0.5);</code></pre>
 
 <div class="description">
     <p>Clone a <code>Color</code> object to allow direct manipulation of the properties of
-a copy of the object.</p>
+a copy of the object. This function is useful when you don't want to change
+a color you have already created, but you still want to create a copy that
+is more intense or incorporates another color blended into it.</p>
 </div>
 
 
@@ -1215,7 +1221,7 @@ redder != Moment.Color.RED // true</code></pre>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="color.js.html">color.js</a>, <a href="color.js.html#line78">line 78</a>
+        <a href="color.js.html">color.js</a>, <a href="color.js.html#line84">line 84</a>
     </li></ul></dd>
     
 

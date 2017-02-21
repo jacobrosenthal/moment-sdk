@@ -25,8 +25,12 @@ var Moment = Function('return this')()['Moment'];
 /** Represents a color using a combination of red, green, and blue values. This
   * class also provides helper methods for blending colors. Primarily, this
   * will be used to change the LED color in response to device events in a
-  * streamlined way, but can be used in many circumstances where color
-  * blending may be required.
+  * streamlined way, but can be used in any circumstances where color
+  * blending may be required. Note that the `new Color(red, green blue);`
+  * constructor expects each of the `red`, `green`, `blue` values to be
+  * between 0-255 inclusive. If provided a negative value, the value will be
+  * replaced with 0. If provided a value greater than 255, the value will be
+  * replaced with 255.
   *
   * @constructor
   * @param {number} red - The red component of the color.
@@ -55,7 +59,9 @@ function Color(red, green, blue) {
 
 
 /** Clone a `Color` object to allow direct manipulation of the properties of
-  * a copy of the object.
+  * a copy of the object. This function is useful when you don't want to change
+  * a color you have already created, but you still want to create a copy that
+  * is more intense or incorporates another color blended into it.
   *
   * @public
   * @memberof Moment.Color

@@ -70,7 +70,18 @@ function Actuator(pin) {
 }
 
 /** Namespace for constants and functions related to direct control of the
-  * actuators on Moment.
+  * actuators on Moment. The `Moment.Actuators` namespace provides a few useful
+  * properties you will use regularly, including `Moment.Actuators.topLeft`,
+  * `Moment.Actuators.topRight`, `Moment.Actuators.bottomLeft`, and
+  * `Moment.Actuators.bottomRight`. These four constants represent the
+  * hardware-level access to each of the four actuators on Moment, and allow
+  * vibration patterns to be assigned to any of the four actuators. Since the
+  * orientation of the device responds to a user's settings, the `topLeft`
+  * value will always correspond to the top-left actuator on the device, even
+  * if the user decides to wear the device in a different orientation - the
+  * vibrations assigned to the top-left actuator will be reassigned to the new
+  * actuator that is in the top-left position when the user changes their
+  * settings.
   *
   * @namespace
   * @name Moment.Actuators
@@ -94,7 +105,7 @@ var Actuators = {
       *     750 // linear transition lasts 750ms
       * );
       *
-      * var tlFade = new Vibration(
+      * var tlFade = new Moment.Vibration(
       *     Moment.Actuators.topLeft, // select top left actuator
       *     fadeOut, // use the 750ms exponential fade out effect
       *     100 // begin effect after 100ms
@@ -121,7 +132,7 @@ var Actuators = {
       *     750 // linear transition lasts 750ms
       * );
       *
-      * var trFade = new Vibration(
+      * var trFade = new Moment.Vibration(
       *     Moment.Actuators.topRight, // select top right actuator
       *     fadeOut, // use the 750ms exponential fade out effect
       *     100 // begin effect after 100ms
@@ -148,7 +159,7 @@ var Actuators = {
       *     750 // linear transition lasts 750ms
       * );
       *
-      * var brFade = new Vibration(
+      * var brFade = new Moment.Vibration(
       *     Moment.Actuators.bottomRight, // select bottom right actuator
       *     fadeOut, // use the 750ms exponential fade out effect
       *     100 // begin effect after 100ms
@@ -175,7 +186,7 @@ var Actuators = {
       *     750 // linear transition lasts 750ms
       * );
       *
-      * var blFade = new Vibration(
+      * var blFade = new Moment.Vibration(
       *     Moment.Actuators.topLeft, // select bottom left actuator
       *     fadeOut, // use the 750ms exponential fade out effect
       *     100 // begin effect after 100ms
