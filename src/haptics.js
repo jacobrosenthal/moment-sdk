@@ -75,7 +75,7 @@ function Effect(start, end, func, duration, position) {
   *
   * @example
   * // turn off the top left motor
-  * var tlOff = new Vibration(
+  * var tlOff = new Moment.Vibration(
   *     Moment.Actuators.topLeft,
   *     Moment.Effect.OFF
   * );
@@ -182,7 +182,7 @@ Moment['Effect'] = Effect;
   *     500 // exponential transition lasts 500ms
   * );
   *
-  * var tlPulse = new Vibration(
+  * var tlPulse = new Moment.Vibration(
   *     Moment.Actuators.topLeft, // select top left actuator
   *     quickPulse, // use the 500ms exponential ease in effect
   *     0 // begin immediately after tlPulse.start() is called
@@ -197,7 +197,7 @@ Moment['Effect'] = Effect;
   *     100 // begin 100ms into the quadratic transition (only 300ms of easing)
   * );
   *
-  * var blIn = new Vibration(
+  * var blIn = new Moment.Vibration(
   *     Moment.Actuators.bottomLeft, // select bottom left actuator
   *     quickIn, // use the 400ms quadratic ease in effect
   *     200 // begin effect 200ms after blIn.start() is called
@@ -211,7 +211,7 @@ Moment['Effect'] = Effect;
   *     750 // linear transition lasts 750ms
   * );
   *
-  * var trFade = new Vibration(
+  * var trFade = new Moment.Vibration(
   *     Moment.Actuators.topRight, // select top right actuator
   *     fadeOut, // use the 750ms exponential fade out effect
   *     100 // begin effect after 100ms
@@ -241,7 +241,7 @@ function Vibration(pin, effect, delay) {
   *     750 // linear transition lasts 750ms
   * );
   *
-  * var trFade = new Vibration(
+  * var trFade = new Moment.Vibration(
   *     Moment.Actuators.topRight, // select top right actuator
   *     fadeOut, // use the 750ms exponential fade out effect
   *     100 // begin effect after 100ms
@@ -302,7 +302,7 @@ Vibration['prototype']['clone'] = function () {
   *     750 // linear transition lasts 750ms
   * );
   *
-  * var trFade = new Vibration(
+  * var trFade = new Moment.Vibration(
   *     Moment.Actuators.topRight, // select top right actuator
   *     fadeOut, // use the 750ms exponential fade out effect
   *     100 // begin effect after 100ms
@@ -330,7 +330,7 @@ Vibration['prototype']['scale'] = function (multiplier) {
   *     750 // linear transition lasts 750ms
   * );
   *
-  * var trFade = new Vibration(
+  * var trFade = new Moment.Vibration(
   *     Moment.Actuators.topRight, // select top right actuator
   *     fadeOut, // use the 750ms exponential fade out effect
   *     100 // begin effect after 100ms
@@ -359,7 +359,7 @@ Vibration['prototype']['invert'] = function () {
   *     750 // linear transition lasts 750ms
   * );
   *
-  * var trFade = new Vibration(
+  * var trFade = new Moment.Vibration(
   *     Moment.Actuators.topRight, // select top right actuator
   *     fadeOut, // use the 750ms exponential fade out effect
   *     100 // begin effect after 100ms
