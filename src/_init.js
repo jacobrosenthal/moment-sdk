@@ -20,7 +20,13 @@
 (function (global) {
 
 /**
-  * Moment namespace for SDK functions.
+  * Moment namespace for SDK functions. Avoid modifying the global `Moment`
+  * object directly. Instead, opt to use `Moment.extend()` to create plugins
+  * that extend the functionality of the device through custom events and
+  * methods that can be quickly enabled and disabled. All SDK functions are
+  * part of the `Moment` global object to avoid polluting the global namespace
+  * and reduce the possibility of an unintentional conflict in variable names.
+  *
   * @global
   * @name Moment
   * @namespace
