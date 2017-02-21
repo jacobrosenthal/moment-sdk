@@ -16,14 +16,6 @@ custom embedded software for Moment, we provide several ready-to-use functions
 for creating event callbacks, transitioning the LED color, and creating rich
 haptic effects.
 
-### Creating Plugins
-
-If you just want to create plugins for Moment, you don't need to modify the SDK
-code at all! The Moment SDK is built into every Moment device. All you need
-to do is create a JavaScript source file that makes the appropriate function
-calls to different parts of the SDK. To test your plugins, you can use our
-[web-based simulator](https://somaticlabs.github.io/moment-sim) before deploying to your Moment device.
-
 ### Repository
 
 The source code for the SDK is hosted on Github and can be found at [https://github.com/SomaticLabs/moment-sdk](https://github.com/SomaticLabs/moment-sdk)
@@ -32,7 +24,17 @@ The source code for the SDK is hosted on Github and can be found at [https://git
 
 You can browse the documentation at [https://somaticlabs.github.io/moment-sdk/](https://somaticlabs.github.io/moment-sdk/)
 
-## Installing Dependencies
+## Extending Moment (beginners)
+
+If you just want to create plugins for Moment that extend the functionality
+of the device, you don't need to modify the SDK
+code at all! The Moment SDK is built into every Moment device. All you need
+to do is create a JavaScript source file that makes use of the public API's
+provided by the SDK. To test your plugins, you can use our
+[web-based simulator](https://somaticlabs.github.io/moment-sim) before
+deploying to your Moment device.
+
+## Hacking the SDK (advanced users)
 
 To develop on the Moment SDK, you will need to install some dependencies first.
 The following instructions assume you have some familiarity with your terminal.
