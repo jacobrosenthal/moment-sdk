@@ -95,7 +95,12 @@
 
 
         
-            <div class="description"><p>Moment namespace for SDK functions.</p></div>
+            <div class="description"><p>Moment namespace for SDK functions. Avoid modifying the global <code>Moment</code>
+object directly. Instead, opt to use <code>Moment.extend()</code> to create plugins
+that extend the functionality of the device through custom events and
+methods that can be quickly enabled and disabled. All SDK functions are
+part of the <code>Moment</code> global object to avoid polluting the global namespace
+and reduce the possibility of an unintentional conflict in variable names.</p></div>
         
 
         
