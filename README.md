@@ -28,11 +28,55 @@ You can browse the documentation at [https://somaticlabs.github.io/moment-sdk/](
 
 If you just want to create plugins for Moment that extend the functionality
 of the device, you don't need to modify the SDK
-code at all! The Moment SDK is built into every Moment device. All you need
+code at all. The Moment SDK is built into every Moment device. All you need
 to do is create a JavaScript source file that makes use of the public API's
-provided by the SDK. To test your plugins, you can use our
+provided by the SDK.
+
+### Step 1: Launch the Moment Simulator
+To test your plugins, you can use our
 [web-based simulator](https://somaticlabs.github.io/moment-sim) before
-deploying to your Moment device.
+deploying to your Moment device. The simulator allows you to visualize haptic
+effects and test event handlers you have created for the device.
+
+### Step 2: Implement a Plugin
+
+The `Moment.extend()` function allows you to create a plugin that integrates
+with Moment and provides additional functionality to the device in a reusable
+and modular fashion. Below, you can find an example of the implementation:
+
+    // structure for implementing a meditation timer plugin
+    Moment.extend('meditate', {
+        init: function () {
+            this.interval = Moment.setInterval(5000, function () {
+                // create haptic patterns every 5 seconds
+            });
+        },
+
+        remove: function () {
+            Moment.clearInterval(this.interval);
+        },
+
+        // events to attach to the Moment global
+        events: {
+            'accelerometer': function () {
+                var data = Moment.Accelerometer;
+                Moment._log(data.x + "," + data.y + "," + data.z);
+                // implement some accelerometer logic here e.g. if values exceed threshold
+            },
+            'timertick': function () {
+                var time = Moment.uptime();
+                // implement something to change the haptic feedback based on the time
+            }
+        }
+    });
+
+### Step 3: Create a Gist on Github
+
+Visit [https://gist.github.com/](https://gist.github.com/) to create a Gist.
+A Gist will provide you with a version-controlled pastebin for your Moment
+plugin. Once you create a Gist, copy the URL and paste it into the Moment app
+as a user script. This will allow you to enable and disable the plugin you've
+created from the Moment app.
 
 ## Hacking the SDK (advanced users)
 
