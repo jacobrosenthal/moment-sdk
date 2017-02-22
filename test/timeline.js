@@ -254,7 +254,7 @@ describe('Moment timeline system', function () {
 
 describe('Moment point plots', function () {
     function compeq (v1, v2) {
-        assert.equal(Math.round(v1, -2), Math.round(v2, -2));
+        assert.equal(Math.round(v1, -1), Math.round(v2, -1));
     }
     describe('#Point', function () {
         it('represents a point in x/y/z coordinates', function () {
@@ -323,12 +323,31 @@ describe('Moment point plots', function () {
             var p1 = new Moment.Point(0.5, 0.5, 0.5);
             var p2 = new Moment.Point(-0.5, 0.5, 0.5);
             var newEffect1 = new Moment.Effect(25, 75, 8, 400, 200);
+            var i = 0;
 
             var l = new Moment.Line(p1, p2, newEffect1);
 
             assert.equal(l.vibrations.length, 4);
 
-            // TODO: check vibration values with asserts
+            for (i = 0; i < 4; i++) {
+                var v = l.vibrations[i];
+                assert.equal(v.effect.duration, 400);
+                assert.equal(v.effect.position, 200);
+                assert.equal(v.effect.func, 8);
+                assert.equal(v.pin, i);
+                assert.equal(v.delay, 0);
+            }
+
+            var vs = l.vibrations;
+
+            compeq(vs[0].effect.start, 2.617882311973814);
+            compeq(vs[0].effect.end, 24.241747852752233);
+            compeq(vs[1].effect.start, 8.080582617584078);
+            compeq(vs[1].effect.end, 7.853646935921442);
+            compeq(vs[2].effect.start, 0);
+            compeq(vs[2].effect.end, 7.853646935921442);
+            compeq(vs[3].effect.start, 2.617882311973814);
+            compeq(vs[3].effect.end, 0);
         });
     });
 });
