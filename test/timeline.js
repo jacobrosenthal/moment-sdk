@@ -284,4 +284,30 @@ describe('Moment point plots', function () {
             compeq(p4.topRight, 0);
         });
     });
+
+    describe('#Point.makeTimeline()', function () {
+        it('makes a timeline from a sequence of effects', function () {
+           var newEffect1 = new Moment.Effect(25, 75, 8, 400, 200);
+           var newEffect2 = new Moment.Effect(50, 100, 9, 800, 100);
+
+            var p1 = new Moment.Point(0.5, 0.5, 0.5);
+            p1.makeTimeline(newEffect1, newEffect2);
+
+            // TODO: check vibration values with asserts
+        });
+    });
+
+    describe('#Line', function () {
+        it('creates a transition between two points', function () {
+            var p1 = new Moment.Point(0.5, 0.5, 0.5);
+            var p2 = new Moment.Point(-0.5, 0.5, 0.5);
+            var newEffect1 = new Moment.Effect(25, 75, 8, 400, 200);
+
+            var l = new Moment.Line(p1, p2, newEffect1);
+
+            assert.equal(l.vibrations.length, 4);
+
+            // TODO: check vibration values with asserts
+        });
+    });
 });
