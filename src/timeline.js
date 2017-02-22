@@ -30,6 +30,11 @@ var Moment = Function('return this')()['Moment'];
   * @name Moment.Timeline
   *
   * @param {Array} vibrations - The sequence of vibrations to place in timeline
+  *
+  * @example
+  * // creates a timeline for vibrations
+  * var timeline = new Moment.Timeline([vibration1, vibration2, vibration3]);
+  * timeline.start(); // starts the sequence of vibrations
   */
 function Timeline(vibrations) {
     this.vibrations = vibrations || [];
