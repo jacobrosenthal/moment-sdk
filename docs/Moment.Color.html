@@ -111,7 +111,7 @@
 class also provides helper methods for blending colors. Primarily, this
 will be used to change the LED color in response to device events in a
 streamlined way, but can be used in any circumstances where color
-blending may be required. Note that the <code>new Color(red, green blue);</code>
+blending may be required. Note that the <code>new Moment.Color(red, green blue);</code>
 constructor expects each of the <code>red</code>, <code>green</code>, <code>blue</code> values to be
 between 0-255 inclusive. If provided a negative value, the value will be
 replaced with 0. If provided a value greater than 255, the value will be
@@ -129,10 +129,10 @@ replaced with 255.</p>
     <h5>Examples</h5>
     
     <pre class="prettyprint"><code>// represents the color #ff9933
-var orange = new Color(0xff, 0x99, 0x33);</code></pre>
+var orange = new Moment.Color(0xff, 0x99, 0x33);</code></pre>
 
     <pre class="prettyprint"><code>// represents the color #ffffff
-var white = new Color(255, 255, 255);</code></pre>
+var white = new Moment.Color(255, 255, 255);</code></pre>
 
 
 
@@ -976,9 +976,9 @@ any of the values are less than 0, they will be set to 0.</p>
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>// represents the color #ffffff
-var white = new Color(0xff, 0xff, 0xff);
+var white = new Moment.Color(0xff, 0xff, 0xff);
 // represents the color #000000
-var black = new Color(0, 0, 0);
+var black = new Moment.Color(0, 0, 0);
 // changes black to the color #888888
 black.blend(white, 0.5);</code></pre>
 
@@ -1279,12 +1279,12 @@ be set to 255 as the maximum. Likewise, if any of the values are less than
     <h5>Examples</h5>
     
     <pre class="prettyprint"><code>// represents the color #224466
-var color = new Color(0x22, 0x44, 0x66);
+var color = new Moment.Color(0x22, 0x44, 0x66);
 // changes to #112233
 color.intensify(0.5);</code></pre>
 
     <pre class="prettyprint"><code>//represents the color #ff9933
-var orange = new Color(0xff, 0x88, 0x22);
+var orange = new Moment.Color(0xff, 0x88, 0x22);
 // changes to #ffdd33
 orange.intensify(1.5);</code></pre>
 
