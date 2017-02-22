@@ -250,3 +250,38 @@ describe('Moment timeline system', function () {
     });
 
 });
+
+
+describe('Moment point plots', function () {
+    function compeq (v1, v2) {
+        assert.equal(Math.round(v1, -2), Math.round(v2, -2));
+    }
+    describe('#Point', function () {
+        it('represents a point in x/y/z coordinates', function () {
+            var p1 = new Moment.Point(0.5, 0.5, 0.5);
+            var p2 = new Moment.Point(-0.5, 0.5, 0.5);
+            var p3 = new Moment.Point(0.5, -0.5, 0.5);
+            var p4 = new Moment.Point(-0.5, -0.5, 0.5);
+
+            compeq(p1.bottomLeft, 0);
+            compeq(p1.bottomRight, 10.471529247895257);
+            compeq(p1.topLeft, 10.471529247895257);
+            compeq(p1.topRight, 32.32233047033631);
+
+            compeq(p2.bottomLeft, 10.471529247895257);
+            compeq(p2.bottomRight, 0);
+            compeq(p2.topLeft, 32.32233047033631);
+            compeq(p2.topRight, 10.471529247895257);
+
+            compeq(p3.bottomLeft, 10.471529247895257);
+            compeq(p3.bottomRight, 32.32233047033631);
+            compeq(p3.topLeft, 0);
+            compeq(p3.topRight, 10.471529247895257);
+
+            compeq(p4.bottomLeft, 32.32233047033631);
+            compeq(p4.bottomRight, 10.471529247895257);
+            compeq(p4.topLeft, 10.471529247895257);
+            compeq(p4.topRight, 0);
+        });
+    });
+});
