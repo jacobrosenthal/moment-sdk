@@ -287,13 +287,28 @@ describe('Moment point plots', function () {
 
     describe('#Point.makeTimeline()', function () {
         it('makes a timeline from a sequence of effects', function () {
-           var newEffect1 = new Moment.Effect(25, 75, 8, 400, 200);
-           var newEffect2 = new Moment.Effect(50, 100, 9, 800, 100);
+            var newEffect1 = new Moment.Effect(25, 75, 8, 400, 200);
+            var newEffect2 = new Moment.Effect(50, 100, 9, 800, 100);
+            var i = 0;
 
             var p1 = new Moment.Point(0.5, 0.5, 0.5);
             var t = p1.makeTimeline(newEffect1, newEffect2);
 
-            // TODO: check vibration values with asserts
+            assert.equal(t.vibrations.length, 8);
+
+            for (i = 0; i < 4; i++) {
+                var v = t.vibrations[i];
+                assert.equal(v.effect.duration, 400);
+                assert.equal(v.effect.position, 200);
+            }
+
+            for (i = 4; i < 8; i++) {
+                var v = t.vibrations[i];
+                assert.equal(v.effect.duration, 800);
+                assert.equal(v.effect.position, 100);
+            }
+
+            // TODO: add additional assert checks
         });
     });
 
