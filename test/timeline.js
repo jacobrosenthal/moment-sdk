@@ -315,8 +315,6 @@ describe('Moment point plots', function () {
                 assert.equal(v.pin, i - 4);
                 assert.equal(v.delay, 400);
             }
-
-            // TODO: add additional assert checks
         });
     });
 
