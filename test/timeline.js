@@ -291,7 +291,7 @@ describe('Moment point plots', function () {
            var newEffect2 = new Moment.Effect(50, 100, 9, 800, 100);
 
             var p1 = new Moment.Point(0.5, 0.5, 0.5);
-            p1.makeTimeline(newEffect1, newEffect2);
+            var t = p1.makeTimeline(newEffect1, newEffect2);
 
             // TODO: check vibration values with asserts
         });

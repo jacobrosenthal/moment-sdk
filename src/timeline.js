@@ -263,7 +263,7 @@ Point['prototype']['makeTimeline'] = function () {
         temp.end *= this.topLeft / 100.0;
         vibrations.push(
           new Moment['Vibration'](
-            Moment['Actuators'].topLeft,
+            Moment['Actuators']['topLeft'],
             temp,
             delay
           )
@@ -274,7 +274,7 @@ Point['prototype']['makeTimeline'] = function () {
         temp.end *= this.topRight / 100.0;
         vibrations.push(
           new Moment['Vibration'](
-            Moment['Actuators'].topRight,
+            Moment['Actuators']['topRight'],
             temp,
             delay
           )
@@ -285,7 +285,7 @@ Point['prototype']['makeTimeline'] = function () {
         temp.end *= this.bottomLeft / 100.0;
         vibrations.push(
           new Moment['Vibration'](
-            Moment['Actuators'].bottomLeft,
+            Moment['Actuators']['bottomLeft'],
             temp,
             delay
           )
@@ -296,7 +296,7 @@ Point['prototype']['makeTimeline'] = function () {
         temp.end *= this.bottomRight / 100.0;
         vibrations.push(
           new Moment['Vibration'](
-            Moment['Actuators'].bottomRight,
+            Moment['Actuators']['bottomRight'],
             temp,
             delay
           )
