@@ -59,6 +59,8 @@ describe('Moment timeline system', function () {
                     assert.equal(v.delay, 400);
                 }
             }
+
+            assert.equal(timeline.totalTime(), 1100);
         });
     });
 
@@ -240,6 +242,8 @@ describe('Moment timeline system', function () {
             }
 
             timeline.addDelay(500);
+
+            assert.equal(timeline.totalTime(), 1600);
 
             timeline.start();
         });
