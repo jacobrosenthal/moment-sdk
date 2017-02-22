@@ -31,7 +31,7 @@ describe('Moment timeline system', function () {
       var newEffect2 = new Moment.Effect(50, 100, 9, 800, 100);
       var newVibration2 = new Moment.Vibration(3, newEffect2, 400);
 
-      var timeline = new Moment.Timeline(newVibration1, newVibration2);
+      var timeline = new Moment.Timeline([newVibration1, newVibration2]);
       return timeline;
     }
 
@@ -43,19 +43,19 @@ describe('Moment timeline system', function () {
                 var v = timeline.vibrations[i];
 
                 if (v.pin == 2) {
-                    assert.equal(v.start, 25);
-                    assert.equal(v.end, 75);
-                    assert.equal(v.func, 8);
-                    assert.equal(v.duration, 400);
-                    assert.equal(v.position, 200);
+                    assert.equal(v.effect.start, 25);
+                    assert.equal(v.effect.end, 75);
+                    assert.equal(v.effect.func, 8);
+                    assert.equal(v.effect.duration, 400);
+                    assert.equal(v.effect.position, 200);
                     assert.equal(v.delay, 100);
                 }
                 else {
-                    assert.equal(v.start, 50);
-                    assert.equal(v.end, 100);
-                    assert.equal(v.func, 9);
-                    assert.equal(v.duration, 800);
-                    assert.equal(v.position, 100);
+                    assert.equal(v.effect.start, 50);
+                    assert.equal(v.effect.end, 100);
+                    assert.equal(v.effect.func, 9);
+                    assert.equal(v.effect.duration, 800);
+                    assert.equal(v.effect.position, 100);
                     assert.equal(v.delay, 400);
                 }
             }
@@ -190,6 +190,19 @@ describe('Moment timeline system', function () {
             assert.ok(timeline.includes(newVibration1));
 
             timeline.start();
+        });
+    });
+
+    describe('#Timeline.clone()', function () {
+        it('clones a timeline of vibrations', function () {
+            var timeline = setUp1();
+            var t2 = timeline.clone();
+
+            assert.equal(timeline.vibrations.length, t2.vibrations.length);
+
+            for (var i = 0, len = t2.vibrations.length; i < len; i++) {
+                assert.equal(t2.vibrations[i], timeline.vibrations[i]);
+            }
         });
     });
 
