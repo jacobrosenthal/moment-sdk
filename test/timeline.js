@@ -99,4 +99,53 @@ describe('Moment timeline system', function () {
         });
     });
 
+    describe('#Timeline.push()', function () {
+        it('starts a timeline of vibrations', function () {
+            var timeline = setUp1();
+            var newEffect1 = new Moment.Effect(0, 25, 5, 600, 50);
+            var newVibration1 = new Moment.Vibration(4, newEffect1, 1000);
+
+            timeline.push(newVibration1);
+
+            Moment._add_transition = function (
+                pin,
+                start,
+                end,
+                func,
+                duration,
+                position,
+                delay
+              ) {
+                  assert.ok(pin == 2 || pin == 3 || pin == 4);
+
+                  if (pin == 2) {
+                      assert.equal(start, 25);
+                      assert.equal(end, 75);
+                      assert.equal(func, 8);
+                      assert.equal(duration, 400);
+                      assert.equal(position, 200);
+                      assert.equal(delay, 100);
+                  }
+                  else if (pin == 4) {
+                      assert.equal(start, 0);
+                      assert.equal(end, 25);
+                      assert.equal(func, 5);
+                      assert.equal(duration, 600);
+                      assert.equal(position, 50);
+                      assert.equal(delay, 1000);
+                  }
+                  else {
+                      assert.equal(start, 50);
+                      assert.equal(end, 100);
+                      assert.equal(func, 9);
+                      assert.equal(duration, 800);
+                      assert.equal(position, 100);
+                      assert.equal(delay, 400);
+                  }
+            }
+
+            timeline.start();
+        });
+    });
+
 });
