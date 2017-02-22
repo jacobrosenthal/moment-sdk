@@ -329,7 +329,7 @@ function Line(p1, p2, effect) {
     temp.end *= p2.topLeft / 100.0;
     vibrations.push(
       new Moment['Vibration'](
-        Moment['Actuators'].topLeft,
+        Moment['Actuators']['topLeft'],
         temp
       )
     );
@@ -339,7 +339,7 @@ function Line(p1, p2, effect) {
     temp.end *= p2.topRight / 100.0;
     vibrations.push(
       new Moment['Vibration'](
-        Moment['Actuators'].topRight,
+        Moment['Actuators']['topRight'],
         temp
       )
     );
@@ -349,7 +349,7 @@ function Line(p1, p2, effect) {
     temp.end *= p2.bottomLeft / 100.0;
     vibrations.push(
       new Moment['Vibration'](
-        Moment['Actuators'].bottomLeft,
+        Moment['Actuators']['bottomLeft'],
         temp
       )
     );
@@ -359,7 +359,7 @@ function Line(p1, p2, effect) {
     temp.end *= p2.bottomRight / 100.0;
     vibrations.push(
       new Moment['Vibration'](
-        Moment['Actuators'].bottomRight,
+        Moment['Actuators']['bottomRight'],
         temp
       )
     );
