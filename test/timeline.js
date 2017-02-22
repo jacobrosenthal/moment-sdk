@@ -206,4 +206,43 @@ describe('Moment timeline system', function () {
         });
     });
 
+    describe('#Timeline.addDelay()', function () {
+        it('adds a delay to a timeline of vibrations', function () {
+            var timeline = setUp1();
+
+            Moment._add_transition = function (
+                pin,
+                start,
+                end,
+                func,
+                duration,
+                position,
+                delay
+              ) {
+                  assert.ok(pin == 2 || pin == 3);
+
+                  if (pin == 2) {
+                      assert.equal(start, 25);
+                      assert.equal(end, 75);
+                      assert.equal(func, 8);
+                      assert.equal(duration, 400);
+                      assert.equal(position, 200);
+                      assert.equal(delay, 600);
+                  }
+                  else {
+                      assert.equal(start, 50);
+                      assert.equal(end, 100);
+                      assert.equal(func, 9);
+                      assert.equal(duration, 800);
+                      assert.equal(position, 100);
+                      assert.equal(delay, 900);
+                  }
+            }
+
+            timeline.addDelay(500);
+
+            timeline.start();
+        });
+    });
+
 });
