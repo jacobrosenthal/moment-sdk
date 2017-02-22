@@ -237,16 +237,16 @@ function Point(x, y, z) {
     this.bottomRight = computeComponent(1, -1, x, y, z);
 }
 
-/** Create a timeline of vibrations from effects passed as arguments.
+/** Create a timeline of vibrations using the effects passed as arguments.
   *
   * @method
   * @memberof Moment.Point
-  * @name Moment.Point#vibration
+  * @name Moment.Point#makeTimeline
   *
   * @param {...Effect} effect - The effects to use in the generated timeline
   * @returns {Timeline} The timeline of vibrations at the point
   */
-Point['prototype']['vibration'] = function () {
+Point['prototype']['makeTimeline'] = function () {
     var vibrations = [], temp, i, len, effect, delay = 0;
 
     for (i = 0, len = arguments.length; i < len; i += 1) {
