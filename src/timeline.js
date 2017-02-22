@@ -243,7 +243,7 @@ function Point(x, y, z) {
   * @memberof Moment.Point
   * @name Moment.Point#makeTimeline
   *
-  * @param {...Effect} effect - The effects to use in the generated timeline
+  * @param {...Effect} effect - Sequence of effects to use in the generated timeline
   * @returns {Timeline} The timeline of vibrations at the point
   */
 Point['prototype']['makeTimeline'] = function () {
