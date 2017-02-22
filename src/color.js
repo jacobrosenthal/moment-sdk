@@ -26,7 +26,7 @@ var Moment = Function('return this')()['Moment'];
   * class also provides helper methods for blending colors. Primarily, this
   * will be used to change the LED color in response to device events in a
   * streamlined way, but can be used in any circumstances where color
-  * blending may be required. Note that the `new Color(red, green blue);`
+  * blending may be required. Note that the `new Moment.Color(red, green blue);`
   * constructor expects each of the `red`, `green`, `blue` values to be
   * between 0-255 inclusive. If provided a negative value, the value will be
   * replaced with 0. If provided a value greater than 255, the value will be
@@ -39,10 +39,10 @@ var Moment = Function('return this')()['Moment'];
   * @memberof Moment
   * @example
   * // represents the color #ff9933
-  * var orange = new Color(0xff, 0x99, 0x33);
+  * var orange = new Moment.Color(0xff, 0x99, 0x33);
   * @example
   * // represents the color #ffffff
-  * var white = new Color(255, 255, 255);
+  * var white = new Moment.Color(255, 255, 255);
   */
 function Color(red, green, blue) {
     red = (red > 255) ? 255 : red;
@@ -95,13 +95,13 @@ Color['prototype']['clone'] = function () {
   *
   * @example
   * // represents the color #224466
-  * var color = new Color(0x22, 0x44, 0x66);
+  * var color = new Moment.Color(0x22, 0x44, 0x66);
   * // changes to #112233
   * color.intensify(0.5);
   *
   * @example
   * //represents the color #ff9933
-  * var orange = new Color(0xff, 0x88, 0x22);
+  * var orange = new Moment.Color(0xff, 0x88, 0x22);
   * // changes to #ffdd33
   * orange.intensify(1.5);
   *
@@ -140,9 +140,9 @@ Color['prototype']['intensify'] = function (multiplier) {
   *
   * @example
   * // represents the color #ffffff
-  * var white = new Color(0xff, 0xff, 0xff);
+  * var white = new Moment.Color(0xff, 0xff, 0xff);
   * // represents the color #000000
-  * var black = new Color(0, 0, 0);
+  * var black = new Moment.Color(0, 0, 0);
   * // changes black to the color #888888
   * black.blend(white, 0.5);
   *
