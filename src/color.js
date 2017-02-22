@@ -179,6 +179,7 @@ Color['prototype']['blend'] = function (color, multiplier) {
   * @public
   * @constant
   * @type {Color}
+  * @name Moment.Color.ORANGE
   *
   * @example
   * // set the LED color to orange
@@ -192,6 +193,7 @@ Color['ORANGE'] = new Color(253, 170, 0);
   * @public
   * @constant
   * @type {Color}
+  * @name Moment.Color.RED
   *
   * @example
   * // set the LED color to red
@@ -205,6 +207,7 @@ Color['RED'] = new Color(230, 48, 20);
   * @public
   * @constant
   * @type {Color}
+  * @name Moment.Color.PINK
   *
   * @example
   * // set the LED color to pink
@@ -218,6 +221,7 @@ Color['PINK'] = new Color(184, 0x00, 143);
   * @public
   * @constant
   * @type {Color}
+  * @name Moment.Color.GREEN
   *
   * @example
   * // set the LED color to green
@@ -231,6 +235,7 @@ Color['GREEN'] = new Color(185, 241, 0);
   * @public
   * @constant
   * @type {Color}
+  * @name Moment.Color.BLUE
   *
   * @example
   * // set the LED color to blue
@@ -244,6 +249,7 @@ Color['BLUE'] = new Color(0, 126, 237);
   * @public
   * @constant
   * @type {Color}
+  * @name Moment.Color.BLACK
   *
   * @example
   * // set the LED color to black (turns off LED)
@@ -257,6 +263,7 @@ Color['BLACK'] = new Color(0, 0, 0);
   * @public
   * @constant
   * @type {Color}
+  * @name Moment.Color.GRAY
   *
   * @example
   * // set the LED color to gray
@@ -270,6 +277,7 @@ Color['GRAY'] = new Color(100, 100, 100);
   * @public
   * @constant
   * @type {Color}
+  * @name Moment.Color.WHITE
   *
   * @example
   * // set the LED color to white
