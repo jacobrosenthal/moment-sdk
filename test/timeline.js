@@ -300,12 +300,20 @@ describe('Moment point plots', function () {
                 var v = t.vibrations[i];
                 assert.equal(v.effect.duration, 400);
                 assert.equal(v.effect.position, 200);
+                assert.equal(v.effect.func, 8);
+                compeq(v.effect.start, v.effect.end / 3.0);
+                assert.equal(v.pin, i);
+                assert.equal(v.delay, 0);
             }
 
             for (i = 4; i < 8; i++) {
                 var v = t.vibrations[i];
                 assert.equal(v.effect.duration, 800);
                 assert.equal(v.effect.position, 100);
+                assert.equal(v.effect.func, 9);
+                compeq(v.effect.start, v.effect.end / 2.0);
+                assert.equal(v.pin, i - 4);
+                assert.equal(v.delay, 400);
             }
 
             // TODO: add additional assert checks
