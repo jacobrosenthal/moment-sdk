@@ -272,6 +272,29 @@ function Point(x, y, z) {
   *
   * @param {...Effect} effect - Sequence of effects to use in the generated timeline
   * @returns {Timeline} The timeline of vibrations at the point
+  *
+  * @example
+  * // slightly top-left of the center of device at 75% intensity
+  * var slightTopLeft = new Moment.Point(-0.25, 0.4, 0.75);
+  *
+  * var quickPulse = new Moment.Effect(
+  *     0, // start at zero intensity (actuator off)
+  *     75, // end at 75% intensity
+  *     Moment.Easing.Exponential.in, // ease in with exponential curve
+  *     500 // exponential transition lasts 500ms
+  * );
+  *
+  * var fadeOut = new Moment.Effect(
+  *     75, // start at 75% intensity
+  *     25, // end at 25% intensity
+  *     Moment.Easing.Linear.out, // ease out with linear curve
+  *     750 // linear transition lasts 750ms
+  * );
+  *
+  * var timeline = slightTopLeft.makeTimeline(quickPulse, fadeOut);
+  *
+  * // pulse and fade out the slight top left point
+  * timeline.start();
   */
 Point['prototype']['makeTimeline'] = function () {
     var vibrations = [], temp, i, len, effect, delay = 0;
