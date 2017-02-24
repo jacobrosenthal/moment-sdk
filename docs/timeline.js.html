@@ -270,7 +270,7 @@ function computeComponent(x1, y1, x2, y2, z) {
   *
   * @param {Number} x - the horizontal location of the vibration
   * @param {Number} y - the vertical location of the vibration
-  * @param {Number} z - the intensity of the vibration
+  * @param {Number} [z=1.0] - the intensity of the vibration at the point
   *
   * @example
   * // top left actuator at 75% intensity
@@ -285,8 +285,8 @@ function computeComponent(x1, y1, x2, y2, z) {
   * var bottomRight = new Moment.Point(1, -1, 0.25);
   *
   * @example
-  * // center of device at 30% intensity
-  * var center = new Moment.Point(0, 0, 0.3);
+  * // center of device at 100% intensity (default intensity)
+  * var center = new Moment.Point(0, 0);
   *
   * @example
   * // slightly top-left of the center of device at 75% intensity
@@ -295,7 +295,7 @@ function computeComponent(x1, y1, x2, y2, z) {
 function Point(x, y, z) {
     this.x = x;
     this.y = y;
-    this.z = z;
+    this.z = z || 1.0;
 
     this.topLeft = computeComponent(-1, 1, x, y, z);
     this.topRight = computeComponent(1, 1, x, y, z);
@@ -402,6 +402,17 @@ Moment['Point'] = Point;
   * @param {Point} p1 - the first point
   * @param {Point} p2 - the second point
   * @param {Effect} effect - the effect to use for transitioning
+  *
+  * @example
+  * // slightly top-left of the center of device at 75% intensity
+  * var slightTopLeft = new Moment.Point(-0.25, 0.4, 0.75);
+  *
+  * // top left actuator at 25% intensity
+  * var topLeft = new Moment.Point(-1, 1, 0.25);
+  *
+  * // move from the first point to the second point
+  * var timeline = new Moment.Line(slightTopLeft, topLeft, quickPulse);
+  * timeline.start(); // start vibration sequence
   */
 function Line(p1, p2, effect) {
     var vibrations = [], temp;

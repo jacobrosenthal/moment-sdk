@@ -55,7 +55,7 @@
 
     
 
-    <h4 class="name" id="Point"><span class="type-signature"></span>new Point<span class="signature">(x, y, z)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Point"><span class="type-signature"></span>new Point<span class="signature">(x, y, z<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
@@ -133,8 +133,8 @@ var topRight = new Moment.Point(1, 1, 0.5);</code></pre>
     <pre class="prettyprint"><code>// bottom right actuator at 25% intensity
 var bottomRight = new Moment.Point(1, -1, 0.25);</code></pre>
 
-    <pre class="prettyprint"><code>// center of device at 30% intensity
-var center = new Moment.Point(0, 0, 0.3);</code></pre>
+    <pre class="prettyprint"><code>// center of device at 100% intensity (default intensity)
+var center = new Moment.Point(0, 0);</code></pre>
 
     <pre class="prettyprint"><code>// slightly top-left of the center of device at 75% intensity
 var slightTopLeft = new Moment.Point(-0.25, 0.4, 0.75);</code></pre>
@@ -155,7 +155,11 @@ var slightTopLeft = new Moment.Point(-0.25, 0.4, 0.75);</code></pre>
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -180,7 +184,19 @@ var slightTopLeft = new Moment.Point(-0.25, 0.4, 0.75);</code></pre>
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last"><p>the horizontal location of the vibration</p></td>
@@ -203,7 +219,19 @@ var slightTopLeft = new Moment.Point(-0.25, 0.4, 0.75);</code></pre>
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
             
 
             <td class="description last"><p>the vertical location of the vibration</p></td>
@@ -226,10 +254,26 @@ var slightTopLeft = new Moment.Point(-0.25, 0.4, 0.75);</code></pre>
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last"><p>the intensity of the vibration</p></td>
+            
+                <td class="default">
+                
+                    <code>1.0</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>the intensity of the vibration at the point</p></td>
         </tr>
 
     
