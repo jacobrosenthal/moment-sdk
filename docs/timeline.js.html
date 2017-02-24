@@ -278,19 +278,19 @@ function computeComponent(x1, y1, x2, y2, z) {
   *
   * @example
   * // top right actuator at 50% intensity
-  * var topLeft = new Moment.Point(1, 1, 0.5);
+  * var topRight = new Moment.Point(1, 1, 0.5);
   *
   * @example
   * // bottom right actuator at 25% intensity
-  * var topLeft = new Moment.Point(1, -1, 0.25);
+  * var bottomRight = new Moment.Point(1, -1, 0.25);
   *
   * @example
   * // center of device at 30% intensity
-  * var topLeft = new Moment.Point(-1, 1, 0.3);
+  * var center = new Moment.Point(0, 0, 0.3);
   *
   * @example
   * // slightly top-left of the center of device at 75% intensity
-  * var topLeft = new Moment.Point(-0.25, 0.4, 0.75);
+  * var slightTopLeft = new Moment.Point(-0.25, 0.4, 0.75);
   */
 function Point(x, y, z) {
     this.x = x;
