@@ -143,9 +143,16 @@ Timeline['prototype']['slice'] = function () {
   * t.includes(v2); // true
   * t.includes(v6); // false
   */
-Timeline['prototype']['includes'] = function () {
-    return Array['prototype']['includes'].apply(this.vibrations, arguments);
-};
+if ('includes' in Array['prototype']) {
+    Timeline['prototype']['includes'] = function () {
+        return Array['prototype']['includes'].apply(this.vibrations, arguments);
+    };
+}
+else {
+    Timeline['prototype']['includes'] = function () {
+        return Array['prototype']['indexOf'].apply(this.vibrations, arguments) > -1;
+    };
+}
 
 /** Returns a clone of the timeline object with the same vibration sequence,
   * allowing direct manipulation of the timeline without modifying the original
@@ -264,6 +271,26 @@ function computeComponent(x1, y1, x2, y2, z) {
   * @param {Number} x - the horizontal location of the vibration
   * @param {Number} y - the vertical location of the vibration
   * @param {Number} z - the intensity of the vibration
+  *
+  * @example
+  * // top left actuator at 75% intensity
+  * var topLeft = new Moment.Point(-1, 1, 0.75);
+  *
+  * @example
+  * // top right actuator at 50% intensity
+  * var topLeft = new Moment.Point(1, 1, 0.5);
+  *
+  * @example
+  * // bottom right actuator at 25% intensity
+  * var topLeft = new Moment.Point(1, -1, 0.25);
+  *
+  * @example
+  * // center of device at 30% intensity
+  * var topLeft = new Moment.Point(-1, 1, 0.3);
+  *
+  * @example
+  * // slightly top-left of the center of device at 75% intensity
+  * var topLeft = new Moment.Point(-0.25, 0.4, 0.75);
   */
 function Point(x, y, z) {
     this.x = x;
@@ -282,7 +309,7 @@ function Point(x, y, z) {
   * @memberof Moment.Point
   * @name Moment.Point#makeTimeline
   *
-  * @param {...Effect} effect - The effects to use in the generated timeline
+  * @param {...Effect} effect - Sequence of effects to use in the generated timeline
   * @returns {Timeline} The timeline of vibrations at the point
   */
 Point['prototype']['makeTimeline'] = function () {
@@ -295,7 +322,7 @@ Point['prototype']['makeTimeline'] = function () {
         temp.end *= this.topLeft / 100.0;
         vibrations.push(
           new Moment['Vibration'](
-            Moment['Actuators'].topLeft,
+            Moment['Actuators']['topLeft'],
             temp,
             delay
           )
@@ -306,7 +333,7 @@ Point['prototype']['makeTimeline'] = function () {
         temp.end *= this.topRight / 100.0;
         vibrations.push(
           new Moment['Vibration'](
-            Moment['Actuators'].topRight,
+            Moment['Actuators']['topRight'],
             temp,
             delay
           )
@@ -317,7 +344,7 @@ Point['prototype']['makeTimeline'] = function () {
         temp.end *= this.bottomLeft / 100.0;
         vibrations.push(
           new Moment['Vibration'](
-            Moment['Actuators'].bottomLeft,
+            Moment['Actuators']['bottomLeft'],
             temp,
             delay
           )
@@ -328,7 +355,7 @@ Point['prototype']['makeTimeline'] = function () {
         temp.end *= this.bottomRight / 100.0;
         vibrations.push(
           new Moment['Vibration'](
-            Moment['Actuators'].bottomRight,
+            Moment['Actuators']['bottomRight'],
             temp,
             delay
           )
@@ -361,7 +388,7 @@ function Line(p1, p2, effect) {
     temp.end *= p2.topLeft / 100.0;
     vibrations.push(
       new Moment['Vibration'](
-        Moment['Actuators'].topLeft,
+        Moment['Actuators']['topLeft'],
         temp
       )
     );
@@ -371,7 +398,7 @@ function Line(p1, p2, effect) {
     temp.end *= p2.topRight / 100.0;
     vibrations.push(
       new Moment['Vibration'](
-        Moment['Actuators'].topRight,
+        Moment['Actuators']['topRight'],
         temp
       )
     );
@@ -381,7 +408,7 @@ function Line(p1, p2, effect) {
     temp.end *= p2.bottomLeft / 100.0;
     vibrations.push(
       new Moment['Vibration'](
-        Moment['Actuators'].bottomLeft,
+        Moment['Actuators']['bottomLeft'],
         temp
       )
     );
@@ -391,7 +418,7 @@ function Line(p1, p2, effect) {
     temp.end *= p2.bottomRight / 100.0;
     vibrations.push(
       new Moment['Vibration'](
-        Moment['Actuators'].bottomRight,
+        Moment['Actuators']['bottomRight'],
         temp
       )
     );
@@ -416,7 +443,7 @@ Moment['Line'] = Line;
 <br class="clear">
 
 <footer>
-    &copy; 2017 Somatic Labs - <a href="htts://wearmoment.com/">wearmoment.com</a>
+    &copy; 2017 Somatic Labs - <a href="https://wearmoment.com/">wearmoment.com</a>
 </footer>
 
 <script>prettyPrint();</script>

@@ -232,6 +232,26 @@ function computeComponent(x1, y1, x2, y2, z) {
   * @param {Number} x - the horizontal location of the vibration
   * @param {Number} y - the vertical location of the vibration
   * @param {Number} z - the intensity of the vibration
+  *
+  * @example
+  * // top left actuator at 75% intensity
+  * var topLeft = new Moment.Point(-1, 1, 0.75);
+  *
+  * @example
+  * // top right actuator at 50% intensity
+  * var topLeft = new Moment.Point(1, 1, 0.5);
+  *
+  * @example
+  * // bottom right actuator at 25% intensity
+  * var topLeft = new Moment.Point(1, -1, 0.25);
+  *
+  * @example
+  * // center of device at 30% intensity
+  * var topLeft = new Moment.Point(-1, 1, 0.3);
+  *
+  * @example
+  * // slightly top-left of the center of device at 75% intensity
+  * var topLeft = new Moment.Point(-0.25, 0.4, 0.75);
   */
 function Point(x, y, z) {
     this.x = x;
