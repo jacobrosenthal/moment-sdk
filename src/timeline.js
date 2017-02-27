@@ -249,7 +249,10 @@ function computeComponent(x1, y1, x2, y2, z) {
 function Point(x, y, z) {
     this.x = x;
     this.y = y;
-    z = z || 1.0;
+
+    if (typeof z === "undefined")
+        z = 1.0;
+
     this.z = z;
 
     this.topLeft = computeComponent(-1, 1, x, y, z);
