@@ -104,16 +104,9 @@ Timeline['prototype']['slice'] = function () {
   * t.includes(v2); // true
   * t.includes(v6); // false
   */
-if ('includes' in Array['prototype']) {
-    Timeline['prototype']['includes'] = function () {
-        return Array['prototype']['includes'].apply(this.vibrations, arguments);
-    };
-}
-else {
-    Timeline['prototype']['includes'] = function () {
-        return Array['prototype']['indexOf'].apply(this.vibrations, arguments) > -1;
-    };
-}
+Timeline['prototype']['includes'] = function () {
+    return Array['prototype']['indexOf'].apply(this.vibrations, arguments) > -1;
+};
 
 /** Returns a clone of the timeline object with the same vibration sequence,
   * allowing direct manipulation of the timeline without modifying the original
