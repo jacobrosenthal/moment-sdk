@@ -216,7 +216,7 @@ Moment['_run_timers'] = function () {
         }
     }
 
-    timeouts.splice(0, i);
+    if (i > 0) timeouts.splice(0, i);
 
     for (i = 0, len = intervals.length; i < len; i += 1) {
         if (m >= intervals[i].next) {
