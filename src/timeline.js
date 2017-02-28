@@ -45,14 +45,13 @@ function Timeline(vibrations) {
   * @method
   * @memberof Moment.Timeline
   * @name Moment.Timeline#push
-  * @param {Vibration} vibration - The `Vibration` object to append
   * @returns {Timeline} - `this`, a chainable return value
   *
   * @example
   * var t = new Moment.Timeline([v1, v2]); // timeline with v1 and v2
   * t.push(v3); // t now contains v1, v2, and v3
   */
-Timeline['prototype']['push'] = function () {
+Timeline['prototype']['push'] = function (vibration) {
     Array['prototype']['push'].apply(this.vibrations, arguments);
     return this;
 };
@@ -96,8 +95,7 @@ Timeline['prototype']['slice'] = function () {
   * @method
   * @memberof Moment.Timeline
   * @name Moment.Timeline#includes
-  * @param {Vibration} vibration - The `Vibration` object to search for
-  * @returns {Boolean} whether or not the `Vibration` exists in timeline
+  * @returns {boolean} whether or not the `Vibration` exists in timeline
   *
   * @example
   * var t = new Moment.Timeline([v1, v2, v3, v4, v5]);
@@ -158,7 +156,7 @@ Timeline['prototype']['start'] = function () {
   * @memberof Moment.Timeline
   * @name Moment.Timeline#addDelay
   * @method
-  * @param {Number} delay - The number of milliseconds to add to the delay
+  * @param {number} delay - The number of milliseconds to add to the delay
   *
   * @example
   * var t = new Moment.Timeline([v1, v2, v3, v4, v5]);
@@ -222,9 +220,9 @@ function computeComponent(x1, y1, x2, y2, z) {
   * @constructor
   * @memberof Moment
   *
-  * @param {Number} x - the horizontal location of the vibration
-  * @param {Number} y - the vertical location of the vibration
-  * @param {Number} [z=1.0] - the intensity of the vibration at the point
+  * @param {number} x - the horizontal location of the vibration
+  * @param {number} y - the vertical location of the vibration
+  * @param {number|null|undefined} [z=1.0] - the intensity of the vibration at the point
   *
   * @example
   * // top left actuator at 75% intensity
@@ -265,9 +263,9 @@ function Point(x, y, z) {
   *
   * @method
   * @memberof Moment.Point
-  * @name Moment.Point#makeTimeline
+  * @name Moment.Point#makeTimeline()
   *
-  * @param {...Effect} effect - Sequence of effects to use in the generated timeline
+  * @param {...*} effect - Sequence of effects to use in the generated timeline
   * @returns {Timeline} The timeline of vibrations at the point
   *
   * @example
@@ -293,8 +291,8 @@ function Point(x, y, z) {
   * // pulse and fade out the slight top left point
   * timeline.start();
   */
-Point['prototype']['makeTimeline'] = function () {
-    var vibrations = [], temp, i, len, effect, delay = 0;
+Point['prototype']['makeTimeline'] = function (effect) {
+    var vibrations = [], temp, i, len, delay = 0;
 
     for (i = 0, len = arguments.length; i < len; i += 1) {
         effect = arguments[i];
@@ -359,7 +357,7 @@ Moment['Point'] = Point;
   *
   * @param {Point} p1 - the first point
   * @param {Point} p2 - the second point
-  * @param {Effect} effect - the effect to use for transitioning
+  * @param {Object} effect - the effect to use for transitioning
   *
   * @example
   * // slightly top-left of the center of device at 75% intensity
