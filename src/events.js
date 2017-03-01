@@ -134,14 +134,19 @@ Moment['once'] = function (event, fn) {
 Moment['trigger'] = function (event) {
     var funcs,
         index,
-        len;
+        len,
+        args;
 
     if (handlers.hasOwnProperty(event)) {
         funcs = handlers[event];
         len = funcs.length;
 
-        for (index = 0; index < len; index += 1) {
-            funcs[index]();
+        if (len > 0 && arguments.length > 1) {
+            args = Array.prototype.slice.call(arguments, 1);
+            for (index = 0; index < len; index += 1) funcs[index].apply(Moment, args);
+        }
+        else {
+            for (index = 0; index < len; index += 1) funcs[index]();
         }
     }
 };
