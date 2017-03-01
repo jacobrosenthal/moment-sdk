@@ -39,6 +39,7 @@ jspm_packages
 # Compiled object files
 *.o
 *.h
+*.snp
 
 # Coverage reports
 coverage/
