@@ -28,13 +28,11 @@ var plugins = {};
 /** Provides an constructor to encapsulate plugins within the SDK.
   *
   * @constructor
-  * @name Plugin
-  * @param {Object} plugin - The methods for the plugin
   */
-function Plugin(plugin) {
-    for (var key in plugin) {
-        if (plugin.hasOwnProperty(key)) {
-            this[key] = plugin[key];
+function PluginHolder(pluginObj) {
+    for (var key in pluginObj) {
+        if (pluginObj.hasOwnProperty(key)) {
+            this[key] = pluginObj[key];
         }
     }
 
@@ -80,7 +78,7 @@ function Plugin(plugin) {
   * });
   */
 Moment['extend'] = function(name, plugin) {
-    plugins[name] = new Plugin(plugin);
+    plugins[name] = new PluginHolder(plugin);
 };
 
 /** Removes a plugin that was previously installed using `Moment.extend()`.
@@ -104,11 +102,11 @@ Moment['remove'] = function(name) {
 }
 
 
-Plugin['prototype']['init'] = function () {};
-Plugin['prototype']['remove'] = function () {};
-Plugin['prototype']['events'] = {};
+PluginHolder['prototype']['init'] = function () {};
+PluginHolder['prototype']['remove'] = function () {};
+PluginHolder['prototype']['events'] = {};
 
-Plugin['prototype']._init = function () {
+PluginHolder['prototype']._init = function () {
     this['init']();
     var events = this['events'];
 
@@ -117,7 +115,7 @@ Plugin['prototype']._init = function () {
     }
 }
 
-Plugin['prototype']._remove = function () {
+PluginHolder['prototype']._remove = function () {
     this['remove']();
     var events = this['events'];
 
