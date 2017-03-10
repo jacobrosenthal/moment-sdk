@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Magnetometer - Documentation</title>
+    <title>Notification - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Magnetometer</h1>
+    <h1 class="page-title">Notification</h1>
     
 
     
@@ -42,7 +42,7 @@
         <h2>
             <span class="ancestors"><a href="Moment.html">Moment</a>.</span>
         
-        Magnetometer
+        Notification
         </h2>
         
     
@@ -53,74 +53,11 @@
     
         
 
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="imu.js.html">imu.js</a>, <a href="imu.js.html#line138">line 138</a>
-    </li></ul></dd>
     
 
-    
+    <h4 class="name" id="Notification"><span class="type-signature"></span>new Notification<span class="signature">(uid, category, event)</span><span class="type-signature"></span></h4>
 
     
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-        
-            <div class="description"><p>Interface for accessing magnetometer data.</p></div>
-        
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id=".x"><span class="type-signature">(static) </span>x<span class="type-signature"> :Number</span></h4>
-
 
 
 
@@ -130,7 +67,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="imu.js.html">imu.js</a>, <a href="imu.js.html#line166">line 166</a>
+        <a href="notifications.js.html">notifications.js</a>, <a href="notifications.js.html#line25">line 25</a>
     </li></ul></dd>
     
 
@@ -170,241 +107,34 @@
 
 
 <div class="description">
-    <p>The x-axis measurement from the magnetometer.</p>
+    <p>Represents a notification from a connected and paired iPhone or Android
+device. Due to the way the Apple Notification Center Service is structured,
+the <code>notification</code> event that is fired when a new notification appears on
+the connected phone does not provide all of the attributes for the
+notification. Instead, you will receive a category (e.g. Incoming Call),
+an event (e.g. Added/Modified/Removed), and a unique identifier for the
+notification that allows you to request the additional attributes if
+needed. The additional attributes include the Title, Subtitle, and App
+Identifier that produced the notification.</p>
+<p>Typically, you will not use the constructor for this class. The class
+will be instantiated internally, and you will interact with <code>Notification</code>
+objects in response to the relevant events that are triggered.</p>
 </div>
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Number</span>
-
-
-        </li>
-    </ul>
 
 
 
 
 
 
-        
-            
-<h4 class="name" id=".y"><span class="type-signature">(static) </span>y<span class="type-signature"> :Number</span></h4>
 
 
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="imu.js.html">imu.js</a>, <a href="imu.js.html#line173">line 173</a>
-    </li></ul></dd>
+    <h5>Parameters:</h5>
     
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>The y-axis measurement from the magnetometer.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Number</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".z"><span class="type-signature">(static) </span>z<span class="type-signature"> :Number</span></h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="imu.js.html">imu.js</a>, <a href="imu.js.html#line180">line 180</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-<div class="description">
-    <p>The z-axis measurement from the magnetometer.</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Number</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-        
-    
-
-    
-
-    
-
-    
-        <h3 class="subsection-title">Events</h3>
-
-        
-            
-
-    
-
-    <h4 class="name" id=".event:magnetometer">magnetometer</h4>
-
-    
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="imu.js.html">imu.js</a>, <a href="imu.js.html#line147">line 147</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
+<table class="params">
     <thead>
     <tr>
         
@@ -426,7 +156,7 @@
 
         <tr>
             
-                <td class="name"><code>x</code></td>
+                <td class="name"><code>uid</code></td>
             
 
             <td class="type">
@@ -442,20 +172,20 @@
 
             
 
-            <td class="description last"><p>The x-axis reading value</p></td>
+            <td class="description last"><p>A unique integer identifier for the notification</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>y</code></td>
+                <td class="name"><code>category</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Number</span>
+<span class="param-type">String</span>
 
 
             
@@ -465,20 +195,20 @@
 
             
 
-            <td class="description last"><p>The y-axis reading value</p></td>
+            <td class="description last"><p>Notification category (e.g. Missed Call)</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>z</code></td>
+                <td class="name"><code>event</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Number</span>
+<span class="param-type">String</span>
 
 
             
@@ -488,7 +218,7 @@
 
             
 
-            <td class="description last"><p>The z-axis reading value</p></td>
+            <td class="description last"><p>The event (<code>added</code>, <code>modified</code>, or <code>removed</code>)</p></td>
         </tr>
 
     
@@ -500,56 +230,35 @@
 
 
 
-<div class="description">
-    <p>This event is fired every time a reading from the magnetometer is obtained.
-The appropriate x, y, and z axis values are provided to the event handler.</p>
-</div>
 
 
 
 
 
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
 
 
 
 
 
-    <h5>Example</h5>
     
-    <pre class="prettyprint"><code>Moment.on("magnetometer", function () {
-    // replace doSomething with your own code
-    doSomething(Moment.Magnetometer.x); // x-axis value
-    doSomething(Moment.Magnetometer.y); // y-axis value
-    doSomething(Moment.Magnetometer.z); // z-axis value
-});</code></pre>
+    </div>
 
+    
 
+    
 
+    
 
+     
 
+    
 
+    
 
+    
 
+    
 
-
-
-
-
-
-
-
-
-
-        
     
 </article>
 

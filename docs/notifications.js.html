@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>actuators.js - Documentation</title>
+    <title>notifications.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -27,7 +27,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">actuators.js</h1>
+    <h1 class="page-title">notifications.js</h1>
     
 
     
@@ -61,143 +61,55 @@
 // local variable reference to global `Moment` object
 var Moment = Function('return this')()['Moment'];
 
-/** Provides the prototype for an actuator object.
+/** Represents a notification from a connected and paired iPhone or Android
+  * device. Due to the way the Apple Notification Center Service is structured,
+  * the `notification` event that is fired when a new notification appears on
+  * the connected phone does not provide all of the attributes for the
+  * notification. Instead, you will receive a category (e.g. Incoming Call),
+  * an event (e.g. Added/Modified/Removed), and a unique identifier for the
+  * notification that allows you to request the additional attributes if
+  * needed. The additional attributes include the Title, Subtitle, and App
+  * Identifier that produced the notification.
+  *
+  * Typically, you will not use the constructor for this class. The class
+  * will be instantiated internally, and you will interact with `Notification`
+  * objects in response to the relevant events that are triggered.
   *
   * @constructor
+  * @memberof Moment
+  * @name Moment.Notification
+  *
+  * @param {Number} uid - A unique integer identifier for the notification
+  * @param {String} category - Notification category (e.g. Missed Call)
+  * @param {String} event - The event (`added`, `modified`, or `removed`)
   */
-function Actuator(pin) {
-    this['pin'] = pin;
+function Notification(uid, category, event) {
+    this.uid = uid;
+    this.category = category;
+    this.event = event;
 }
 
-/** Namespace for constants and functions related to direct control of the
-  * actuators on Moment. The `Moment.Actuators` namespace provides a few useful
-  * properties you will use regularly, including `Moment.Actuators.topLeft`,
-  * `Moment.Actuators.topRight`, `Moment.Actuators.bottomLeft`, and
-  * `Moment.Actuators.bottomRight`. These four constants represent the
-  * hardware-level access to each of the four actuators on Moment, and allow
-  * vibration patterns to be assigned to any of the four actuators. Since the
-  * orientation of the device responds to a user's settings, the `topLeft`
-  * value will always correspond to the top-left actuator on the device, even
-  * if the user decides to wear the device in a different orientation - the
-  * vibrations assigned to the top-left actuator will be reassigned to the new
-  * actuator that is in the top-left position when the user changes their
-  * settings.
+/** Requests additional information about the notification from the phone,
+  * including the title, subtitle, and app identifier for the notification.
+  * This information is not automatically provided for all notifications to
+  * reduce latency, and this function call results in additional BLE packets
+  * sent and received each time it is called - use it sparingly.
   *
-  * @namespace
-  * @name Moment.Actuators
-  * @memberof Moment
+  * Since the function asynchronously executes the relevant BLE operations to
+  * fetch the notification attributes from the phone, you can provide callback
+  * functions that will execute when the operation completes successfully or
+  * fails.
   */
-var Actuators = {
-    /** The top-left actuator on Moment (automatically changes based on
-      * whether the user wears Moment on their left or right hand).
-      *
-      * @memberof Moment.Actuators
-      * @name Moment.Actuators.topLeft
-      * @public
-      * @constant
-      * @type {Actuator}
-      *
-      * @example
-      * var fadeOut = new Moment.Effect(
-      *     75, // start at 75% intensity
-      *     25, // end at 25% intensity
-      *     Moment.Easing.Linear.out, // ease out with linear curve
-      *     750 // linear transition lasts 750ms
-      * );
-      *
-      * var tlFade = new Moment.Vibration(
-      *     Moment.Actuators.topLeft, // select top left actuator
-      *     fadeOut, // use the 750ms exponential fade out effect
-      *     100 // begin effect after 100ms
-      * );
-      *
-      * tlFade.start();
-      */
-    'topLeft': new Actuator(0),
-
-    /** The top-right actuator on Moment (automatically changes based on
-      * whether the user wears Moment on their left or right hand).
-      *
-      * @memberof Moment.Actuators
-      * @name Moment.Actuators.topRight
-      * @public
-      * @constant
-      * @type {Actuator}
-      *
-      * @example
-      * var fadeOut = new Moment.Effect(
-      *     75, // start at 75% intensity
-      *     25, // end at 25% intensity
-      *     Moment.Easing.Linear.out, // ease out with linear curve
-      *     750 // linear transition lasts 750ms
-      * );
-      *
-      * var trFade = new Moment.Vibration(
-      *     Moment.Actuators.topRight, // select top right actuator
-      *     fadeOut, // use the 750ms exponential fade out effect
-      *     100 // begin effect after 100ms
-      * );
-      *
-      * trFade.start();
-      */
-    'topRight': new Actuator(1),
-
-    /** The bottom-right actuator on Moment (automatically changes based on
-      * whether the user wears Moment on their left or right hand).
-      *
-      * @memberof Moment.Actuators
-      * @name Moment.Actuators.bottomRight
-      * @public
-      * @constant
-      * @type {Actuator}
-      *
-      * @example
-      * var fadeOut = new Moment.Effect(
-      *     75, // start at 75% intensity
-      *     25, // end at 25% intensity
-      *     Moment.Easing.Linear.out, // ease out with linear curve
-      *     750 // linear transition lasts 750ms
-      * );
-      *
-      * var brFade = new Moment.Vibration(
-      *     Moment.Actuators.bottomRight, // select bottom right actuator
-      *     fadeOut, // use the 750ms exponential fade out effect
-      *     100 // begin effect after 100ms
-      * );
-      *
-      * brFade.start();
-      */
-    'bottomRight': new Actuator(3),
-
-    /** The bottom-left actuator on Moment (automatically changes based on
-      * whether the user wears Moment on their left or right hand).
-      *
-      * @memberof Moment.Actuators
-      * @name Moment.Actuators.bottomLeft
-      * @public
-      * @constant
-      * @type {Actuator}
-      *
-      * @example
-      * var fadeOut = new Moment.Effect(
-      *     75, // start at 75% intensity
-      *     25, // end at 25% intensity
-      *     Moment.Easing.Linear.out, // ease out with linear curve
-      *     750 // linear transition lasts 750ms
-      * );
-      *
-      * var blFade = new Moment.Vibration(
-      *     Moment.Actuators.topLeft, // select bottom left actuator
-      *     fadeOut, // use the 750ms exponential fade out effect
-      *     100 // begin effect after 100ms
-      * );
-      *
-      * blFade.start();
-      */
-    'bottomLeft': new Actuator(2)
+Notification['prototype']['getAttrs'] = function (success, error) {
+    Moment['_request_attrs'](this.uid, success.bind(this), error.bind(this));
 };
 
-Moment['Actuators'] = Actuators;
+/* Note that this file is intentionally very short - most of the notification
+   implementation is handled in lower-level firmware code that implements
+   the proprietary Apple Notification Center Service via Bluetooth Low Energy.
+   */
+
+Moment['Notification'] = Notification;
 
 })();
 </code></pre>
