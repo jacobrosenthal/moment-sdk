@@ -50,6 +50,12 @@ function Notification(uid, category, event) {
     this.event = event;
 }
 
+var pendingAttrs = [];
+
+function shiftAttrs() {
+    pendingAttrs.shift();
+}
+
 /** Requests additional information about the notification from the phone,
   * including the title, subtitle, and app identifier for the notification.
   * This information is not automatically provided for all notifications to
@@ -61,8 +67,22 @@ function Notification(uid, category, event) {
   * functions that will execute when the operation completes successfully or
   * fails.
   */
-Notification['prototype']['getAttrs'] = function (success, error) {
+Notification['prototype']['getAttrs'] = function () {
     Moment['_request_attrs'](this.uid, this.category, this.event);
+    pendingAttrs.push(this);
+    Moment.setTimeout(shiftAttrs, 10000);
+};
+
+Moment['_attach_attrs'] = function (uid, attr, data) {
+    var i = 0, len = pendingAttrs.length, notif;
+
+    for (i = 0; i < len; i++) {
+        notif = pendingAttrs[i];
+        if (notif.uid === uid) {
+            notif[attr] = data;
+            break;
+        }
+    }
 };
 
 /* Note that this file is intentionally very short - most of the notification
