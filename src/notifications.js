@@ -62,7 +62,7 @@ function Notification(uid, category, event) {
   * fails.
   */
 Notification['prototype']['getAttrs'] = function (success, error) {
-    Moment['_request_attrs'](this.uid, success.bind(this), error.bind(this));
+    Moment['_request_attrs'](this.uid, this.category, this.event);
 };
 
 /* Note that this file is intentionally very short - most of the notification
