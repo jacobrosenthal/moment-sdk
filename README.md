@@ -44,31 +44,33 @@ The `Moment.extend()` function allows you to create a plugin that integrates
 with Moment and provides additional functionality to the device in a reusable
 and modular fashion. Below, you can find an example of the implementation:
 
-    // structure for implementing a meditation timer plugin
-    Moment.extend('meditate', {
-        init: function () {
-            this.interval = Moment.setInterval(5000, function () {
-                // create haptic patterns every 5 seconds
-            });
-        },
+```js
+// structure for implementing a meditation timer plugin
+Moment.extend('meditate', {
+    init: function () {
+        this.interval = Moment.setInterval(5000, function () {
+            // create haptic patterns every 5 seconds
+        });
+    },
 
-        remove: function () {
-            Moment.clearInterval(this.interval);
-        },
+    remove: function () {
+        Moment.clearInterval(this.interval);
+    },
 
-        // events to attach to the Moment global
-        events: {
-            'accelerometer': function () {
-                var data = Moment.Accelerometer;
-                Moment._log(data.x + "," + data.y + "," + data.z);
-                // implement some accelerometer logic here e.g. if values exceed threshold
-            },
-            'timertick': function () {
-                var time = Moment.uptime();
-                // implement something to change the haptic feedback based on the time
-            }
+    // events to attach to the Moment global
+    events: {
+        'accelerometer': function () {
+            var data = Moment.Accelerometer;
+            Moment._log(data.x + "," + data.y + "," + data.z);
+            // implement some accelerometer logic here e.g. if values exceed threshold
+        },
+        'timertick': function () {
+            var time = Moment.uptime();
+            // implement something to change the haptic feedback based on the time
         }
-    });
+    }
+});
+```
 
 ### Step 3: Create a Gist on Github
 
