@@ -120,27 +120,11 @@
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>var quickPulse = new Moment.Effect(
-    0, // start at zero intensity (actuator off)
-    75, // end at 75% intensity
-    Moment.Easing.Exponential.in, // ease in with exponential curve
-    500 // exponential transition lasts 500ms
-);</code></pre>
+    <pre class="prettyprint"><code>var quickPulse = new Moment.Effect(    0, // start at zero intensity (actuator off)    75, // end at 75% intensity    Moment.Easing.Exponential.in, // ease in with exponential curve    500 // exponential transition lasts 500ms);</code></pre>
 
-    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(
-    75, // start at 75% intensity
-    25, // end at 25% intensity
-    Moment.Easing.Linear.out, // ease out with linear curve
-    750 // linear transition lasts 750ms
-);</code></pre>
+    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(    75, // start at 75% intensity    25, // end at 25% intensity    Moment.Easing.Linear.out, // ease out with linear curve    750 // linear transition lasts 750ms);</code></pre>
 
-    <pre class="prettyprint"><code>var quickIn = new Moment.Effect(
-    25, // start at 25% intensity
-    75, // end at 75% intensity
-    Moment.Easing.Quadratic.in, // ease in with quadratic curve
-    400, // quadratic transition lasts 400ms
-    100 // begin 100ms into the quadratic transition (only 300ms of easing)
-);</code></pre>
+    <pre class="prettyprint"><code>var quickIn = new Moment.Effect(    25, // start at 25% intensity    75, // end at 75% intensity    Moment.Easing.Quadratic.in, // ease in with quadratic curve    400, // quadratic transition lasts 400ms    100 // begin 100ms into the quadratic transition (only 300ms of easing));</code></pre>
 
 
 
@@ -434,11 +418,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// turn off the top left motor
-var tlOff = new Moment.Vibration(
-    Moment.Actuators.topLeft,
-    Moment.Effect.OFF
-);</code></pre>
+    <pre class="prettyprint"><code>// turn off the top left motorvar tlOff = new Moment.Vibration(    Moment.Actuators.topLeft,    Moment.Effect.OFF);</code></pre>
 
 
 
@@ -520,18 +500,7 @@ duration) without modifying all of the references to the old object.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var quickPulse = new Moment.Effect(
-    0, // start at zero intensity (actuator off)
-    75, // end at 75% intensity
-    Moment.Easing.Exponential.in, // ease in with exponential curve
-    500 // exponential transition lasts 500ms
-);
-
-var scaled = quickPulse.scale(1.2); // duration is now 600ms
-scaled == quickPulse // true
-
-scaled = quickPulse.clone().scale(1.5); // duration is now 900ms
-scaled == quickPulse //false</code></pre>
+    <pre class="prettyprint"><code>var quickPulse = new Moment.Effect(    0, // start at zero intensity (actuator off)    75, // end at 75% intensity    Moment.Easing.Exponential.in, // ease in with exponential curve    500 // exponential transition lasts 500ms);var scaled = quickPulse.scale(1.2); // duration is now 600msscaled == quickPulse // truescaled = quickPulse.clone().scale(1.5); // duration is now 900msscaled == quickPulse //false</code></pre>
 
 
 
@@ -638,14 +607,7 @@ scaled == quickPulse //false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var quickPulse = new Moment.Effect(
-    0, // start at zero intensity (actuator off)
-    75, // end at 75% intensity
-    Moment.Easing.Exponential.in, // ease in with exponential curve
-    500 // exponential transition lasts 500ms
-);
-
-quickPulse.invert(); // effect now starts at 75% and ends at zero</code></pre>
+    <pre class="prettyprint"><code>var quickPulse = new Moment.Effect(    0, // start at zero intensity (actuator off)    75, // end at 75% intensity    Moment.Easing.Exponential.in, // ease in with exponential curve    500 // exponential transition lasts 500ms);quickPulse.invert(); // effect now starts at 75% and ends at zero</code></pre>
 
 
 
@@ -753,13 +715,7 @@ millisecond.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var quickPulse = new Moment.Effect(
-    0, // start at zero intensity (actuator off)
-    75, // end at 75% intensity
-    Moment.Easing.Exponential.in, // ease in with exponential curve
-    500 // exponential transition lasts 500ms
-);
-quickPulse.scale(1.2); // duration is now 600ms</code></pre>
+    <pre class="prettyprint"><code>var quickPulse = new Moment.Effect(    0, // start at zero intensity (actuator off)    75, // end at 75% intensity    Moment.Easing.Exponential.in, // ease in with exponential curve    500 // exponential transition lasts 500ms);quickPulse.scale(1.2); // duration is now 600ms</code></pre>
 
 
 

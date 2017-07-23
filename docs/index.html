@@ -70,7 +70,7 @@ effects and test event handlers you have created for the device.</p>
 <h3>Step 2: Implement a Plugin</h3><p>The <code>Moment.extend()</code> function allows you to create a plugin that integrates
 with Moment and provides additional functionality to the device in a reusable
 and modular fashion. Below, you can find an example of the implementation:</p>
-<pre class="prettyprint source"><code>// structure for implementing a meditation timer plugin
+<pre class="prettyprint source lang-js"><code>// structure for implementing a meditation timer plugin
 Moment.extend('meditate', {
     init: function () {
         this.interval = Moment.setInterval(5000, function () {

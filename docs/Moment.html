@@ -242,11 +242,7 @@ runtime environments.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// blink is from the `Moment.setInterval` example
-// blink LED orange for 1 second on/off intervals
-var t = Moment.setInterval(blink, 10000);
-// prevent interval from executing
-Moment.clearInterval(t);</code></pre>
+    <pre class="prettyprint"><code>// blink is from the `Moment.setInterval` example// blink LED orange for 1 second on/off intervalsvar t = Moment.setInterval(blink, 10000);// prevent interval from executingMoment.clearInterval(t);</code></pre>
 
 
 
@@ -387,11 +383,7 @@ runtime environments.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// setOrange is from the `Moment.setTimeout` example
-// turn LED orange after 10 seconds
-var t = Moment.setTimeout(setOrange, 10000);
-// prevent timeout from executing
-Moment.clearTimeout(t);</code></pre>
+    <pre class="prettyprint"><code>// setOrange is from the `Moment.setTimeout` example// turn LED orange after 10 secondsvar t = Moment.setTimeout(setOrange, 10000);// prevent timeout from executingMoment.clearTimeout(t);</code></pre>
 
 
 
@@ -530,31 +522,7 @@ be easily enabled, disabled, or removed later.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// structure for implementing a meditation timer plugin
-Moment.extend('meditate', {
-    init: function () {
-        this.interval = Moment.setInterval(5000, function () {
-            // create haptic patterns every 5 seconds
-        });
-    },
-
-    remove: function () {
-        Moment.clearInterval(this.interval);
-    },
-
-    // events to attach to the Moment global
-    events: {
-        'accelerometer': function () {
-            var data = Moment.Accelerometer;
-            Moment._log(data.x + "," + data.y + "," + data.z);
-            // implement some accelerometer logic here e.g. if values exceed threshold
-        },
-        'timertick': function () {
-            var time = Moment.uptime();
-            // implement something to change the haptic feedback based on the time
-        }
-    }
-});</code></pre>
+    <pre class="prettyprint"><code>// structure for implementing a meditation timer pluginMoment.extend('meditate', {    init: function () {        this.interval = Moment.setInterval(5000, function () {            // create haptic patterns every 5 seconds        });    },    remove: function () {        Moment.clearInterval(this.interval);    },    // events to attach to the Moment global    events: {        'accelerometer': function () {            var data = Moment.Accelerometer;            Moment._log(data.x + "," + data.y + "," + data.z);            // implement some accelerometer logic here e.g. if values exceed threshold        },        'timertick': function () {            var time = Moment.uptime();            // implement something to change the haptic feedback based on the time        }    }});</code></pre>
 
 
 
@@ -716,13 +684,7 @@ the event is triggered.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>function onConnect() {
-    // set LED color to blue when Bluetooth is connected
-    Moment.LED.setColor(Moment.Color.BLUE);
-}
-
-Moment.on("ble.connected", onConnect); // attach event handler
-Moment.off("ble.connected", onConnect); // remove event handler</code></pre>
+    <pre class="prettyprint"><code>function onConnect() {    // set LED color to blue when Bluetooth is connected    Moment.LED.setColor(Moment.Color.BLUE);}Moment.on("ble.connected", onConnect); // attach event handlerMoment.off("ble.connected", onConnect); // remove event handler</code></pre>
 
 
 
@@ -884,10 +846,7 @@ is triggered.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>Moment.on("ble.connected", function () {
-    // set LED color to blue when Bluetooth is connected
-    Moment.LED.setColor(Moment.Color.BLUE);
-});</code></pre>
+    <pre class="prettyprint"><code>Moment.on("ble.connected", function () {    // set LED color to blue when Bluetooth is connected    Moment.LED.setColor(Moment.Color.BLUE);});</code></pre>
 
 
 
@@ -1050,10 +1009,7 @@ be executed again.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>Moment.once("init", function () {
-    // set LED color to orange when Moment turns on
-    Moment.LED.setColor(Moment.Color.ORANGE);
-});</code></pre>
+    <pre class="prettyprint"><code>Moment.once("init", function () {    // set LED color to orange when Moment turns on    Moment.LED.setColor(Moment.Color.ORANGE);});</code></pre>
 
 
 
@@ -1216,8 +1172,7 @@ re-initialized using <code>Moment.extend()</code> to be reinstalled.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// remove the "meditate" plugin
-Moment.remove('meditate');</code></pre>
+    <pre class="prettyprint"><code>// remove the "meditate" pluginMoment.remove('meditate');</code></pre>
 
 
 
@@ -1362,28 +1317,7 @@ for timers.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>function setOrange() {
-    // set the LED color to orange
-    Moment.LED.setColor(Moment.Color.ORANGE);
-};
-
-function turnOff() {
-    // turn off LED
-    Moment.LED.setColor(Moment.Color.BLACK);
-};
-
-var on = false;
-function blink() {
-    if (on) {
-        turnOff();
-    }
-    else {
-        setOrange();
-    }
-}
-
-// blink LED (1 second on, 1 second off)
-Moment.setInterval(blink, 10000);</code></pre>
+    <pre class="prettyprint"><code>function setOrange() {    // set the LED color to orange    Moment.LED.setColor(Moment.Color.ORANGE);};function turnOff() {    // turn off LED    Moment.LED.setColor(Moment.Color.BLACK);};var on = false;function blink() {    if (on) {        turnOff();    }    else {        setOrange();    }}// blink LED (1 second on, 1 second off)Moment.setInterval(blink, 10000);</code></pre>
 
 
 
@@ -1551,13 +1485,7 @@ for timers.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>function setOrange() {
-    // set the LED color to orange
-    Moment.LED.setColor(Moment.Color.ORANGE);
-};
-
-// turn LED orange after 10 seconds
-Moment.setTimeout(setOrange, 10000);</code></pre>
+    <pre class="prettyprint"><code>function setOrange() {    // set the LED color to orange    Moment.LED.setColor(Moment.Color.ORANGE);};// turn LED orange after 10 secondsMoment.setTimeout(setOrange, 10000);</code></pre>
 
 
 
@@ -1859,11 +1787,7 @@ Moment SDK.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var ms = Moment.uptime(); // get milliseconds of uptime
-if (ms > 60000) {
-    // set LED color to orange after the device is on for a minute
-    Moment.LED.setColor(Moment.Color.ORANGE);
-}</code></pre>
+    <pre class="prettyprint"><code>var ms = Moment.uptime(); // get milliseconds of uptimeif (ms > 60000) {    // set LED color to orange after the device is on for a minute    Moment.LED.setColor(Moment.Color.ORANGE);}</code></pre>
 
 
 
@@ -1985,10 +1909,7 @@ function) make use of millisecond values in the API calls.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>Moment.on("timertick", function () {
-    var ms = Moment.uptime();
-    // do something time-related here
-});</code></pre>
+    <pre class="prettyprint"><code>Moment.on("timertick", function () {    var ms = Moment.uptime();    // do something time-related here});</code></pre>
 
 
 

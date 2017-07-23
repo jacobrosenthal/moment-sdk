@@ -121,15 +121,7 @@ is drawn between the two points using a pre-defined effect for transition.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// slightly top-left of the center of device at 75% intensity
-var slightTopLeft = new Moment.Point(-0.25, 0.4, 0.75);
-
-// top left actuator at 25% intensity
-var topLeft = new Moment.Point(-1, 1, 0.25);
-
-// move from the first point to the second point
-var timeline = new Moment.Line(slightTopLeft, topLeft, quickPulse);
-timeline.start(); // start vibration sequence</code></pre>
+    <pre class="prettyprint"><code>// slightly top-left of the center of device at 75% intensityvar slightTopLeft = new Moment.Point(-0.25, 0.4, 0.75);// top left actuator at 25% intensityvar topLeft = new Moment.Point(-1, 1, 0.25);// move from the first point to the second pointvar timeline = new Moment.Line(slightTopLeft, topLeft, quickPulse);timeline.start(); // start vibration sequence</code></pre>
 
 
 

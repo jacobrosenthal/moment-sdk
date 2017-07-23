@@ -121,45 +121,11 @@ timeline of effects.</p>
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>var quickPulse = new Moment.Effect(
-    0, // start at zero intensity (actuator off)
-    75, // end at 75% intensity
-    Moment.Easing.Exponential.in, // ease in with exponential curve
-    500 // exponential transition lasts 500ms
-);
+    <pre class="prettyprint"><code>var quickPulse = new Moment.Effect(    0, // start at zero intensity (actuator off)    75, // end at 75% intensity    Moment.Easing.Exponential.in, // ease in with exponential curve    500 // exponential transition lasts 500ms);var tlPulse = new Moment.Vibration(    Moment.Actuators.topLeft, // select top left actuator    quickPulse, // use the 500ms exponential ease in effect    0 // begin immediately after tlPulse.start() is called);</code></pre>
 
-var tlPulse = new Moment.Vibration(
-    Moment.Actuators.topLeft, // select top left actuator
-    quickPulse, // use the 500ms exponential ease in effect
-    0 // begin immediately after tlPulse.start() is called
-);</code></pre>
+    <pre class="prettyprint"><code>var quickIn = new Moment.Effect(    25, // start at 25% intensity    75, // end at 75% intensity    Moment.Easing.Quadratic.in, // ease in with quadratic curve    400, // quadratic transition lasts 400ms    100 // begin 100ms into the quadratic transition (only 300ms of easing));var blIn = new Moment.Vibration(    Moment.Actuators.bottomLeft, // select bottom left actuator    quickIn, // use the 400ms quadratic ease in effect    200 // begin effect 200ms after blIn.start() is called);</code></pre>
 
-    <pre class="prettyprint"><code>var quickIn = new Moment.Effect(
-    25, // start at 25% intensity
-    75, // end at 75% intensity
-    Moment.Easing.Quadratic.in, // ease in with quadratic curve
-    400, // quadratic transition lasts 400ms
-    100 // begin 100ms into the quadratic transition (only 300ms of easing)
-);
-
-var blIn = new Moment.Vibration(
-    Moment.Actuators.bottomLeft, // select bottom left actuator
-    quickIn, // use the 400ms quadratic ease in effect
-    200 // begin effect 200ms after blIn.start() is called
-);</code></pre>
-
-    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(
-    75, // start at 75% intensity
-    25, // end at 25% intensity
-    Moment.Easing.Linear.out, // ease out with linear curve
-    750 // linear transition lasts 750ms
-);
-
-var trFade = new Moment.Vibration(
-    Moment.Actuators.topRight, // select top right actuator
-    fadeOut, // use the 750ms exponential fade out effect
-    100 // begin effect after 100ms
-);</code></pre>
+    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(    75, // start at 75% intensity    25, // end at 25% intensity    Moment.Easing.Linear.out, // ease out with linear curve    750 // linear transition lasts 750ms);var trFade = new Moment.Vibration(    Moment.Actuators.topRight, // select top right actuator    fadeOut, // use the 750ms exponential fade out effect    100 // begin effect after 100ms);</code></pre>
 
 
 
@@ -394,11 +360,7 @@ all of the references to the old object.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var scaled = trFade.scale(1.33333); // duration is now 1000ms
-scaled == trFade // true
-
-scaled = trFade.clone().scale(0.5); // duration is now 500ms
-scaled == trFade //false</code></pre>
+    <pre class="prettyprint"><code>var scaled = trFade.scale(1.33333); // duration is now 1000msscaled == trFade // truescaled = trFade.clone().scale(0.5); // duration is now 500msscaled == trFade //false</code></pre>
 
 
 
@@ -505,20 +467,7 @@ scaled == trFade //false</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(
-    75, // start at 75% intensity
-    25, // end at 25% intensity
-    Moment.Easing.Linear.out, // ease out with linear curve
-    750 // linear transition lasts 750ms
-);
-
-var trFade = new Moment.Vibration(
-    Moment.Actuators.topRight, // select top right actuator
-    fadeOut, // use the 750ms exponential fade out effect
-    100 // begin effect after 100ms
-);
-
-trFade.invert(); // vibration now fades in (25%->75%)</code></pre>
+    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(    75, // start at 75% intensity    25, // end at 25% intensity    Moment.Easing.Linear.out, // ease out with linear curve    750 // linear transition lasts 750ms);var trFade = new Moment.Vibration(    Moment.Actuators.topRight, // select top right actuator    fadeOut, // use the 750ms exponential fade out effect    100 // begin effect after 100ms);trFade.invert(); // vibration now fades in (25%->75%)</code></pre>
 
 
 
@@ -629,20 +578,7 @@ trFade.invert(); // vibration now fades in (25%->75%)</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(
-    75, // start at 75% intensity
-    25, // end at 25% intensity
-    Moment.Easing.Linear.out, // ease out with linear curve
-    750 // linear transition lasts 750ms
-);
-
-var trFade = new Moment.Vibration(
-    Moment.Actuators.topRight, // select top right actuator
-    fadeOut, // use the 750ms exponential fade out effect
-    100 // begin effect after 100ms
-);
-
-trFade.scale(2.0); // effect now lasts 1500ms</code></pre>
+    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(    75, // start at 75% intensity    25, // end at 25% intensity    Moment.Easing.Linear.out, // ease out with linear curve    750 // linear transition lasts 750ms);var trFade = new Moment.Vibration(    Moment.Actuators.topRight, // select top right actuator    fadeOut, // use the 750ms exponential fade out effect    100 // begin effect after 100ms);trFade.scale(2.0); // effect now lasts 1500ms</code></pre>
 
 
 
@@ -753,20 +689,7 @@ trFade.scale(2.0); // effect now lasts 1500ms</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(
-    75, // start at 75% intensity
-    25, // end at 25% intensity
-    Moment.Easing.Linear.out, // ease out with linear curve
-    750 // linear transition lasts 750ms
-);
-
-var trFade = new Moment.Vibration(
-    Moment.Actuators.topRight, // select top right actuator
-    fadeOut, // use the 750ms exponential fade out effect
-    100 // begin effect after 100ms
-);
-
-trFade.start();</code></pre>
+    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(    75, // start at 75% intensity    25, // end at 25% intensity    Moment.Easing.Linear.out, // ease out with linear curve    750 // linear transition lasts 750ms);var trFade = new Moment.Vibration(    Moment.Actuators.topRight, // select top right actuator    fadeOut, // use the 750ms exponential fade out effect    100 // begin effect after 100ms);trFade.start();</code></pre>
 
 
 
@@ -878,20 +801,7 @@ the delay before the start of the effect as well as the effect duration.</p>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(
-    75, // start at 75% intensity
-    25, // end at 25% intensity
-    Moment.Easing.Linear.out, // ease out with linear curve
-    750 // linear transition lasts 750ms
-);
-
-var trFade = new Moment.Vibration(
-    Moment.Actuators.topRight, // select top right actuator
-    fadeOut, // use the 750ms exponential fade out effect
-    100 // begin effect after 100ms
-);
-
-trFade.totalTime() == 850 // duration + delay = 850ms</code></pre>
+    <pre class="prettyprint"><code>var fadeOut = new Moment.Effect(    75, // start at 75% intensity    25, // end at 25% intensity    Moment.Easing.Linear.out, // ease out with linear curve    750 // linear transition lasts 750ms);var trFade = new Moment.Vibration(    Moment.Actuators.topRight, // select top right actuator    fadeOut, // use the 750ms exponential fade out effect    100 // begin effect after 100ms);trFade.totalTime() == 850 // duration + delay = 850ms</code></pre>
 
 
 

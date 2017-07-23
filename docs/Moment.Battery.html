@@ -189,11 +189,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var charge = Moment.Battery.getCharge();
-if (charge &lt; 25) {
-    // set red LED color when battery charge drops below 25%
-    Moment.LED.setColor(Moment.Color.RED);
-}</code></pre>
+    <pre class="prettyprint"><code>var charge = Moment.Battery.getCharge();if (charge &lt; 25) {    // set red LED color when battery charge drops below 25%    Moment.LED.setColor(Moment.Color.RED);}</code></pre>
 
 
 
@@ -304,15 +300,7 @@ if (charge &lt; 25) {
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var charging = Moment.Battery.isCharging();
-if (charging) {
-    // red LED color if battery is charging
-    Moment.LED.setColor(Moment.Color.RED);
-}
-else {
-    // otherwise green LED color
-    Moment.LED.setColor(Moment.Color.GREEN);
-}</code></pre>
+    <pre class="prettyprint"><code>var charging = Moment.Battery.isCharging();if (charging) {    // red LED color if battery is charging    Moment.LED.setColor(Moment.Color.RED);}else {    // otherwise green LED color    Moment.LED.setColor(Moment.Color.GREEN);}</code></pre>
 
 
 
@@ -423,15 +411,7 @@ else {
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var connected = Moment.Battery.isConnected();
-if (connected) {
-    // orange LED color if charger is connected
-    Moment.LED.setColor(Moment.Color.ORANGE);
-}
-else {
-    // otherwise blue LED color
-    Moment.LED.setColor(Moment.Color.BLUE);
-}</code></pre>
+    <pre class="prettyprint"><code>var connected = Moment.Battery.isConnected();if (connected) {    // orange LED color if charger is connected    Moment.LED.setColor(Moment.Color.ORANGE);}else {    // otherwise blue LED color    Moment.LED.setColor(Moment.Color.BLUE);}</code></pre>
 
 
 
