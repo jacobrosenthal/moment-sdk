@@ -13,8 +13,18 @@ For more information about Moment, visit [https://wearmoment.com/](https://wearm
 This SDK contains the code that is executed on the Moment devices inside of
 a custom JavaScript runtime environment. To simplify the process of creating
 custom embedded software for Moment, we provide several ready-to-use functions
-for creating event callbacks, transitioning the LED color, and creating rich
-haptic effects.
+for creating event callbacks and creating rich haptic effects.
+
+### iPhone and Android
+Our iPhone and Android SDK libraries allow you to quickly send code you've
+written using the Moment SDK to your Moment device. We require iOS 9+ and
+Android 4.3+ for our SDK. You may be able to adjust our libraries to work with
+older versions, but we only support newer versions for simplicity and
+maintainability.
+
+We are working on improving our documentation. To get started building your
+own iPhone or Android app to work with Moment, email developers@somaticlabs.io
+and we'll help you begin development!
 
 ### Repository
 
