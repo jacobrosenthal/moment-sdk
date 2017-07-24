@@ -106,49 +106,12 @@ A Gist will provide you with a version-controlled pastebin for your Moment
 plugin. Once you create a Gist, copy the URL and paste it into the Moment app
 as a user script. This will allow you to enable and disable the plugin you've
 created from the Moment app.</p>
-<h2>Hacking the SDK (advanced users)</h2><p>To develop on the Moment SDK, you will need to install some dependencies first.
-The following instructions assume you have some familiarity with your terminal.</p>
-<h3>Step 0: Clone Repository</h3><p>Clone the repository:</p>
-<pre class="prettyprint source"><code>git clone git@github.com:SomaticLabs/moment-sdk.git</code></pre><p>Change the working directory:</p>
-<pre class="prettyprint source"><code>cd moment-sdk</code></pre><h3>Step 1: Install NPM</h3><p>Follow this <a href="https://docs.npmjs.com/getting-started/installing-node">Getting Started Guide</a> to
-install NPM for your operating system.</p>
-<h3>Step 2: Install Gulp</h3><p>Our build system uses the Gulp package to manage JavaScript compilation and
-documentation generation. You will need a global installation of gulp, which
-you can obtain by entering the following command into your terminal:</p>
-<pre class="prettyprint source"><code>npm install -g gulp</code></pre><h3>Step 4: Ensure Java is Available</h3><p>Make sure you have the Java runtime (JRE) installed. We use the <code>java</code> command
-as part of the build process.</p>
-<h3>Step 5: Install NPM Dependencies</h3><p>For the rest of our build system, you can install all the necessary software by
-entering the following command into your terminal:</p>
-<pre class="prettyprint source"><code>npm install</code></pre><h2>Namespacing</h2><p>All features of the SDK are contained within the <a href="https://somaticlabs.github.io/moment-sdk/Moment.html"><code>Moment</code> namespace</a>. This is a
+<h2>Namespacing</h2><p>All features of the SDK are contained within the <a href="https://somaticlabs.github.io/moment-sdk/Moment.html"><code>Moment</code> namespace</a>. This is a
 global object that contains submodules of functionality in their own individual
 namespaces. This is the only global variable exposed by the SDK, and is the
 only global variable you must avoid reassigning. However, we recommend using
 <a href="https://stackoverflow.com/questions/592396/what-is-the-purpose-of-a-self-executing-function-in-javascript">a self-invoking function</a> for all of
 your code to avoid polluting the global namespace.</p>
-<h2>Typical Development Workflow</h2><h3>Creating and Running Tests</h3><p>Unit tests are run using <a href="https://www.npmjs.com/package/mocha">Mocha</a>, and
-all test files are in the <code>test/</code> folder. Running tests is easy:</p>
-<pre class="prettyprint source"><code>npm test</code></pre><p>To create new tests, you will do one of the following:</p>
-<ol>
-<li>Create a new test module in a separate file</li>
-<li>Add a unit test to an existing module</li>
-</ol>
-<p>If your changes involve several new classes and functions, you may want to
-create a new file; however, we prefer adding unit tests to existing test files
-under most circumstances.</p>
-<p>To ensure tests cases provide adequate code coverage, we make use of the
-<a href="https://www.npmjs.com/package/istanbul">istanbul</a> package. To run a coverage
-test using it, just run the following command:</p>
-<pre class="prettyprint source"><code>npm run coverage</code></pre><h3>Generating Documentation</h3><p>Documentation is generated using <a href="http://usejsdoc.org/">JSDoc</a>, and all
-additions to the Moment SDK must be documented using inline comments.
-To generate documentation for your code, simply run the following command:</p>
-<pre class="prettyprint source"><code>npm run generate-docs</code></pre><h3>Compiling with Closure Compiler</h3><p>The last step before the SDK code can be used on-board Moment is compilation
-using the
-<a href="https://github.com/google/closure-compiler/">Google Closure Compiler</a>.
-The Closure Compiler is configured to use all of its advanced optimizations,
-and will also enforce several code style rules to allow for aggressive size
-reduction and optimization. To compile the JavaScript source for the SDK, run the following command:</p>
-<pre class="prettyprint source"><code>npm run compile</code></pre><h3>Pull Requests and Issues</h3><p>We invite anyone to open an issue for feature requests, bugs, and questions.
-Likewise, you are welcome to fork the code as long as you respect the GNU General Public License. If you wish to create a pull request on the main repository, we may require you to sign a contributor's agreement - your code will still be made available under the GPL, but Somatic Labs requires all direct contributions to be licensed back to our company (it makes our lawyers happy).</p>
 <h2>License</h2><p>Copyright (c) 2016 Somatic Labs. All Rights Reserved.</p>
 <p>This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
